@@ -1,0 +1,41 @@
+package com.example.bank.service;
+
+import java.util.Optional;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.example.bank.api.CustomersApiDelegate;
+import com.example.bank.model.Customer;
+import com.example.bank.repository.CustomerRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class CustomersApiDelegateImpl implements CustomersApiDelegate{
+	
+	private final CustomerRepository customerRepository = null;
+	
+	@Override
+	public ResponseEntity<Customer> customersPost(Customer customer){
+		customerRepository.save(customer);
+		return ResponseEntity.ok(customer);
+	}
+	
+	@Override
+	public ResponseEntity<Customer> customersCustomerIdGet(Integer customerId){
+		Customer customer = new Customer();
+		customer.setId(customerId);
+		customer.setName("Andrés");
+		Optional<Customer> optional = customerRepository.findById(customerId);
+		return ResponseEntity.ok(customer);
+	}
+	
+	@Override
+	public ResponseEntity<Void> customersCustomerIdDelete(Integer customerId){
+		customerRepository.deleteById(customerId);
+		return ResponseEntity.of(null);
+	}
+
+}

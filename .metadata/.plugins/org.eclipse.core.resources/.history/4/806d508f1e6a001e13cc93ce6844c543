@@ -1,0 +1,16 @@
+package com.example.bank.service;
+
+import org.springframework.stereotype.Service;
+
+import com.example.bank.api.TransactionsApiDelegate;
+import com.example.bank.repository.OperationRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class OperationApiDelegateImpl implements TransactionsApiDelegate{
+	
+	private final OperationRepository operationRepository;
+
+}
