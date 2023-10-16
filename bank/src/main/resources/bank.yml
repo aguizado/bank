@@ -541,13 +541,11 @@ components:
         type: integer
         example: 1
       customer:
-        type: array
-        items:
-          $ref: '#/components/schemas/Customer'
+        $ref: '#/components/schemas/Customer'
       type_operation:
         $ref: '#/components/schemas/Operation_type'
       balance:
-        type: number
+        type: integer
         example: 500
       operation_date:
         type: string

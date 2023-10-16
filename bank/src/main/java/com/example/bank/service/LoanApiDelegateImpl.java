@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.bank.api.LoansApiDelegate;
 import com.example.bank.model.Loan;
+import com.example.bank.model.LoanType.DescriptionEnum;
 import com.example.bank.repository.LoanRepository;
 
 import lombok.RequiredArgsConstructor;

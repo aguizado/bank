@@ -4,3 +4,8 @@
 1697229261858	Delete element
 1697230436662	Move compilation unit
 1697231906624	Delete element
+1697320523023	Extract method 'validateCustomer'
+1697321055928	Extract method 'validatePersonal'
+1697321083612	Extract method 'validateBusiness'
+1697321147761	Extract method 'saveLoan'
+1697321187238	Extract method 'saveAccount'

@@ -1,0 +1,52 @@
+package com.example.bank.service;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.example.bank.api.LoansApiDelegate;
+import com.example.bank.model.Loan;
+import com.example.bank.model.LoanType.DescriptionEnum;
+import com.example.bank.repository.LoanRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class LoanApiDelegateImpl implements LoansApiDelegate{
+	
+	private final LoanRepository loanRepository;
+	
+	@Override
+	public ResponseEntity<Loan> loansPost(Loan loan) {
+		
+		if(DescriptionEnum.PERSONAL.equals(loan.getType().getDescription())){
+			//solo se permite un solo crédito por persona.
+		} else if(DescriptionEnum.BUSINESS.equals(loan.getType().getDescription())){
+			//se permite más de un crédito por empresa.
+		} if(DescriptionEnum.CREDIT_CARD.equals(loan.getType().getDescription())){
+			//personal o empresarial.
+		}
+		
+		loanRepository.save(loan);
+		return ResponseEntity.ok(loan);
+	}
+	
+	@Override
+	public ResponseEntity<Loan> loansLoanIdGet(Integer loanId){		
+		return loanRepository.findById(loanId).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR));
+	}
+	
+	@Override
+	public ResponseEntity<Loan> loansLoanIdPut(Integer loanId, Loan loan) {
+		loanRepository.save(loan);
+		return ResponseEntity.ok(loan);
+	}
+	
+	@Override
+	public ResponseEntity<Void> loansLoanIdDelete(Integer loanId){
+		loanRepository.deleteById(loanId);
+		return  ResponseEntity.ok().build();
+	}
+
+}

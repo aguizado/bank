@@ -1965,3 +1965,812 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-13 18:17:46.939
 !MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+!SESSION 2023-10-14 13:33:17.067 -----------------------------------------------
+eclipse.buildId=4.29.0.20230907-1200
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_PE
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY ch.qos.logback.classic 1 0 2023-10-14 13:33:25.363
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY org.eclipse.core.resources 2 10035 2023-10-14 13:35:50.998
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY ch.qos.logback.classic 1 0 2023-10-14 13:35:52.146
+!MESSAGE Logback config file: C:\Users\aguizado\Documents\Workspace\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.2.0.20230625-0847.xml
+
+!ENTRY org.eclipse.jface 2 0 2023-10-14 13:35:55.906
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2023-10-14 13:35:55.906
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		WorkbenchHandlerServiceHandler("org.eclipse.jdt.ui.navigate.open.type"),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		WorkbenchHandlerServiceHandler("org.eclipse.lsp4e.symbolinworkspace"),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-10-14 13:36:02.408
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\aguizado'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.059
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.062
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.065
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.068
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.071
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.074
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.077
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.079
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.082
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.085
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.088
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.090
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.093
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.095
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.098
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.100
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.102
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.105
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.108
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.110
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.113
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.115
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.118
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.121
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.124
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.126
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.129
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.132
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.134
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.137
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.140
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.147
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.149
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.152
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.155
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.158
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.160
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.163
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.489
+!MESSAGE Empty operationId found for path: post /customers. Renamed to auto-generated operationId: customersPost
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.494
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.501
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.515
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.525
+!MESSAGE Multiple MediaTypes found, using only the first one
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.531
+!MESSAGE Empty operationId found for path: get /customers/{customerId}. Renamed to auto-generated operationId: customersCustomerIdGet
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.535
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.539
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.549
+!MESSAGE Empty operationId found for path: put /customers/{customerId}. Renamed to auto-generated operationId: customersCustomerIdPut
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.553
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.556
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.562
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.567
+!MESSAGE Empty operationId found for path: delete /customers/{customerId}. Renamed to auto-generated operationId: customersCustomerIdDelete
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.571
+!MESSAGE Empty operationId found for path: get /customers/getByType. Renamed to auto-generated operationId: customersGetByTypeGet
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.575
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.579
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.588
+!MESSAGE Empty operationId found for path: post /accounts. Renamed to auto-generated operationId: accountsPost
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.591
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.595
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.601
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.609
+!MESSAGE Empty operationId found for path: get /accounts/{accountId}. Renamed to auto-generated operationId: accountsAccountIdGet
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.612
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.616
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.623
+!MESSAGE Empty operationId found for path: put /accounts/{accountId}. Renamed to auto-generated operationId: accountsAccountIdPut
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.626
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.631
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.638
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.644
+!MESSAGE Empty operationId found for path: delete /accounts/{accountId}. Renamed to auto-generated operationId: accountsAccountIdDelete
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.648
+!MESSAGE Empty operationId found for path: post /loans. Renamed to auto-generated operationId: loansPost
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.651
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.655
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.659
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.665
+!MESSAGE Empty operationId found for path: get /loans/{loanId}. Renamed to auto-generated operationId: loansLoanIdGet
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.668
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.672
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.677
+!MESSAGE Empty operationId found for path: put /loans/{loanId}. Renamed to auto-generated operationId: loansLoanIdPut
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.682
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.685
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.689
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.693
+!MESSAGE Empty operationId found for path: delete /loans/{loanId}. Renamed to auto-generated operationId: loansLoanIdDelete
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.697
+!MESSAGE Empty operationId found for path: post /transactions. Renamed to auto-generated operationId: transactionsPost
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.699
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.702
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.707
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.711
+!MESSAGE Empty operationId found for path: get /transactions/{customerId}. Renamed to auto-generated operationId: transactionsCustomerIdGet
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.714
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-14 13:40:43.717
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.167
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.173
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.176
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.180
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.183
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.186
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.189
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.193
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.196
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.199
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.202
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.206
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.210
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.213
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.216
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.220
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.223
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.227
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.231
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.235
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.238
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.243
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.247
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.250
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.253
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.256
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.259
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.262
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.266
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.269
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.272
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.278
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.281
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.284
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.287
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.291
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.294
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.297
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.441
+!MESSAGE Empty operationId found for path: post /customers. Renamed to auto-generated operationId: customersPost
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.444
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.448
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.473
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.480
+!MESSAGE Multiple MediaTypes found, using only the first one
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.486
+!MESSAGE Empty operationId found for path: get /customers/{customerId}. Renamed to auto-generated operationId: customersCustomerIdGet
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.491
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.496
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.502
+!MESSAGE Empty operationId found for path: put /customers/{customerId}. Renamed to auto-generated operationId: customersCustomerIdPut
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.506
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.510
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.517
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.526
+!MESSAGE Empty operationId found for path: delete /customers/{customerId}. Renamed to auto-generated operationId: customersCustomerIdDelete
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.531
+!MESSAGE Empty operationId found for path: get /customers/getByType. Renamed to auto-generated operationId: customersGetByTypeGet
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.537
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.542
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.549
+!MESSAGE Empty operationId found for path: post /accounts. Renamed to auto-generated operationId: accountsPost
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.552
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.556
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.562
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.568
+!MESSAGE Empty operationId found for path: get /accounts/{accountId}. Renamed to auto-generated operationId: accountsAccountIdGet
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.573
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.577
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.584
+!MESSAGE Empty operationId found for path: put /accounts/{accountId}. Renamed to auto-generated operationId: accountsAccountIdPut
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.589
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.595
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.602
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.609
+!MESSAGE Empty operationId found for path: delete /accounts/{accountId}. Renamed to auto-generated operationId: accountsAccountIdDelete
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.613
+!MESSAGE Empty operationId found for path: post /loans. Renamed to auto-generated operationId: loansPost
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.617
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.620
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.626
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.631
+!MESSAGE Empty operationId found for path: get /loans/{loanId}. Renamed to auto-generated operationId: loansLoanIdGet
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.635
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.640
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.645
+!MESSAGE Empty operationId found for path: put /loans/{loanId}. Renamed to auto-generated operationId: loansLoanIdPut
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.649
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.653
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.659
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.663
+!MESSAGE Empty operationId found for path: delete /loans/{loanId}. Renamed to auto-generated operationId: loansLoanIdDelete
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.668
+!MESSAGE Empty operationId found for path: post /transactions. Renamed to auto-generated operationId: transactionsPost
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.673
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.679
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.685
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.691
+!MESSAGE Empty operationId found for path: get /transactions/{customerId}. Renamed to auto-generated operationId: transactionsCustomerIdGet
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.694
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 10:59:58.697
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.166
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.170
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.174
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.177
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.181
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.184
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.187
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.190
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.194
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.197
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.200
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.203
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.206
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.209
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.212
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.216
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.219
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.222
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.226
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.229
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.232
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.236
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.239
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.242
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.245
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.247
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.251
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.254
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.258
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.261
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.264
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.270
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.273
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.277
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.280
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.283
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.286
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.289
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.411
+!MESSAGE Empty operationId found for path: post /customers. Renamed to auto-generated operationId: customersPost
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.415
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.418
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.423
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.427
+!MESSAGE Multiple MediaTypes found, using only the first one
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.431
+!MESSAGE Empty operationId found for path: get /customers/{customerId}. Renamed to auto-generated operationId: customersCustomerIdGet
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.436
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.442
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.450
+!MESSAGE Empty operationId found for path: put /customers/{customerId}. Renamed to auto-generated operationId: customersCustomerIdPut
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.454
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.458
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.462
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.470
+!MESSAGE Empty operationId found for path: delete /customers/{customerId}. Renamed to auto-generated operationId: customersCustomerIdDelete
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.473
+!MESSAGE Empty operationId found for path: get /customers/getByType. Renamed to auto-generated operationId: customersGetByTypeGet
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.477
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.483
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.491
+!MESSAGE Empty operationId found for path: post /accounts. Renamed to auto-generated operationId: accountsPost
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.494
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.498
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.504
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.511
+!MESSAGE Empty operationId found for path: get /accounts/{accountId}. Renamed to auto-generated operationId: accountsAccountIdGet
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.515
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.520
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.526
+!MESSAGE Empty operationId found for path: put /accounts/{accountId}. Renamed to auto-generated operationId: accountsAccountIdPut
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.530
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.535
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.540
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.547
+!MESSAGE Empty operationId found for path: delete /accounts/{accountId}. Renamed to auto-generated operationId: accountsAccountIdDelete
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.552
+!MESSAGE Empty operationId found for path: post /loans. Renamed to auto-generated operationId: loansPost
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.556
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.560
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.564
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.569
+!MESSAGE Empty operationId found for path: get /loans/{loanId}. Renamed to auto-generated operationId: loansLoanIdGet
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.572
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.576
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.580
+!MESSAGE Empty operationId found for path: put /loans/{loanId}. Renamed to auto-generated operationId: loansLoanIdPut
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.583
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.586
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.590
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.595
+!MESSAGE Empty operationId found for path: delete /loans/{loanId}. Renamed to auto-generated operationId: loansLoanIdDelete
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.598
+!MESSAGE Empty operationId found for path: post /transactions. Renamed to auto-generated operationId: transactionsPost
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.602
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.605
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.609
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.614
+!MESSAGE Empty operationId found for path: get /transactions/{customerId}. Renamed to auto-generated operationId: transactionsCustomerIdGet
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.616
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2023-10-16 11:11:08.620
+!MESSAGE Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
