@@ -16,4 +16,15 @@
     <fullyQualifiedTypeName name="com.google.common.base.Optional"/>
     <fullyQualifiedTypeName name="com.example.bank.model.Customer"/>
     <fullyQualifiedTypeName name="java.util.Optional"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="com.example.bank.model.CustomerType.DescriptionEnum"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="com.example.bank.model.LoanType.DescriptionEnum"/>
+    <fullyQualifiedTypeName name="com.example.bank.model.Account"/>
+    <fullyQualifiedTypeName name="com.example.bank.model.AccountType.DescriptionEnum"/>
+    <fullyQualifiedTypeName name="com.example.bank.model.Loan"/>
+    <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
+    <fullyQualifiedTypeName name="com.example.bank.model.OperationType.DescriptionEnum"/>
 </qualifiedTypeNameHistroy>

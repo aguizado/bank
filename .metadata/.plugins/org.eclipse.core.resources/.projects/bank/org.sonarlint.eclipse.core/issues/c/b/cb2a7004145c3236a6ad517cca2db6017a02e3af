@@ -1,0 +1,27 @@
+
+¢	java:S116"oRename this field "MONTHLY_TRANSACTION_LIMIT_FIXED_TERM" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.b 318319a5f09c9358a84e2bc17c362bcdh
+è	java:S116"\Rename this field "MAINTENANCE_VALUE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.b 6cf3e8b8fa0efbce61641470e54569b6h
+^	java:S106 "+Replace this use of System.out by a logger.b bb1c3f2ea781263d3a2bb92b06a2061fh
+^	java:S1063"+Replace this use of System.out by a logger.b bb1c3f2ea781263d3a2bb92b06a2061fh
+Ü
+java:S3776M"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.b c35ffb9c74965925153088f4278f2b5eh
+^	java:S106N"+Replace this use of System.out by a logger.b bb1c3f2ea781263d3a2bb92b06a2061fh
+r
+java:S1155V">Use isEmpty() to check whether the collection is empty or not.b 9a0ec8bdcc0dfa178fc3a98583d301b1h
+r
+java:S1155V">Use isEmpty() to check whether the collection is empty or not.b 7c1e4aeb185f1ef9af7d570c21f76f01h
+^	java:S106l"+Replace this use of System.out by a logger.b bb1c3f2ea781263d3a2bb92b06a2061fh
+^	java:S106k"+Replace this use of System.out by a logger.b bb1c3f2ea781263d3a2bb92b06a2061fh
+^	java:S106u"+Replace this use of System.out by a logger.b bb1c3f2ea781263d3a2bb92b06a2061fh
+^	java:S106|"+Replace this use of System.out by a logger.b bb1c3f2ea781263d3a2bb92b06a2061fh
+s
+java:S1155Ä">Use isEmpty() to check whether the collection is empty or not.b 2822fd3805985b06b59372e87b854a23h
+_	java:S106Ç"+Replace this use of System.out by a logger.b bb1c3f2ea781263d3a2bb92b06a2061fh
+_	java:S106Å"+Replace this use of System.out by a logger.b bb1c3f2ea781263d3a2bb92b06a2061fh
+c
+java:S1172ê".Remove this unused method parameter "account".b e268443e43d93dab7ebef303bbe9642fh
+p	java:S125ë"<This block of commented-out lines of code should be removed.b 22ef66ba579b50cd00cafbdbb4a10b1eh
+d
+java:S1172ï"/Remove this unused method parameter "customer".b 91ec1f9324753048c0096d036a694f86h
+p	java:S125ñ"<This block of commented-out lines of code should be removed.b 79b4184bcb5857c2236650109c98f6a5h
+•	java:S116"kRename this field "monthly_transaction_limit_saving" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.8£ïñÃ≥1b 71c2a2e82a27af45addb5df72e990981h

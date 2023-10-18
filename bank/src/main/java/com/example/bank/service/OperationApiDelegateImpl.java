@@ -1,20 +1,24 @@
 package com.example.bank.service;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
-
 import com.example.bank.api.TransactionsApiDelegate;
 import com.example.bank.model.Account;
 import com.example.bank.model.Operation;
 import com.example.bank.model.OperationType.DescriptionEnum;
 import com.example.bank.repository.OperationRepository;
-
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
+/**.
+* Class OperationApiDelegateImpl
+
+* @author Andres Guizado
+* @version 0.1, 2023/10/16
+*/
 @Service
 @RequiredArgsConstructor
-public class OperationApiDelegateImpl implements TransactionsApiDelegate{
+public class OperationApiDelegateImpl implements TransactionsApiDelegate {
 	
 	private final OperationRepository operationRepository;
 	
@@ -26,12 +30,12 @@ public class OperationApiDelegateImpl implements TransactionsApiDelegate{
 		
 		if (DescriptionEnum.DEPOSIT.equals(operation.getTypeOperation().getDescription())) {
 			
-			deposit = operation.getBalance();			
+			deposit = operation.getBalance();
 			updateAccount(operation, deposit, withdrawal);
 			
 		} else if(DescriptionEnum.WITHDRAWAL.equals(operation.getTypeOperation().getDescription())) {
 			
-			withdrawal = operation.getBalance();			
+			withdrawal = operation.getBalance();
 			updateAccount(operation, deposit, withdrawal);
 		}
 		
@@ -40,11 +44,11 @@ public class OperationApiDelegateImpl implements TransactionsApiDelegate{
 	}
 
 	private void updateAccount(Operation operation, Integer deposit, Integer withdrawal) {
-		if (operation.getCustomer().getAccounts().size() == 0) {
+		if (operation.getCustomer().getAccounts().isEmpty()) {
 			//bad request
 		} else {
 			//Consultar lista de cuentas de cliente
-			for (Account account : operation.getCustomer().getAccounts()) {					
+			for (Account account : operation.getCustomer().getAccounts()) {
 				//comparar la cuenta de operation contra la lista
 				Integer value = account.getAccountValue() + deposit - withdrawal;
 				account.setAccountValue(value);
@@ -53,7 +57,7 @@ public class OperationApiDelegateImpl implements TransactionsApiDelegate{
 	}
 	
 	@Override
-	public ResponseEntity<Operation> transactionsCustomerIdGet(Integer customerId){		
+	public ResponseEntity<Operation> transactionsCustomerIdGet(Integer customerId) {
 		return operationRepository.findById(customerId).map(ResponseEntity::ok).orElse(new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR));
 	}
 

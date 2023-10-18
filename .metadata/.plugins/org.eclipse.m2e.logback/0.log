@@ -4555,3 +4555,288 @@
 2023-10-16 11:11:08,775 [Worker-118: Launching BankApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2023-10-16 11:11:08,775 [Worker-118: Launching BankApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
 2023-10-16 11:11:08,775 [Worker-118: Launching BankApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\aguizado\Documents\Workspace\bank\src\test\resources
+2023-10-16 12:21:27,859 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2023-10-16 12:21:30,361 [ForkJoinPool.commonPool-worker-1] INFO  o.s.s.s.o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'sonarLintSpringAppConfig' of type [org.sonarsource.sonarlint.core.spring.SonarLintSpringAppConfig$$EnhancerBySpringCGLIB$$d27f58b2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-16 12:21:30,406 [ForkJoinPool.commonPool-worker-1] INFO  o.s.s.s.o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'provideClientEventBus' of type [com.google.common.eventbus.AsyncEventBus] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-16 12:21:31,409 [ForkJoinPool.commonPool-worker-1] INFO  jetbrains.exodus.io.FileDataWriter - Interruptible file channel will be used
+java.lang.reflect.InaccessibleObjectException: Unable to make public void sun.nio.ch.FileChannelImpl.setUninterruptible() accessible: module java.base does not "exports sun.nio.ch" to unnamed module @6b28a34d
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:354)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:297)
+	at java.base/java.lang.reflect.Method.checkCanSetAccessible(Method.java:199)
+	at java.base/java.lang.reflect.Method.setAccessible(Method.java:193)
+	at jetbrains.exodus.io.FileDataWriter$Companion$setUninterruptibleMethod$1.invoke(FileDataWriter.kt:188)
+	at jetbrains.exodus.io.FileDataWriter$Companion$setUninterruptibleMethod$1.invoke(FileDataWriter.kt:185)
+	at jetbrains.exodus.util.UnsafeHolder.doPrivileged$lambda-0(UnsafeHolder.kt:30)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:569)
+	at jetbrains.exodus.util.UnsafeHolder.doPrivileged(UnsafeHolder.kt:29)
+	at jetbrains.exodus.io.FileDataWriter.<clinit>(FileDataWriter.kt:185)
+	at jetbrains.exodus.io.FileDataReaderWriterProvider.newFileDataWriter(FileDataReaderWriterProvider.kt:48)
+	at jetbrains.exodus.io.FileDataReaderWriterProvider.newReaderWriter(FileDataReaderWriterProvider.kt:30)
+	at jetbrains.exodus.log.LogConfig.createReaderWriter(LogConfig.java:359)
+	at jetbrains.exodus.log.LogConfig.getReader(LogConfig.java:125)
+	at jetbrains.exodus.log.Log.<init>(Log.kt:52)
+	at jetbrains.exodus.env.Environments.newLogInstance(Environments.kt:117)
+	at jetbrains.exodus.env.Environments.newLogInstance(Environments.kt:81)
+	at jetbrains.exodus.env.Environments.newLogInstance(Environments.kt:77)
+	at jetbrains.exodus.env.Environments$newInstance$4.invoke(Environments.kt:46)
+	at jetbrains.exodus.env.Environments$newInstance$4.invoke(Environments.kt:46)
+	at jetbrains.exodus.env.Environments.prepare(Environments.kt:120)
+	at jetbrains.exodus.env.Environments.newInstance(Environments.kt:46)
+	at org.sonarsource.sonarlint.core.local.only.XodusLocalOnlyIssueStore.buildEntityStore(XodusLocalOnlyIssueStore.java:201)
+	at org.sonarsource.sonarlint.core.local.only.XodusLocalOnlyIssueStore.<init>(XodusLocalOnlyIssueStore.java:94)
+	at org.sonarsource.sonarlint.core.local.only.LocalOnlyIssueStorageService.get(LocalOnlyIssueStorageService.java:49)
+	at org.sonarsource.sonarlint.core.local.only.LocalOnlyIssueStorageService.purgeOldIssues(LocalOnlyIssueStorageService.java:43)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:333)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:157)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:440)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:229)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1372)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1222)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.sonarsource.sonarlint.shaded.org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:920)
+	at org.sonarsource.sonarlint.shaded.org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.sonarsource.sonarlint.core.SonarLintBackendImpl.lambda$initialize$2(SonarLintBackendImpl.java:63)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+2023-10-16 12:21:31,415 [ForkJoinPool.commonPool-worker-1] WARN  jetbrains.exodus.io.FileDataWriter - Can't open directory channel. Log directory fsync won't be performed.
+2023-10-16 12:21:31,742 [ForkJoinPool.commonPool-worker-1] INFO  j.exodus.env.EnvironmentImpl - Exodus environment created: C:\Users\aguizado\.sonarlint\xodus-local-only-issue-store16995293345523176946
+2023-10-16 12:28:26,865 [ForkJoinPool.commonPool-worker-6] INFO  j.exodus.util.CompressBackupUtil - Backup file "local_only_issue_backup2023-10-16-12-28-26.tar.gz" created.
+2023-10-16 12:28:44,972 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2023-10-16 12:28:45,975 [ForkJoinPool.commonPool-worker-1] INFO  o.s.s.s.o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'sonarLintSpringAppConfig' of type [org.sonarsource.sonarlint.core.spring.SonarLintSpringAppConfig$$EnhancerBySpringCGLIB$$c54da7ac] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-16 12:28:46,030 [ForkJoinPool.commonPool-worker-1] INFO  o.s.s.s.o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'provideClientEventBus' of type [com.google.common.eventbus.AsyncEventBus] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2023-10-16 12:28:47,178 [ForkJoinPool.commonPool-worker-1] INFO  jetbrains.exodus.io.FileDataWriter - Interruptible file channel will be used
+java.lang.reflect.InaccessibleObjectException: Unable to make public void sun.nio.ch.FileChannelImpl.setUninterruptible() accessible: module java.base does not "exports sun.nio.ch" to unnamed module @ab9ea83
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:354)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:297)
+	at java.base/java.lang.reflect.Method.checkCanSetAccessible(Method.java:199)
+	at java.base/java.lang.reflect.Method.setAccessible(Method.java:193)
+	at jetbrains.exodus.io.FileDataWriter$Companion$setUninterruptibleMethod$1.invoke(FileDataWriter.kt:188)
+	at jetbrains.exodus.io.FileDataWriter$Companion$setUninterruptibleMethod$1.invoke(FileDataWriter.kt:185)
+	at jetbrains.exodus.util.UnsafeHolder.doPrivileged$lambda-0(UnsafeHolder.kt:30)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:569)
+	at jetbrains.exodus.util.UnsafeHolder.doPrivileged(UnsafeHolder.kt:29)
+	at jetbrains.exodus.io.FileDataWriter.<clinit>(FileDataWriter.kt:185)
+	at jetbrains.exodus.io.FileDataReaderWriterProvider.newFileDataWriter(FileDataReaderWriterProvider.kt:48)
+	at jetbrains.exodus.io.FileDataReaderWriterProvider.newReaderWriter(FileDataReaderWriterProvider.kt:30)
+	at jetbrains.exodus.log.LogConfig.createReaderWriter(LogConfig.java:359)
+	at jetbrains.exodus.log.LogConfig.getReader(LogConfig.java:125)
+	at jetbrains.exodus.log.Log.<init>(Log.kt:52)
+	at jetbrains.exodus.env.Environments.newLogInstance(Environments.kt:117)
+	at jetbrains.exodus.env.Environments.newLogInstance(Environments.kt:81)
+	at jetbrains.exodus.env.Environments.newLogInstance(Environments.kt:77)
+	at jetbrains.exodus.env.Environments$newInstance$4.invoke(Environments.kt:46)
+	at jetbrains.exodus.env.Environments$newInstance$4.invoke(Environments.kt:46)
+	at jetbrains.exodus.env.Environments.prepare(Environments.kt:120)
+	at jetbrains.exodus.env.Environments.newInstance(Environments.kt:46)
+	at org.sonarsource.sonarlint.core.local.only.XodusLocalOnlyIssueStore.buildEntityStore(XodusLocalOnlyIssueStore.java:201)
+	at org.sonarsource.sonarlint.core.local.only.XodusLocalOnlyIssueStore.<init>(XodusLocalOnlyIssueStore.java:94)
+	at org.sonarsource.sonarlint.core.local.only.LocalOnlyIssueStorageService.get(LocalOnlyIssueStorageService.java:49)
+	at org.sonarsource.sonarlint.core.local.only.LocalOnlyIssueStorageService.purgeOldIssues(LocalOnlyIssueStorageService.java:43)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:333)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:157)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:440)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1391)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1311)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:229)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1372)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1222)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.sonarsource.sonarlint.shaded.org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955)
+	at org.sonarsource.sonarlint.shaded.org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:920)
+	at org.sonarsource.sonarlint.shaded.org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.sonarsource.sonarlint.core.SonarLintBackendImpl.lambda$initialize$2(SonarLintBackendImpl.java:63)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+2023-10-16 12:28:47,182 [ForkJoinPool.commonPool-worker-1] WARN  jetbrains.exodus.io.FileDataWriter - Can't open directory channel. Log directory fsync won't be performed.
+2023-10-16 12:28:47,509 [ForkJoinPool.commonPool-worker-1] INFO  j.exodus.env.EnvironmentImpl - Exodus environment created: C:\Users\aguizado\.sonarlint\xodus-local-only-issue-store11608375022414390348
+2023-10-16 12:28:47,518 [ForkJoinPool.commonPool-worker-1] INFO  j.exodus.gc.GarbageCollector - Queueing ComputeUtilizationFromScratchJob
+2023-10-16 12:28:57,171 [Exodus shared background cleaner] INFO  j.exodus.gc.GarbageCollector - Started calculation of log utilization from scratch at C:\Users\aguizado\.sonarlint\xodus-local-only-issue-store11608375022414390348
+2023-10-16 12:28:57,190 [Exodus shared background cleaner] INFO  j.exodus.gc.GarbageCollector - Finished calculation of log utilization from scratch at C:\Users\aguizado\.sonarlint\xodus-local-only-issue-store11608375022414390348
+2023-10-16 15:27:53,078 [Worker-106: Building Workspace] INFO  o.o.codegen.DefaultGenerator - OpenAPI Generator: spring (server)
+2023-10-16 15:27:53,078 [Worker-106: Building Workspace] INFO  o.o.codegen.DefaultGenerator - Generator 'spring' is considered stable.
+2023-10-16 15:27:53,090 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,093 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,096 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,098 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,101 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,106 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,109 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,111 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,114 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,117 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,120 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,123 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,125 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,128 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,130 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,133 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,139 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,142 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,145 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,147 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,149 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,152 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,154 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,157 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,159 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,162 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,165 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,167 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,169 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,172 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,174 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,178 [Worker-106: Building Workspace] INFO  o.o.codegen.languages.SpringCodegen - ----------------------------------
+2023-10-16 15:27:53,178 [Worker-106: Building Workspace] INFO  o.o.c.languages.AbstractJavaCodegen - Environment variable JAVA_POST_PROCESS_FILE not defined so the Java code may not be properly formatted. To define it, try 'export JAVA_POST_PROCESS_FILE="/usr/local/bin/clang-format -i"' (Linux/Mac)
+2023-10-16 15:27:53,178 [Worker-106: Building Workspace] INFO  o.o.c.languages.AbstractJavaCodegen - NOTE: To enable file post-processing, 'enablePostProcessFile' must be set to `true` (--enable-post-process-file for CLI).
+2023-10-16 15:27:53,178 [Worker-106: Building Workspace] INFO  o.o.c.languages.AbstractJavaCodegen - Invoker Package Name, originally not set, is now derived from api package name: com.example.bank
+2023-10-16 15:27:53,181 [Worker-106: Building Workspace] INFO  o.o.c.languages.AbstractJavaCodegen - Processing operation null
+2023-10-16 15:27:53,181 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,184 [Worker-106: Building Workspace] INFO  o.o.c.languages.AbstractJavaCodegen - Processing operation null
+2023-10-16 15:27:53,184 [Worker-106: Building Workspace] INFO  o.o.c.languages.AbstractJavaCodegen - Processing operation null
+2023-10-16 15:27:53,184 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,186 [Worker-106: Building Workspace] INFO  o.o.c.languages.AbstractJavaCodegen - Processing operation null
+2023-10-16 15:27:53,186 [Worker-106: Building Workspace] INFO  o.o.c.languages.AbstractJavaCodegen - Processing operation null
+2023-10-16 15:27:53,186 [Worker-106: Building Workspace] INFO  o.o.c.languages.AbstractJavaCodegen - Processing operation null
+2023-10-16 15:27:53,186 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,189 [Worker-106: Building Workspace] INFO  o.o.c.languages.AbstractJavaCodegen - Processing operation null
+2023-10-16 15:27:53,189 [Worker-106: Building Workspace] INFO  o.o.c.languages.AbstractJavaCodegen - Processing operation null
+2023-10-16 15:27:53,189 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,191 [Worker-106: Building Workspace] INFO  o.o.c.languages.AbstractJavaCodegen - Processing operation null
+2023-10-16 15:27:53,192 [Worker-106: Building Workspace] INFO  o.o.c.languages.AbstractJavaCodegen - Processing operation null
+2023-10-16 15:27:53,192 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,194 [Worker-106: Building Workspace] INFO  o.o.c.languages.AbstractJavaCodegen - Processing operation null
+2023-10-16 15:27:53,194 [Worker-106: Building Workspace] INFO  o.o.c.languages.AbstractJavaCodegen - Processing operation null
+2023-10-16 15:27:53,194 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,197 [Worker-106: Building Workspace] INFO  o.o.c.languages.AbstractJavaCodegen - Processing operation null
+2023-10-16 15:27:53,197 [Worker-106: Building Workspace] INFO  o.o.c.languages.AbstractJavaCodegen - Processing operation null
+2023-10-16 15:27:53,197 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,199 [Worker-106: Building Workspace] INFO  o.o.c.languages.AbstractJavaCodegen - Processing operation null
+2023-10-16 15:27:53,384 [Worker-106: Building Workspace] INFO  o.o.codegen.AbstractGenerator - writing file C:\Users\aguizado\Documents\Workspace\bank\target\generated-sources\openapi\src\main\java\com\example\bank\model\Account.java
+2023-10-16 15:27:53,398 [Worker-106: Building Workspace] INFO  o.o.codegen.AbstractGenerator - writing file C:\Users\aguizado\Documents\Workspace\bank\target\generated-sources\openapi\src\main\java\com\example\bank\model\AccountType.java
+2023-10-16 15:27:53,411 [Worker-106: Building Workspace] INFO  o.o.codegen.AbstractGenerator - writing file C:\Users\aguizado\Documents\Workspace\bank\target\generated-sources\openapi\src\main\java\com\example\bank\model\Customer.java
+2023-10-16 15:27:53,424 [Worker-106: Building Workspace] INFO  o.o.codegen.AbstractGenerator - writing file C:\Users\aguizado\Documents\Workspace\bank\target\generated-sources\openapi\src\main\java\com\example\bank\model\CustomerType.java
+2023-10-16 15:27:53,436 [Worker-106: Building Workspace] INFO  o.o.codegen.AbstractGenerator - writing file C:\Users\aguizado\Documents\Workspace\bank\target\generated-sources\openapi\src\main\java\com\example\bank\model\Loan.java
+2023-10-16 15:27:53,449 [Worker-106: Building Workspace] INFO  o.o.codegen.AbstractGenerator - writing file C:\Users\aguizado\Documents\Workspace\bank\target\generated-sources\openapi\src\main\java\com\example\bank\model\LoanType.java
+2023-10-16 15:27:53,461 [Worker-106: Building Workspace] INFO  o.o.codegen.AbstractGenerator - writing file C:\Users\aguizado\Documents\Workspace\bank\target\generated-sources\openapi\src\main\java\com\example\bank\model\Operation.java
+2023-10-16 15:27:53,473 [Worker-106: Building Workspace] INFO  o.o.codegen.AbstractGenerator - writing file C:\Users\aguizado\Documents\Workspace\bank\target\generated-sources\openapi\src\main\java\com\example\bank\model\OperationType.java
+2023-10-16 15:27:53,476 [Worker-106: Building Workspace] WARN  o.o.codegen.DefaultCodegen - Empty operationId found for path: post /customers. Renamed to auto-generated operationId: customersPost
+2023-10-16 15:27:53,480 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,486 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,500 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,506 [Worker-106: Building Workspace] WARN  o.o.codegen.DefaultCodegen - Multiple MediaTypes found, using only the first one
+2023-10-16 15:27:53,512 [Worker-106: Building Workspace] WARN  o.o.codegen.DefaultCodegen - Empty operationId found for path: get /customers/{customerId}. Renamed to auto-generated operationId: customersCustomerIdGet
+2023-10-16 15:27:53,516 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,519 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,527 [Worker-106: Building Workspace] WARN  o.o.codegen.DefaultCodegen - Empty operationId found for path: put /customers/{customerId}. Renamed to auto-generated operationId: customersCustomerIdPut
+2023-10-16 15:27:53,531 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,534 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,539 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,544 [Worker-106: Building Workspace] WARN  o.o.codegen.DefaultCodegen - Empty operationId found for path: delete /customers/{customerId}. Renamed to auto-generated operationId: customersCustomerIdDelete
+2023-10-16 15:27:53,548 [Worker-106: Building Workspace] WARN  o.o.codegen.DefaultCodegen - Empty operationId found for path: get /customers/getByType. Renamed to auto-generated operationId: customersGetByTypeGet
+2023-10-16 15:27:53,551 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,554 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,560 [Worker-106: Building Workspace] WARN  o.o.codegen.DefaultCodegen - Empty operationId found for path: post /accounts. Renamed to auto-generated operationId: accountsPost
+2023-10-16 15:27:53,563 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,566 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,571 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,578 [Worker-106: Building Workspace] WARN  o.o.codegen.DefaultCodegen - Empty operationId found for path: get /accounts/{accountId}. Renamed to auto-generated operationId: accountsAccountIdGet
+2023-10-16 15:27:53,581 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,584 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,590 [Worker-106: Building Workspace] WARN  o.o.codegen.DefaultCodegen - Empty operationId found for path: put /accounts/{accountId}. Renamed to auto-generated operationId: accountsAccountIdPut
+2023-10-16 15:27:53,594 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,598 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,604 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,610 [Worker-106: Building Workspace] WARN  o.o.codegen.DefaultCodegen - Empty operationId found for path: delete /accounts/{accountId}. Renamed to auto-generated operationId: accountsAccountIdDelete
+2023-10-16 15:27:53,613 [Worker-106: Building Workspace] WARN  o.o.codegen.DefaultCodegen - Empty operationId found for path: post /loans. Renamed to auto-generated operationId: loansPost
+2023-10-16 15:27:53,617 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,620 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,624 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,628 [Worker-106: Building Workspace] WARN  o.o.codegen.DefaultCodegen - Empty operationId found for path: get /loans/{loanId}. Renamed to auto-generated operationId: loansLoanIdGet
+2023-10-16 15:27:53,632 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,635 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,639 [Worker-106: Building Workspace] WARN  o.o.codegen.DefaultCodegen - Empty operationId found for path: put /loans/{loanId}. Renamed to auto-generated operationId: loansLoanIdPut
+2023-10-16 15:27:53,642 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,646 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,650 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,654 [Worker-106: Building Workspace] WARN  o.o.codegen.DefaultCodegen - Empty operationId found for path: delete /loans/{loanId}. Renamed to auto-generated operationId: loansLoanIdDelete
+2023-10-16 15:27:53,658 [Worker-106: Building Workspace] WARN  o.o.codegen.DefaultCodegen - Empty operationId found for path: post /transactions. Renamed to auto-generated operationId: transactionsPost
+2023-10-16 15:27:53,661 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,664 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,667 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,671 [Worker-106: Building Workspace] WARN  o.o.codegen.DefaultCodegen - Empty operationId found for path: get /transactions/{customerId}. Renamed to auto-generated operationId: transactionsCustomerIdGet
+2023-10-16 15:27:53,674 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,677 [Worker-106: Building Workspace] WARN  o.o.codegen.utils.ModelUtils - Multiple schemas found in the OAS 'content' section, returning only the first one (application/json)
+2023-10-16 15:27:53,685 [Worker-106: Building Workspace] INFO  o.o.codegen.AbstractGenerator - writing file C:\Users\aguizado\Documents\Workspace\bank\target\generated-sources\openapi\src\main\java\com\example\bank\api\AccountsApiController.java
+2023-10-16 15:27:53,697 [Worker-106: Building Workspace] INFO  o.o.codegen.AbstractGenerator - writing file C:\Users\aguizado\Documents\Workspace\bank\target\generated-sources\openapi\src\main\java\com\example\bank\api\AccountsApi.java
+2023-10-16 15:27:53,705 [Worker-106: Building Workspace] INFO  o.o.codegen.AbstractGenerator - writing file C:\Users\aguizado\Documents\Workspace\bank\target\generated-sources\openapi\src\main\java\com\example\bank\api\AccountsApiDelegate.java
+2023-10-16 15:27:53,710 [Worker-106: Building Workspace] INFO  o.o.codegen.AbstractGenerator - writing file C:\Users\aguizado\Documents\Workspace\bank\target\generated-sources\openapi\src\main\java\com\example\bank\api\CustomersApiController.java
+2023-10-16 15:27:53,724 [Worker-106: Building Workspace] INFO  o.o.codegen.AbstractGenerator - writing file C:\Users\aguizado\Documents\Workspace\bank\target\generated-sources\openapi\src\main\java\com\example\bank\api\CustomersApi.java
+2023-10-16 15:27:53,731 [Worker-106: Building Workspace] INFO  o.o.codegen.AbstractGenerator - writing file C:\Users\aguizado\Documents\Workspace\bank\target\generated-sources\openapi\src\main\java\com\example\bank\api\CustomersApiDelegate.java
+2023-10-16 15:27:53,734 [Worker-106: Building Workspace] INFO  o.o.codegen.AbstractGenerator - writing file C:\Users\aguizado\Documents\Workspace\bank\target\generated-sources\openapi\src\main\java\com\example\bank\api\LoansApiController.java
+2023-10-16 15:27:53,745 [Worker-106: Building Workspace] INFO  o.o.codegen.AbstractGenerator - writing file C:\Users\aguizado\Documents\Workspace\bank\target\generated-sources\openapi\src\main\java\com\example\bank\api\LoansApi.java
+2023-10-16 15:27:53,750 [Worker-106: Building Workspace] INFO  o.o.codegen.AbstractGenerator - writing file C:\Users\aguizado\Documents\Workspace\bank\target\generated-sources\openapi\src\main\java\com\example\bank\api\LoansApiDelegate.java
+2023-10-16 15:27:53,754 [Worker-106: Building Workspace] INFO  o.o.codegen.AbstractGenerator - writing file C:\Users\aguizado\Documents\Workspace\bank\target\generated-sources\openapi\src\main\java\com\example\bank\api\TransactionsApiController.java
+2023-10-16 15:27:53,765 [Worker-106: Building Workspace] INFO  o.o.codegen.AbstractGenerator - writing file C:\Users\aguizado\Documents\Workspace\bank\target\generated-sources\openapi\src\main\java\com\example\bank\api\TransactionsApi.java
+2023-10-16 15:27:53,770 [Worker-106: Building Workspace] INFO  o.o.codegen.AbstractGenerator - writing file C:\Users\aguizado\Documents\Workspace\bank\target\generated-sources\openapi\src\main\java\com\example\bank\api\TransactionsApiDelegate.java
+2023-10-16 15:27:53,841 [Worker-106: Building Workspace] INFO  o.o.codegen.AbstractGenerator - writing file C:\Users\aguizado\Documents\Workspace\bank\target\generated-sources\openapi\src/main\java\com\example\bank\api\ApiUtil.java
+2023-10-16 15:27:53,842 [Worker-106: Building Workspace] INFO  o.o.codegen.AbstractGenerator - writing file C:\Users\aguizado\Documents\Workspace\bank\target\generated-sources\openapi\.openapi-generator\VERSION
+2023-10-16 15:27:54,069 [Worker-106: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-10-16 15:27:54,069 [Worker-106: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-10-16 15:27:54,071 [Worker-106: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2023-10-16 15:27:54,084 [Worker-106: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2023-10-16 15:27:54,096 [Worker-106: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-10-16 15:27:54,096 [Worker-106: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2023-10-16 15:27:54,096 [Worker-106: Building Workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\aguizado\Documents\Workspace\bank\src\test\resources
