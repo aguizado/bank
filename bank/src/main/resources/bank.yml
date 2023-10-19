@@ -440,8 +440,10 @@ components:
         last_name:
           type: string
           example: Guizado
-        type:
-          $ref: '#/components/schemas/Customer_type'
+        type_customer:
+          type: string
+          enum: [personal, business]
+          example: personal
         accounts:
           type: array
           items:
@@ -450,17 +452,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Loan'
-
-    Customer_type:
-      type: object
-      properties:
-        id:
-          type: integer
-          example: 1
-        description:
-          type: string
-          enum: [personal, business]
-          example: personal
           
     Account:
       type: object
@@ -474,8 +465,10 @@ components:
         account_value:
           type: integer
           example: 500
-        type:
-          $ref: '#/components/schemas/Account_type'
+        type_account:
+          type: string
+          enum: [saving, current, fixed_term]
+          example: saving
         maintenance_fee:
           type: boolean
           example: true
@@ -493,17 +486,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Customer'
-
-    Account_type:
-      type: object
-      properties:
-        id:
-          type: integer
-          example: 1
-        description:
-          type: string
-          enum: [saving, current, fixed_term]
-          example: saving
     
     Loan:
       type: object
@@ -517,22 +499,13 @@ components:
         loan_value:
           type: integer
           example: 1200
-        type:
-          $ref: '#/components/schemas/Loan_type'
-        unit_limit:
-          type: integer
-          example: 1
-          
-    Loan_type:
-      type: object
-      properties:
-        id:
-          type: integer
-          example: 1
-        description:
+        type_loan:
           type: string
           enum: [personal, business, credit_card]
           example: personal
+        unit_limit:
+          type: integer
+          example: 1
     
     Operation:
      type: object
@@ -543,21 +516,12 @@ components:
       customer:
         $ref: '#/components/schemas/Customer'
       type_operation:
-        $ref: '#/components/schemas/Operation_type'
+        type: string
+        enum: [deposit, withdrawal,payment,consumption]
+        example: deposit
       balance:
         type: integer
         example: 500
       operation_date:
         type: string
         example: 12102023
-        
-    Operation_type:
-      type: object
-      properties:
-        id:
-          type: integer
-          example: 1
-        description:
-          type: string
-          enum: [deposit, withdrawal,payment,consumption]
-          example: deposit

@@ -2,8 +2,9 @@ package com.example.bank.service;
 
 import com.example.bank.api.CustomersApiDelegate;
 import com.example.bank.model.Account;
+import com.example.bank.model.Account.TypeAccountEnum;
 import com.example.bank.model.Customer;
-import com.example.bank.model.CustomerType.DescriptionEnum;
+import com.example.bank.model.Customer.TypeCustomerEnum;
 import com.example.bank.repository.CustomerRepository;
 import java.util.logging.Logger;
 import lombok.RequiredArgsConstructor;
@@ -71,9 +72,9 @@ public class CustomersApiDelegateImpl implements CustomersApiDelegate {
 	
 	private boolean validateCustomer(Customer customer) {
 		boolean isOk = true;
-		if(DescriptionEnum.PERSONAL.equals(customer.getType().getDescription())) {
+		if(TypeCustomerEnum.PERSONAL.equals(customer.getTypeCustomer())) {
 			isOk = validatePersonal(customer, isOk);			
-		} else if (DescriptionEnum.BUSINESS.equals(customer.getType().getDescription())) {
+		} else if (TypeCustomerEnum.BUSINESS.equals(customer.getTypeCustomer())) {
 			isOk = validateBusiness(customer, isOk);
 		} else {
 			isOk = false;
@@ -91,19 +92,19 @@ public class CustomersApiDelegateImpl implements CustomersApiDelegate {
 		for (Account account : customer.getAccounts()) {
 			if((nroAccountSaving < 1 || nroAccountCurrent < 1 || nroAccountFixedTerm < 1) &&
 					(account.getOwners().isEmpty() && account.getAuthorizedSignatories().isEmpty())) {
-				if(com.example.bank.model.AccountType.DescriptionEnum.SAVING.equals(account.getType().getDescription())) {
+				if(TypeAccountEnum.SAVING.equals(account.getTypeAccount())) {
 					account.setMaintenanceFee(false);
 					account.setMaintenanceValue(zero);
 					account.setMonthlyTransactionLimit(monthlyTransactionLimitSaving);
 					nroAccountSaving++;
 				}
-				if(com.example.bank.model.AccountType.DescriptionEnum.CURRENT.equals(account.getType().getDescription())) {
+				if(TypeAccountEnum.CURRENT.equals(account.getTypeAccount())) {
 					account.setMaintenanceFee(true);
 					account.setMaintenanceValue(maintenanceValue);
 					account.setMonthlyTransactionLimit(null);
 					nroAccountCurrent++;
 				}
-				if(com.example.bank.model.AccountType.DescriptionEnum.FIXED_TERM.equals(account.getType().getDescription())) {
+				if(TypeAccountEnum.FIXED_TERM.equals(account.getTypeAccount())) {
 					account.setMaintenanceFee(false);
 					account.setMaintenanceValue(zero);
 					account.setMonthlyTransactionLimit(monthlyTransactionLimitFixedTerm);
@@ -131,7 +132,7 @@ public class CustomersApiDelegateImpl implements CustomersApiDelegate {
 		logger.info("BUSINESS");
 		for (Account account : customer.getAccounts()) {
 			
-			if((!com.example.bank.model.AccountType.DescriptionEnum.CURRENT.equals(account.getType().getDescription())) &&
+			if((!TypeAccountEnum.CURRENT.equals(account.getTypeAccount())) &&
 					(account.getOwners().size() <= 1 && account.getAuthorizedSignatories().isEmpty())) {	
 				logger.info("Un cliente empresarial no puede tener una cuenta de ahorro o de plazo fijo");
 				logger.info("Las cuentas bancarias empresariales deben tener uno o más titulares y cero o más firmantes autorizados");

@@ -2,7 +2,7 @@ package com.example.bank.service;
 
 import com.example.bank.api.AccountsApiDelegate;
 import com.example.bank.model.Account;
-import com.example.bank.model.AccountType.DescriptionEnum;
+import com.example.bank.model.Account.TypeAccountEnum;
 import com.example.bank.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -28,15 +28,15 @@ public class AccountApiDelegateImpl implements AccountsApiDelegate {
 	@Override
 	public ResponseEntity<Account> accountsPost(Account account) {
 
-		if(DescriptionEnum.SAVING.equals(account.getType().getDescription())) {
+		if(TypeAccountEnum.SAVING.equals(account.getTypeAccount())) {
 			account.setMaintenanceFee(false);
 			account.setMaintenanceValue(zero);
 			account.setMonthlyTransactionLimit(monthlyTransactionLimitSaving);
-		} else if (DescriptionEnum.CURRENT.equals(account.getType().getDescription())) {
+		} else if (TypeAccountEnum.CURRENT.equals(account.getTypeAccount())) {
 			account.setMaintenanceFee(true);
 			account.setMaintenanceValue(maintenanceValue);
 			account.setMonthlyTransactionLimit(null);
-		} else if (DescriptionEnum.FIXED_TERM.equals(account.getType().getDescription())) {
+		} else if (TypeAccountEnum.FIXED_TERM.equals(account.getTypeAccount())) {
 			account.setMaintenanceFee(false);
 			account.setMaintenanceValue(zero);
 			account.setMonthlyTransactionLimit(monthlyTransactionLimitFixedTerm);

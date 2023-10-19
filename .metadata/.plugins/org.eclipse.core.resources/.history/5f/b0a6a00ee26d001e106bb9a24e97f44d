@@ -1,0 +1,36 @@
+package com.example.bank;
+
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import io.reactivex.rxjava3.core.Observable;
+
+/**.
+* Class BankApplication
+
+* @author Andres Guizado
+* @version 0.1, 2023/10/16
+*/
+@SpringBootApplication
+public class BankApplication {
+
+	public static void main(String[] args) {
+//		SpringApplication.run(BankApplication.class, args);
+
+		        //1. Observable
+		        Observable<String> obsString = Observable.just("María", "José");
+
+		        //2. Suscripción
+		        obsString
+		        .filter(x -> x.contains("s"))
+		        .subscribe(
+		            elemento -> System.out.println("onNext: " + elemento),
+		            error -> System.out.println("onError: " + error.getMessage()),
+		            () -> System.out.println("onComplete")
+		        );
+		        
+
+		
+		
+	}
+	
+}

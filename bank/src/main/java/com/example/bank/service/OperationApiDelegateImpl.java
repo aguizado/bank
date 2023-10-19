@@ -3,7 +3,7 @@ package com.example.bank.service;
 import com.example.bank.api.TransactionsApiDelegate;
 import com.example.bank.model.Account;
 import com.example.bank.model.Operation;
-import com.example.bank.model.OperationType.DescriptionEnum;
+import com.example.bank.model.Operation.TypeOperationEnum;
 import com.example.bank.repository.OperationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -28,12 +28,12 @@ public class OperationApiDelegateImpl implements TransactionsApiDelegate {
 		Integer deposit = 0;
 		Integer withdrawal = 0;
 		
-		if (DescriptionEnum.DEPOSIT.equals(operation.getTypeOperation().getDescription())) {
+		if (TypeOperationEnum.DEPOSIT.equals(operation.getTypeOperation())) {
 			
 			deposit = operation.getBalance();
 			updateAccount(operation, deposit, withdrawal);
 			
-		} else if(DescriptionEnum.WITHDRAWAL.equals(operation.getTypeOperation().getDescription())) {
+		} else if(TypeOperationEnum.WITHDRAWAL.equals(operation.getTypeOperation())) {
 			
 			withdrawal = operation.getBalance();
 			updateAccount(operation, deposit, withdrawal);
