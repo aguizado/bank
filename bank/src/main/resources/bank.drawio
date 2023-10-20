@@ -1,0 +1,115 @@
+<mxfile host="app.diagrams.net" modified="2023-10-14T01:59:43.304Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36" etag="x0xSWHE8Ew5k55bX3ieN" version="22.0.4" type="device">
+  <diagram name="Página-1" id="O-ZgI6ffShGrJ42CZtyw">
+    <mxGraphModel dx="1500" dy="820" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-3" value="customer" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="150" y="461.6" width="250" height="238.4" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-2" value="Microservicios" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=8 8;verticalAlign=top;fontStyle=1;fontSize=14;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="130" y="421.1" width="560" height="558.9" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-15" value="&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/customers" style="rounded=1;verticalAlign=middle;fontStyle=0;fillColor=#ecfaf4;fontSize=10;strokeColor=#49CC90;fontColor=#000000;html=1;whiteSpace=wrap;align=left;" vertex="1" parent="1">
+          <mxGeometry x="208.1818181818182" y="496.4" width="171.8181818181818" height="25.19999999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-7" value="POST" style="rounded=1;verticalAlign=middle;fontStyle=1;fillColor=#49cc90;fontSize=10;strokeColor=#ffffff;fontColor=#FFFFFF;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="170" y="488" width="47.72727272727272" height="25.19999999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-16" value="&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/customers/{customerId}" style="rounded=1;verticalAlign=middle;fontStyle=0;fillColor=#eff7ff;fontSize=10;strokeColor=#61AFFE;fontColor=#000000;html=1;whiteSpace=wrap;align=left;" vertex="1" parent="1">
+          <mxGeometry x="208.1818181818182" y="536.4000000000001" width="171.8181818181818" height="25.19999999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-11" value="GET" style="rounded=1;verticalAlign=middle;fontStyle=1;fillColor=#61affe;fontSize=10;strokeColor=#ffffff;fontColor=#FFFFFF;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="170" y="528" width="47.72727272727272" height="25.19999999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-17" value="&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/customers/{customerId}" style="rounded=1;verticalAlign=middle;fontStyle=0;fillColor=#FFF5EA;fontSize=10;strokeColor=#FCA130;fontColor=#000000;html=1;whiteSpace=wrap;align=left;" vertex="1" parent="1">
+          <mxGeometry x="208.1818181818182" y="576.3999999999999" width="171.8181818181818" height="25.19999999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-13" value="PUT" style="rounded=1;verticalAlign=middle;fontStyle=1;fillColor=#fca130;fontSize=10;strokeColor=#ffffff;fontColor=#FFFFFF;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="170.95454545454544" y="567.9999999999999" width="46.772727272727266" height="25.19999999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-18" value="&lt;span style=&quot;font-weight: normal;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/customers/{customerId}&lt;/span&gt;" style="rounded=1;verticalAlign=middle;fontStyle=1;fillColor=#feebeb;fontSize=10;strokeColor=#f93e3e;fontColor=#000000;html=1;whiteSpace=wrap;align=left;" vertex="1" parent="1">
+          <mxGeometry x="208.1818181818182" y="616.4" width="171.8181818181818" height="25.19999999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-12" value="DELETE" style="rounded=1;verticalAlign=middle;fontStyle=1;fillColor=#F93E3E;fontSize=10;strokeColor=#ffffff;fontColor=#FFFFFF;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="170.95454545454544" y="608" width="46.772727272727266" height="25.19999999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-21" value="&lt;span style=&quot;font-weight: normal;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/customers/getByType&lt;/span&gt;" style="rounded=1;verticalAlign=middle;fontStyle=1;fillColor=#eff7ff;fontSize=10;strokeColor=#61AFFE;fontColor=#000000;html=1;whiteSpace=wrap;align=left;" vertex="1" parent="1">
+          <mxGeometry x="208.1818181818182" y="656.4000000000001" width="171.8181818181818" height="25.19999999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-22" value="GET" style="rounded=1;verticalAlign=middle;fontStyle=1;fillColor=#61affe;fontSize=10;strokeColor=#ffffff;fontColor=#FFFFFF;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="170" y="648" width="47.72727272727272" height="25.19999999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-23" value="account" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="420" y="461.6" width="250" height="238.4" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-24" value="&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/accounts" style="rounded=1;verticalAlign=middle;fontStyle=0;fillColor=#ecfaf4;fontSize=10;strokeColor=#49CC90;fontColor=#000000;html=1;whiteSpace=wrap;align=left;" vertex="1" parent="1">
+          <mxGeometry x="478.1818181818182" y="496.4" width="171.8181818181818" height="25.19999999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-25" value="POST" style="rounded=1;verticalAlign=middle;fontStyle=1;fillColor=#49cc90;fontSize=10;strokeColor=#ffffff;fontColor=#FFFFFF;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="440" y="488" width="47.72727272727272" height="25.19999999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-26" value="&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/accounts/{accountId}" style="rounded=1;verticalAlign=middle;fontStyle=0;fillColor=#eff7ff;fontSize=10;strokeColor=#61AFFE;fontColor=#000000;html=1;whiteSpace=wrap;align=left;" vertex="1" parent="1">
+          <mxGeometry x="478.1818181818182" y="536.4000000000001" width="171.8181818181818" height="25.19999999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-27" value="GET" style="rounded=1;verticalAlign=middle;fontStyle=1;fillColor=#61affe;fontSize=10;strokeColor=#ffffff;fontColor=#FFFFFF;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="440" y="528" width="47.72727272727272" height="25.19999999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-28" value="&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/accounts/{accountId}" style="rounded=1;verticalAlign=middle;fontStyle=0;fillColor=#FFF5EA;fontSize=10;strokeColor=#FCA130;fontColor=#000000;html=1;whiteSpace=wrap;align=left;" vertex="1" parent="1">
+          <mxGeometry x="478.1818181818182" y="576.3999999999999" width="171.8181818181818" height="25.19999999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-29" value="PUT" style="rounded=1;verticalAlign=middle;fontStyle=1;fillColor=#fca130;fontSize=10;strokeColor=#ffffff;fontColor=#FFFFFF;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="440.95454545454544" y="567.9999999999999" width="46.772727272727266" height="25.19999999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-30" value="&lt;span style=&quot;font-weight: normal;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/accounts/{accountId}&lt;/span&gt;" style="rounded=1;verticalAlign=middle;fontStyle=1;fillColor=#feebeb;fontSize=10;strokeColor=#f93e3e;fontColor=#000000;html=1;whiteSpace=wrap;align=left;" vertex="1" parent="1">
+          <mxGeometry x="478.1818181818182" y="616.4" width="171.8181818181818" height="25.19999999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-31" value="DELETE" style="rounded=1;verticalAlign=middle;fontStyle=1;fillColor=#F93E3E;fontSize=10;strokeColor=#ffffff;fontColor=#FFFFFF;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="440.95454545454544" y="608" width="46.772727272727266" height="25.19999999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-34" value="loan" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="150" y="720" width="250" height="238.4" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-35" value="&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/loans" style="rounded=1;verticalAlign=middle;fontStyle=0;fillColor=#ecfaf4;fontSize=10;strokeColor=#49CC90;fontColor=#000000;html=1;whiteSpace=wrap;align=left;" vertex="1" parent="1">
+          <mxGeometry x="208.1818181818182" y="754.8" width="171.8181818181818" height="25.19999999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-36" value="POST" style="rounded=1;verticalAlign=middle;fontStyle=1;fillColor=#49cc90;fontSize=10;strokeColor=#ffffff;fontColor=#FFFFFF;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="170" y="746.4" width="47.72727272727272" height="25.19999999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-37" value="&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/loans/{loanId}" style="rounded=1;verticalAlign=middle;fontStyle=0;fillColor=#eff7ff;fontSize=10;strokeColor=#61AFFE;fontColor=#000000;html=1;whiteSpace=wrap;align=left;" vertex="1" parent="1">
+          <mxGeometry x="208.1818181818182" y="794.8000000000001" width="171.8181818181818" height="25.19999999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-38" value="GET" style="rounded=1;verticalAlign=middle;fontStyle=1;fillColor=#61affe;fontSize=10;strokeColor=#ffffff;fontColor=#FFFFFF;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="170" y="786.4" width="47.72727272727272" height="25.19999999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-39" value="&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/loans/{loanId}" style="rounded=1;verticalAlign=middle;fontStyle=0;fillColor=#FFF5EA;fontSize=10;strokeColor=#FCA130;fontColor=#000000;html=1;whiteSpace=wrap;align=left;" vertex="1" parent="1">
+          <mxGeometry x="208.1818181818182" y="834.7999999999998" width="171.8181818181818" height="25.19999999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-40" value="PUT" style="rounded=1;verticalAlign=middle;fontStyle=1;fillColor=#fca130;fontSize=10;strokeColor=#ffffff;fontColor=#FFFFFF;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="170.95454545454544" y="826.3999999999999" width="46.772727272727266" height="25.19999999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-41" value="&lt;span style=&quot;font-weight: normal;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/loans/{loanId}&lt;/span&gt;" style="rounded=1;verticalAlign=middle;fontStyle=1;fillColor=#feebeb;fontSize=10;strokeColor=#f93e3e;fontColor=#000000;html=1;whiteSpace=wrap;align=left;" vertex="1" parent="1">
+          <mxGeometry x="208.1818181818182" y="874.8" width="171.8181818181818" height="25.19999999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-42" value="DELETE" style="rounded=1;verticalAlign=middle;fontStyle=1;fillColor=#F93E3E;fontSize=10;strokeColor=#ffffff;fontColor=#FFFFFF;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="170.95454545454544" y="866.4" width="46.772727272727266" height="25.19999999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-43" value="transaction" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="420" y="720" width="250" height="238.4" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-44" value="&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/transactions" style="rounded=1;verticalAlign=middle;fontStyle=0;fillColor=#ecfaf4;fontSize=10;strokeColor=#49CC90;fontColor=#000000;html=1;whiteSpace=wrap;align=left;" vertex="1" parent="1">
+          <mxGeometry x="478.1818181818182" y="754.8" width="171.8181818181818" height="25.19999999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-45" value="POST" style="rounded=1;verticalAlign=middle;fontStyle=1;fillColor=#49cc90;fontSize=10;strokeColor=#ffffff;fontColor=#FFFFFF;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="440" y="746.4" width="47.72727272727272" height="25.19999999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-46" value="&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/transactions/{customerId}" style="rounded=1;verticalAlign=middle;fontStyle=0;fillColor=#eff7ff;fontSize=10;strokeColor=#61AFFE;fontColor=#000000;html=1;whiteSpace=wrap;align=left;" vertex="1" parent="1">
+          <mxGeometry x="478.1818181818182" y="794.8000000000001" width="171.8181818181818" height="25.19999999999999" as="geometry" />
+        </mxCell>
+        <mxCell id="DHrSV_kuNOJTK5Ok2BFW-47" value="GET" style="rounded=1;verticalAlign=middle;fontStyle=1;fillColor=#61affe;fontSize=10;strokeColor=#ffffff;fontColor=#FFFFFF;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="440" y="786.4" width="47.72727272727272" height="25.19999999999999" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
