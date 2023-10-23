@@ -442,7 +442,7 @@ components:
           example: Guizado
         type_customer:
           type: string
-          enum: [personal, business]
+          enum: [personal, personal_vip, business, business_pyme]
           example: personal
         accounts:
           type: array

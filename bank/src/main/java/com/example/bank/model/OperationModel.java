@@ -12,7 +12,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * . Class CustomerModel
+ * . Class OperationModel
  *
  * @author Andres Guizado
  * @version 0.1, 2023/10/19
@@ -21,25 +21,22 @@ import lombok.ToString;
 @Getter
 @ToString
 @RequiredArgsConstructor
-@Document(collection = "loan")
-public class LoanModel {
+@Document(collection = "operation")
+public class OperationModel {
 
 	@JsonProperty("id")
 	private Integer id;
 
-	@JsonProperty("loan_number")
-	private String loanNumber;
+	@JsonProperty("customer")
+	private CustomerModel customer;
 
-	@JsonProperty("loan_value")
-	private Integer loanValue;
+	public enum TypeOperationEnum {
 
-	public enum TypeLoanEnum {
-
-		PERSONAL("personal"), BUSINESS("business"), CREDIT_CARD("credit_card");
+		DEPOSIT("deposit"), WITHDRAWAL("withdrawal"), PAYMENT("payment"), CONSUMPTION("consumption");
 
 		private String value;
 
-		TypeLoanEnum(String value) {
+		TypeOperationEnum(String value) {
 			this.value = value;
 		}
 
@@ -54,21 +51,23 @@ public class LoanModel {
 		}
 
 		@JsonCreator
-		public static TypeLoanEnum fromValue(String value) {
-			for (TypeLoanEnum b : TypeLoanEnum.values()) {
+		public static TypeOperationEnum fromValue(String value) {
+			for (TypeOperationEnum b : TypeOperationEnum.values()) {
 				if (b.value.equals(value)) {
 					return b;
 				}
 			}
 			throw new IllegalArgumentException("Unexpected value '" + value + "'");
 		}
-
 	}
 
-	@JsonProperty("type_loan")
-	private TypeLoanEnum typeLoan;
+	@JsonProperty("type_operation")
+	private TypeOperationEnum typeOperation;
 
-	@JsonProperty("unit_limit")
-	private Integer unitLimit;
+	@JsonProperty("balance")
+	private Integer balance;
+
+	@JsonProperty("operation_date")
+	private String operationDate;
 
 }
