@@ -24,56 +24,55 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "customer")
 public class CustomerModel {
 
-	@JsonProperty("id")
-	private Integer id;
+  @JsonProperty("id")
+  private Integer id;
 
-	@JsonProperty("name")
-	private String name;
+  @JsonProperty("name")
+  private String name;
 
-	@JsonProperty("last_name")
-	private String lastName;
+  @JsonProperty("last_name")
+  private String lastName;
 
-	public enum TypeCustomerEnum {
-		
-		PERSONAL("personal"), PERSONAL_VIP("personal_vip"),
-		BUSINESS("business"), BUSINESS_PYME("business_pyme");
+  public enum TypeCustomerEnum {
 
-		private String value;
+    PERSONAL("personal"), PERSONAL_VIP("personal_vip"), BUSINESS("business"), BUSINESS_PYME("business_pyme");
 
-		TypeCustomerEnum(String value) {
-			this.value = value;
-		}
+    private String value;
 
-		@JsonValue
-		public String getValue() {
-			return value;
-		}
+    TypeCustomerEnum(String value) {
+      this.value = value;
+    }
 
-		@Override
-		public String toString() {
-			return String.valueOf(value);
-		}
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
 
-		@JsonCreator
-		public static TypeCustomerEnum fromValue(String value) {
-			for (TypeCustomerEnum b : TypeCustomerEnum.values()) {
-				if (b.value.equals(value)) {
-					return b;
-				}
-			}
-			throw new IllegalArgumentException("Unexpected value '" + value + "'");
-		}
-	}
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
 
-	@JsonProperty("type_customer")
-	private TypeCustomerEnum typeCustomer;
+    @JsonCreator
+    public static TypeCustomerEnum fromValue(String value) {
+      for (TypeCustomerEnum b : TypeCustomerEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
 
-	@JsonProperty("accounts")
-	@Valid
-	private List<AccountModel> accounts = null;
+  @JsonProperty("type_customer")
+  private TypeCustomerEnum typeCustomer;
 
-	@JsonProperty("loans")
-	@Valid
-	private List<LoanModel> loans = null;
+  @JsonProperty("accounts")
+  @Valid
+  private List<AccountModel> accounts = null;
+
+  @JsonProperty("loans")
+  @Valid
+  private List<LoanModel> loans = null;
 
 }

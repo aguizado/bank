@@ -24,64 +24,64 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "account")
 public class AccountModel {
 
-	@JsonProperty("id")
-	private Integer id;
+  @JsonProperty("id")
+  private Integer id;
 
-	@JsonProperty("account_number")
-	private String accountNumber;
+  @JsonProperty("account_number")
+  private String accountNumber;
 
-	@JsonProperty("account_value")
-	private Integer accountValue;
+  @JsonProperty("account_value")
+  private Integer accountValue;
 
-	public enum TypeAccountEnum {
+  public enum TypeAccountEnum {
 
-		SAVING("saving"), CURRENT("current"), FIXED_TERM("fixed_term");
+    SAVING("saving"), CURRENT("current"), FIXED_TERM("fixed_term");
 
-		private String value;
+    private String value;
 
-		TypeAccountEnum(String value) {
-			this.value = value;
-		}
+    TypeAccountEnum(String value) {
+      this.value = value;
+    }
 
-		@JsonValue
-		public String getValue() {
-			return value;
-		}
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
 
-		@Override
-		public String toString() {
-			return String.valueOf(value);
-		}
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
 
-		@JsonCreator
-		public static TypeAccountEnum fromValue(String value) {
-			for (TypeAccountEnum b : TypeAccountEnum.values()) {
-				if (b.value.equals(value)) {
-					return b;
-				}
-			}
-			throw new IllegalArgumentException("Unexpected value '" + value + "'");
-		}
-	}
+    @JsonCreator
+    public static TypeAccountEnum fromValue(String value) {
+      for (TypeAccountEnum b : TypeAccountEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
 
-	@JsonProperty("type_account")
-	private TypeAccountEnum typeAccount;
+  @JsonProperty("type_account")
+  private TypeAccountEnum typeAccount;
 
-	@JsonProperty("maintenance_fee")
-	private Boolean maintenanceFee;
+  @JsonProperty("maintenance_fee")
+  private Boolean maintenanceFee;
 
-	@JsonProperty("maintenance_value")
-	private Integer maintenanceValue;
+  @JsonProperty("maintenance_value")
+  private Integer maintenanceValue;
 
-	@JsonProperty("monthly_transaction_limit")
-	private Integer monthlyTransactionLimit;
+  @JsonProperty("monthly_transaction_limit")
+  private Integer monthlyTransactionLimit;
 
-	@JsonProperty("owners")
-	@Valid
-	private List<CustomerModel> owners = null;
+  @JsonProperty("owners")
+  @Valid
+  private List<CustomerModel> owners = null;
 
-	@JsonProperty("authorized_signatories")
-	@Valid
-	private List<CustomerModel> authorizedSignatories = null;
+  @JsonProperty("authorized_signatories")
+  @Valid
+  private List<CustomerModel> authorizedSignatories = null;
 
 }

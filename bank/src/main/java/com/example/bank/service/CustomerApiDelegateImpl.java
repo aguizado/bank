@@ -12,122 +12,124 @@ import java.util.logging.Logger;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-/**.
-* Class CustomerApiDelegateImpl
-*
-* @author Andres Guizado
-* @version 0.1, 2023/10/16
-*/
+/**
+ * . Class CustomerApiDelegateImpl
+ *
+ * @author Andres Guizado
+ * @version 0.1, 2023/10/16
+ */
 @Service
 @RequiredArgsConstructor
 public class CustomerApiDelegateImpl implements CustomerApiDelegate {
-	
-	private final CustomerRepository customerRepository;
-	private final AccountRepository accountRepository;
-	private final LoanRepository loanRepository;
-	
-	static Logger logger = Logger.getLogger(CustomerApiDelegateImpl.class.getName());
-	
-	@Override
-	public CustomerModel createCustomer(CustomerModel customer) {
-		validateCustomer(customer);
-		return customerRepository.save(customer);
-	}
 
-	public void validateCustomer(CustomerModel customer) {
-		if (TypeCustomerEnum.PERSONAL.equals(customer.getTypeCustomer())) {
-			validatePersonal(customer);
-		} else if (TypeCustomerEnum.BUSINESS.equals(customer.getTypeCustomer())) {
-			validateBusiness(customer);
-		} else if (TypeCustomerEnum.PERSONAL_VIP.equals(customer.getTypeCustomer())) {
-			validatePersonalVip(customer);
-		} else if (TypeCustomerEnum.BUSINESS_PYME.equals(customer.getTypeCustomer())) {
-			validateBusinessPyme(customer);
-		}
-	}
+  private final CustomerRepository customerRepository;
+  private final AccountRepository accountRepository;
+  private final LoanRepository loanRepository;
 
-	private void validateBusinessPyme(CustomerModel customer) {
-		//Como requisito debe de tener una cuenta corriente. 
-				//Como requisito, el cliente debe tener una tarjeta de crédito con el banco al
-				//momento de la creación de la cuenta.
-	}
+  static Logger logger = Logger.getLogger(CustomerApiDelegateImpl.class.getName());
 
-	private void validatePersonalVip(CustomerModel customer) {
-		logger.info("PERSONAL_VIP");
-		validateAccountVip(customer);		
-		if (customer.getLoans().size() <= 1) {
-			saveLoan(customer);
-		} else {
-			logger.info("Un cliente puede tener un producto de crédito");
-		}
-	}
+  @Override
+  public CustomerModel createCustomer(CustomerModel customer) {
+    validateCustomer(customer);
+    return customerRepository.save(customer);
+  }
 
-	private void validateAccountVip(CustomerModel customer) {
-	}
+  public void validateCustomer(CustomerModel customer) {
+    if (TypeCustomerEnum.PERSONAL.equals(customer.getTypeCustomer())) {
+      validatePersonal(customer);
+    } else if (TypeCustomerEnum.BUSINESS.equals(customer.getTypeCustomer())) {
+      validateBusiness(customer);
+    } else if (TypeCustomerEnum.PERSONAL_VIP.equals(customer.getTypeCustomer())) {
+      validatePersonalVip(customer);
+    } else if (TypeCustomerEnum.BUSINESS_PYME.equals(customer.getTypeCustomer())) {
+      validateBusinessPyme(customer);
+    }
+  }
 
-	public void validatePersonal(CustomerModel customer) {
-		logger.info("PERSONAL");
-		validateAccount(customer);		
-		if (customer.getLoans().size() <= 1) {
-			saveLoan(customer);
-		} else {
-			logger.info("Un cliente puede tener un producto de crédito");
-		}
-	}
+  private void validateBusinessPyme(CustomerModel customer) {
+    // Como requisito debe de tener una cuenta corriente.
+    // Como requisito, el cliente debe tener una tarjeta de crédito con el banco al
+    // momento de la creación de la cuenta.
+  }
 
-	private void validateAccount(CustomerModel customer) {
-		int nroAccountSaving = 0;
-		int nroAccountCurrent = 0;
-		int nroAccountFixedTerm = 0;
-		for (AccountModel account : customer.getAccounts()) {
-			if ((nroAccountSaving < 1 || nroAccountCurrent < 1 || nroAccountFixedTerm < 1) 
-					&& (account.getOwners().isEmpty() && account.getAuthorizedSignatories().isEmpty())) {
-				if (TypeAccountEnum.SAVING.equals(account.getTypeAccount())) {
-					setDataCustomer(account, false, 0, 3);
-					nroAccountSaving++;
-				}
-				if (TypeAccountEnum.CURRENT.equals(account.getTypeAccount())) {
-					setDataCustomer(account, true, 5, null);
-					nroAccountCurrent++;
-				}
-				if (TypeAccountEnum.FIXED_TERM.equals(account.getTypeAccount())) {
-					setDataCustomer(account, false, 0, 1);
-					nroAccountFixedTerm++;
-				}				
-			} else {
-				logger.info("Un cliente personal solo puede tener un máximo de una cuenta de ahorro, una cuenta corriente o cuentas a plazo fijo.");
-				logger.info("Un cliente personal no necesita tilutales y/o firmantes");
-			}
-			accountRepository.save(account);
-		}
-	}
-	
-	public void setDataCustomer(AccountModel account, boolean mainFee, Integer mainValue, Integer transLimit) {
-		account.setMaintenanceFee(mainFee);
-		account.setMaintenanceValue(mainValue);
-		account.setMonthlyTransactionLimit(transLimit);
-	}
+  private void validatePersonalVip(CustomerModel customer) {
+    logger.info("PERSONAL_VIP");
+    validateAccountVip(customer);
+    if (customer.getLoans().size() <= 1) {
+      saveLoan(customer);
+    } else {
+      logger.info("Un cliente puede tener un producto de crédito");
+    }
+  }
 
-	public void validateBusiness(CustomerModel customer) {
-		logger.info("BUSINESS");
-		for (AccountModel account : customer.getAccounts()) {
-			
-			if ((!TypeAccountEnum.CURRENT.equals(account.getTypeAccount())) 
-					&& (account.getOwners().size() <= 1 && account.getAuthorizedSignatories().isEmpty())) {
-				logger.info("Un cliente empresarial no puede tener una cuenta de ahorro o de plazo fijo");
-				logger.info("Las cuentas bancarias empresariales deben tener uno o más titulares y cero o más firmantes autorizados");
-			}
-			
-			setDataCustomer(account, true, 5, null);			
-			accountRepository.save(account);
-		}
-		saveLoan(customer);
-	}
-	
-	private void saveLoan(CustomerModel customer) {
-		for (LoanModel loan : customer.getLoans()) {
-			loanRepository.save(loan);
-		}
-	}
+  private void validateAccountVip(CustomerModel customer) {
+  }
+
+  public void validatePersonal(CustomerModel customer) {
+    logger.info("PERSONAL");
+    validateAccount(customer);
+    if (customer.getLoans().size() <= 1) {
+      saveLoan(customer);
+    } else {
+      logger.info("Un cliente puede tener un producto de crédito");
+    }
+  }
+
+  private void validateAccount(CustomerModel customer) {
+    int nroAccountSaving = 0;
+    int nroAccountCurrent = 0;
+    int nroAccountFixedTerm = 0;
+    for (AccountModel account : customer.getAccounts()) {
+      if ((nroAccountSaving < 1 || nroAccountCurrent < 1 || nroAccountFixedTerm < 1)
+          && (account.getOwners().isEmpty() && account.getAuthorizedSignatories().isEmpty())) {
+        if (TypeAccountEnum.SAVING.equals(account.getTypeAccount())) {
+          setDataCustomer(account, false, 0, 3);
+          nroAccountSaving++;
+        }
+        if (TypeAccountEnum.CURRENT.equals(account.getTypeAccount())) {
+          setDataCustomer(account, true, 5, null);
+          nroAccountCurrent++;
+        }
+        if (TypeAccountEnum.FIXED_TERM.equals(account.getTypeAccount())) {
+          setDataCustomer(account, false, 0, 1);
+          nroAccountFixedTerm++;
+        }
+      } else {
+        logger.info(
+            "Un cliente personal solo puede tener un máximo de una cuenta de ahorro, una cuenta corriente o cuentas a plazo fijo.");
+        logger.info("Un cliente personal no necesita tilutales y/o firmantes");
+      }
+      accountRepository.save(account);
+    }
+  }
+
+  public void setDataCustomer(AccountModel account, boolean mainFee, Integer mainValue, Integer transLimit) {
+    account.setMaintenanceFee(mainFee);
+    account.setMaintenanceValue(mainValue);
+    account.setMonthlyTransactionLimit(transLimit);
+  }
+
+  public void validateBusiness(CustomerModel customer) {
+    logger.info("BUSINESS");
+    for (AccountModel account : customer.getAccounts()) {
+
+      if ((!TypeAccountEnum.CURRENT.equals(account.getTypeAccount()))
+          && (account.getOwners().size() <= 1 && account.getAuthorizedSignatories().isEmpty())) {
+        logger.info("Un cliente empresarial no puede tener una cuenta de ahorro o de plazo fijo");
+        logger.info(
+            "Las cuentas bancarias empresariales deben tener uno o más titulares y cero o más firmantes autorizados");
+      }
+
+      setDataCustomer(account, true, 5, null);
+      accountRepository.save(account);
+    }
+    saveLoan(customer);
+  }
+
+  private void saveLoan(CustomerModel customer) {
+    for (LoanModel loan : customer.getLoans()) {
+      loanRepository.save(loan);
+    }
+  }
 
 }

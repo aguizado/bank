@@ -22,51 +22,51 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "loan")
 public class LoanModel {
 
-	@JsonProperty("id")
-	private Integer id;
+  @JsonProperty("id")
+  private Integer id;
 
-	@JsonProperty("loan_number")
-	private String loanNumber;
+  @JsonProperty("loan_number")
+  private String loanNumber;
 
-	@JsonProperty("loan_value")
-	private Integer loanValue;
+  @JsonProperty("loan_value")
+  private Integer loanValue;
 
-	public enum TypeLoanEnum {
+  public enum TypeLoanEnum {
 
-		PERSONAL("personal"), BUSINESS("business"), CREDIT_CARD("credit_card");
+    PERSONAL("personal"), BUSINESS("business"), CREDIT_CARD("credit_card");
 
-		private String value;
+    private String value;
 
-		TypeLoanEnum(String value) {
-			this.value = value;
-		}
+    TypeLoanEnum(String value) {
+      this.value = value;
+    }
 
-		@JsonValue
-		public String getValue() {
-			return value;
-		}
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
 
-		@Override
-		public String toString() {
-			return String.valueOf(value);
-		}
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
 
-		@JsonCreator
-		public static TypeLoanEnum fromValue(String value) {
-			for (TypeLoanEnum b : TypeLoanEnum.values()) {
-				if (b.value.equals(value)) {
-					return b;
-				}
-			}
-			throw new IllegalArgumentException("Unexpected value '" + value + "'");
-		}
+    @JsonCreator
+    public static TypeLoanEnum fromValue(String value) {
+      for (TypeLoanEnum b : TypeLoanEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
 
-	}
+  }
 
-	@JsonProperty("type_loan")
-	private TypeLoanEnum typeLoan;
+  @JsonProperty("type_loan")
+  private TypeLoanEnum typeLoan;
 
-	@JsonProperty("unit_limit")
-	private Integer unitLimit;
+  @JsonProperty("unit_limit")
+  private Integer unitLimit;
 
 }

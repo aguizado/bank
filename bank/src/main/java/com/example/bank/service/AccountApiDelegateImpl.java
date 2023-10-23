@@ -15,31 +15,31 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class AccountApiDelegateImpl implements AccountApiDelegate {
-	
-	private final AccountRepository accountRepository;
-	
-	@Override
-	public AccountModel createAccount(AccountModel account) {
-		validateAccount(account);
-		return accountRepository.save(account);
-	}
-	
-	public void validateAccount(AccountModel account) {
-		if (TypeAccountEnum.SAVING.equals(account.getTypeAccount())) {
-			setDataCustomer(account, false, 0, 3);
-		}
-		if (TypeAccountEnum.CURRENT.equals(account.getTypeAccount())) {
-			setDataCustomer(account, true, 5, null);
-		}
-		if (TypeAccountEnum.FIXED_TERM.equals(account.getTypeAccount())) {
-			setDataCustomer(account, false, 0, 1);
-		}
-	}
-	
-	public void setDataCustomer(AccountModel account, boolean mainFee, Integer mainValue, Integer transLimit) {
-		account.setMaintenanceFee(mainFee);
-		account.setMaintenanceValue(mainValue);
-		account.setMonthlyTransactionLimit(transLimit);
-	}
+
+  private final AccountRepository accountRepository;
+
+  @Override
+  public AccountModel createAccount(AccountModel account) {
+    validateAccount(account);
+    return accountRepository.save(account);
+  }
+
+  public void validateAccount(AccountModel account) {
+    if (TypeAccountEnum.SAVING.equals(account.getTypeAccount())) {
+      setDataCustomer(account, false, 0, 3);
+    }
+    if (TypeAccountEnum.CURRENT.equals(account.getTypeAccount())) {
+      setDataCustomer(account, true, 5, null);
+    }
+    if (TypeAccountEnum.FIXED_TERM.equals(account.getTypeAccount())) {
+      setDataCustomer(account, false, 0, 1);
+    }
+  }
+
+  public void setDataCustomer(AccountModel account, boolean mainFee, Integer mainValue, Integer transLimit) {
+    account.setMaintenanceFee(mainFee);
+    account.setMaintenanceValue(mainValue);
+    account.setMonthlyTransactionLimit(transLimit);
+  }
 
 }
