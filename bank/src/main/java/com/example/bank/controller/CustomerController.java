@@ -27,6 +27,12 @@ public class CustomerController {
   private final CustomerRepository customerRepository;
   CustomerApiDelegate customerApiDelegate;
 
+  /**
+   * . This method is to save Customer
+   *
+   * @param customer This is the first parameter
+   * @return a HTTP Status
+   */
   @PostMapping("/customers")
   public ResponseEntity<CustomerModel> customersPost(@RequestBody CustomerModel customer) {
     try {
@@ -37,8 +43,15 @@ public class CustomerController {
     }
   }
 
+  /**
+   * . This method is to get Customer
+   *
+   * @param customerId This is the first parameter
+   * @return a HTTP Status
+   */
   @GetMapping("/customers/{customerId}")
-  public ResponseEntity<CustomerModel> customersCustomerIdGet(@PathVariable("customerId") Integer customerId) {
+  public ResponseEntity<CustomerModel> customersCustomerIdGet(
+      @PathVariable("customerId") Integer customerId) {
     Optional<CustomerModel> opCustomer = customerRepository.findById(customerId);
     if (opCustomer.isPresent()) {
       return ResponseEntity.status(HttpStatus.OK).body(opCustomer.get());
@@ -46,8 +59,16 @@ public class CustomerController {
     return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
   }
 
+  /**
+   * . This method is to update Customer
+   *
+   * @param customerId This is the first parameter
+   * @param customer This is the second parameter
+   * @return a HTTP Status
+   */
   @PutMapping("/customers/{customerId}")
-  public ResponseEntity<CustomerModel> customersCustomerIdPut(@PathVariable("customerId") Integer customerId,
+  public ResponseEntity<CustomerModel> customersCustomerIdPut(
+      @PathVariable("customerId") Integer customerId,
       @RequestBody CustomerModel customer) {
     Optional<CustomerModel> opCustomer = customerRepository.findById(customerId);
     if (opCustomer.isPresent()) {

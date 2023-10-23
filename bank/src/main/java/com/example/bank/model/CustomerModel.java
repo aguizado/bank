@@ -33,9 +33,16 @@ public class CustomerModel {
   @JsonProperty("last_name")
   private String lastName;
 
+  /**
+   * . Enum TypeCustomerEnum
+   *
+   * @author Andres Guizado
+   * @version 0.1, 2023/10/23
+   */
   public enum TypeCustomerEnum {
 
-    PERSONAL("personal"), PERSONAL_VIP("personal_vip"), BUSINESS("business"), BUSINESS_PYME("business_pyme");
+    PERSONAL("personal"), PERSONAL_VIP("personal_vip"),
+    BUSINESS("business"), BUSINESS_PYME("business_pyme");
 
     private String value;
 
@@ -53,6 +60,12 @@ public class CustomerModel {
       return String.valueOf(value);
     }
 
+    /**
+     * . This method is fromValue TypeCustomerEnum
+     *
+     * @param value This is the first parameter
+     * @return a new value
+     */
     @JsonCreator
     public static TypeCustomerEnum fromValue(String value) {
       for (TypeCustomerEnum b : TypeCustomerEnum.values()) {

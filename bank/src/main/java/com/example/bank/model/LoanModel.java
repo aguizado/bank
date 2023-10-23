@@ -31,6 +31,12 @@ public class LoanModel {
   @JsonProperty("loan_value")
   private Integer loanValue;
 
+  /**
+   * . Enum TypeLoanEnum
+   *
+   * @author Andres Guizado
+   * @version 0.1, 2023/10/23
+   */
   public enum TypeLoanEnum {
 
     PERSONAL("personal"), BUSINESS("business"), CREDIT_CARD("credit_card");
@@ -51,6 +57,12 @@ public class LoanModel {
       return String.valueOf(value);
     }
 
+    /**
+     * . This method is fromValue TypeLoanEnum
+     *
+     * @param value This is the first parameter
+     * @return a new value
+     */
     @JsonCreator
     public static TypeLoanEnum fromValue(String value) {
       for (TypeLoanEnum b : TypeLoanEnum.values()) {

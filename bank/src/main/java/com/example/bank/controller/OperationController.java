@@ -26,6 +26,12 @@ public class OperationController {
   private final OperationRepository operationRepository;
   OperationApiDelegate operationApiDelegate;
 
+  /**
+   * . This method is to create Operation
+   *
+   * @param operation This is the first parameter
+   * @return a HTTP Status
+   */
   @PostMapping("/transactions")
   public ResponseEntity<OperationModel> transactionsPost(@RequestBody OperationModel operation) {
     try {
@@ -36,8 +42,15 @@ public class OperationController {
     }
   }
 
+  /**
+   * . This method is to get Operation
+   *
+   * @param customerId This is the first parameter
+   * @return a HTTP Status
+   */
   @GetMapping("/transactions/{customerId}")
-  public ResponseEntity<OperationModel> transactionsCustomerIdGet(@PathVariable("customerId") Integer customerId) {
+  public ResponseEntity<OperationModel> transactionsCustomerIdGet(
+      @PathVariable("customerId") Integer customerId) {
     Optional<OperationModel> opCustomer = operationRepository.findById(customerId);
     if (opCustomer.isPresent()) {
       return ResponseEntity.status(HttpStatus.OK).body(opCustomer.get());

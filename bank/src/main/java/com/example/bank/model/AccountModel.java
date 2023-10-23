@@ -33,6 +33,12 @@ public class AccountModel {
   @JsonProperty("account_value")
   private Integer accountValue;
 
+  /**
+   * . Enum TypeAccountEnum
+   *
+   * @author Andres Guizado
+   * @version 0.1, 2023/10/23
+   */
   public enum TypeAccountEnum {
 
     SAVING("saving"), CURRENT("current"), FIXED_TERM("fixed_term");
@@ -53,6 +59,12 @@ public class AccountModel {
       return String.valueOf(value);
     }
 
+    /**
+     * . This method is fromValue TypeAccountEnum
+     *
+     * @param value This is the first parameter
+     * @return a new value
+     */
     @JsonCreator
     public static TypeAccountEnum fromValue(String value) {
       for (TypeAccountEnum b : TypeAccountEnum.values()) {

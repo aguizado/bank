@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * . Class BankApplication
- * 
+ *
  * @author Andres Guizado
  * @version 0.1, 2023/10/16
  */

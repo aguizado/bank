@@ -24,6 +24,11 @@ public class AccountApiDelegateImpl implements AccountApiDelegate {
     return accountRepository.save(account);
   }
 
+  /**
+   * . This method validate Account
+   *
+   * @param account This is the first parameter
+   */
   public void validateAccount(AccountModel account) {
     if (TypeAccountEnum.SAVING.equals(account.getTypeAccount())) {
       setDataCustomer(account, false, 0, 3);
@@ -36,7 +41,16 @@ public class AccountApiDelegateImpl implements AccountApiDelegate {
     }
   }
 
-  public void setDataCustomer(AccountModel account, boolean mainFee, Integer mainValue, Integer transLimit) {
+  /**
+   * . This method set data Customer
+   *
+   * @param account This is the first parameter
+   * @param mainFee This is the second parameter
+   * @param mainValue This is the third parameter
+   * @param transLimit This is the fourth parameter
+   */
+  public void setDataCustomer(AccountModel account, boolean mainFee,
+      Integer mainValue, Integer transLimit) {
     account.setMaintenanceFee(mainFee);
     account.setMaintenanceValue(mainValue);
     account.setMonthlyTransactionLimit(transLimit);

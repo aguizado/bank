@@ -34,6 +34,11 @@ public class CustomerApiDelegateImpl implements CustomerApiDelegate {
     return customerRepository.save(customer);
   }
 
+  /**
+   * . This method validate Customer
+   *
+   * @param customer This is the first parameter
+   */
   public void validateCustomer(CustomerModel customer) {
     if (TypeCustomerEnum.PERSONAL.equals(customer.getTypeCustomer())) {
       validatePersonal(customer);
@@ -65,6 +70,11 @@ public class CustomerApiDelegateImpl implements CustomerApiDelegate {
   private void validateAccountVip(CustomerModel customer) {
   }
 
+  /**
+   * . This method validate Personal Customer
+   *
+   * @param customer This is the first parameter
+   */
   public void validatePersonal(CustomerModel customer) {
     logger.info("PERSONAL");
     validateAccount(customer);
@@ -96,19 +106,34 @@ public class CustomerApiDelegateImpl implements CustomerApiDelegate {
         }
       } else {
         logger.info(
-            "Un cliente personal solo puede tener un máximo de una cuenta de ahorro, una cuenta corriente o cuentas a plazo fijo.");
+            "Un cliente personal solo puede tener un máximo de una cuenta de ahorro,"
+            + " una cuenta corriente o cuentas a plazo fijo.");
         logger.info("Un cliente personal no necesita tilutales y/o firmantes");
       }
       accountRepository.save(account);
     }
   }
 
-  public void setDataCustomer(AccountModel account, boolean mainFee, Integer mainValue, Integer transLimit) {
+  /**
+   * . This method set data Customer
+   *
+   * @param account This is the first parameter
+   * @param mainFee This is the second parameter
+   * @param mainValue This is the third parameter
+   * @param transLimit This is the fourth parameter
+   */
+  public void setDataCustomer(AccountModel account, boolean mainFee,
+      Integer mainValue, Integer transLimit) {
     account.setMaintenanceFee(mainFee);
     account.setMaintenanceValue(mainValue);
     account.setMonthlyTransactionLimit(transLimit);
   }
 
+  /**
+   * . This method validate Business Customer
+   *
+   * @param customer This is the first parameter
+   */
   public void validateBusiness(CustomerModel customer) {
     logger.info("BUSINESS");
     for (AccountModel account : customer.getAccounts()) {
@@ -117,7 +142,8 @@ public class CustomerApiDelegateImpl implements CustomerApiDelegate {
           && (account.getOwners().size() <= 1 && account.getAuthorizedSignatories().isEmpty())) {
         logger.info("Un cliente empresarial no puede tener una cuenta de ahorro o de plazo fijo");
         logger.info(
-            "Las cuentas bancarias empresariales deben tener uno o más titulares y cero o más firmantes autorizados");
+            "Las cuentas bancarias empresariales deben tener uno o más titulares y"
+            + " cero o más firmantes autorizados");
       }
 
       setDataCustomer(account, true, 5, null);

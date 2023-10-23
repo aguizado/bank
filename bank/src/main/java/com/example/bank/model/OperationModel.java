@@ -28,6 +28,12 @@ public class OperationModel {
   @JsonProperty("customer")
   private CustomerModel customer;
 
+  /**
+   * . Enum TypeOperationEnum
+   *
+   * @author Andres Guizado
+   * @version 0.1, 2023/10/23
+   */
   public enum TypeOperationEnum {
 
     DEPOSIT("deposit"), WITHDRAWAL("withdrawal"), PAYMENT("payment"), CONSUMPTION("consumption");
@@ -48,6 +54,12 @@ public class OperationModel {
       return String.valueOf(value);
     }
 
+    /**
+     * . This method is fromValue TypeOperationEnum
+     *
+     * @param value This is the first parameter
+     * @return a new value
+     */
     @JsonCreator
     public static TypeOperationEnum fromValue(String value) {
       for (TypeOperationEnum b : TypeOperationEnum.values()) {

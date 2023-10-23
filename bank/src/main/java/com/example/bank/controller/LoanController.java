@@ -25,6 +25,12 @@ public class LoanController {
 
   private final LoanRepository loanRepository;
 
+  /**
+   * . This method is to create Loan
+   *
+   * @param loan This is the first parameter
+   * @return a HTTP Status
+   */
   @PostMapping("/loans")
   public ResponseEntity<LoanModel> loansPost(@RequestBody LoanModel loan) {
     try {
@@ -35,6 +41,12 @@ public class LoanController {
     }
   }
 
+  /**
+   * . This method is to get Loan
+   *
+   * @param loanId This is the first parameter
+   * @return a HTTP Status
+   */
   @GetMapping("/loans/{loanId}")
   public ResponseEntity<LoanModel> loansLoanIdGet(@PathVariable("loanId") Integer loanId) {
     Optional<LoanModel> opLoan = loanRepository.findById(loanId);
@@ -44,8 +56,16 @@ public class LoanController {
     return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
   }
 
+  /**
+   * . This method is to update Loan
+   *
+   * @param loanId This is the first parameter
+   * @param loan This is the second parameter
+   * @return a HTTP Status
+   */
   @PutMapping("/loans/{loanId}")
-  public ResponseEntity<LoanModel> loansLoanIdPut(@PathVariable("loanId") Integer loanId, @RequestBody LoanModel loan) {
+  public ResponseEntity<LoanModel> loansLoanIdPut(
+      @PathVariable("loanId") Integer loanId, @RequestBody LoanModel loan) {
     Optional<LoanModel> opLoan = loanRepository.findById(loanId);
     if (opLoan.isPresent()) {
       return new ResponseEntity<>(loanRepository.save(loan), HttpStatus.OK);

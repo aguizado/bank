@@ -48,7 +48,8 @@ public class AccountController {
    * @return a HTTP Status
    */
   @GetMapping("/accounts/{accountId}")
-  public ResponseEntity<AccountModel> accountsAccountIdGet(@PathVariable("accountId") Integer accountId) {
+  public ResponseEntity<AccountModel> accountsAccountIdGet(
+      @PathVariable("accountId") Integer accountId) {
     Optional<AccountModel> opAccount = accountRepository.findById(accountId);
     if (opAccount.isPresent()) {
       return ResponseEntity.status(HttpStatus.OK).body(opAccount.get());
@@ -56,9 +57,16 @@ public class AccountController {
     return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
   }
 
+  /**
+   * . This method is to update Account
+   *
+   * @param accountId This is the first parameter
+   * @param account This is the second parameter
+   * @return a HTTP Status
+   */
   @PutMapping("/accounts/{accountId}")
-  public ResponseEntity<AccountModel> accountsAccountIdPut(@PathVariable("accountId") Integer accountId,
-      @RequestBody AccountModel account) {
+  public ResponseEntity<AccountModel> accountsAccountIdPut(
+      @PathVariable("accountId") Integer accountId, @RequestBody AccountModel account) {
     Optional<AccountModel> opAccount = accountRepository.findById(accountId);
     if (opAccount.isPresent()) {
       return new ResponseEntity<>(accountRepository.save(account), HttpStatus.OK);
