@@ -4,10 +4,8 @@ import com.example.bank.model.AccountModel;
 import com.example.bank.model.OperationModel;
 import com.example.bank.model.OperationModel.TypeOperationEnum;
 import com.example.bank.repository.OperationRepository;
-
-import org.springframework.stereotype.Service;
-
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 /**.
 * Class OperationApiDelegateImpl
@@ -28,7 +26,7 @@ public class OperationApiDelegateImpl implements OperationApiDelegate	{
 		if (TypeOperationEnum.DEPOSIT.equals(operation.getTypeOperation())) {
 			deposit = operation.getBalance();
 			updateAccount(operation, deposit, withdrawal);
-		} else if(TypeOperationEnum.WITHDRAWAL.equals(operation.getTypeOperation())) {
+		} else if (TypeOperationEnum.WITHDRAWAL.equals(operation.getTypeOperation())) {
 			withdrawal = operation.getBalance();
 			updateAccount(operation, deposit, withdrawal);
 		}

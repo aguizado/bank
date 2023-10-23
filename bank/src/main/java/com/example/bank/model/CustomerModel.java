@@ -1,19 +1,15 @@
 package com.example.bank.model;
 
-import java.util.List;
-
-import javax.validation.Valid;
-
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
-
+import java.util.List;
+import javax.validation.Valid;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * . Class CustomerModel
@@ -37,12 +33,10 @@ public class CustomerModel {
 	@JsonProperty("last_name")
 	private String lastName;
 
-	/**
-	 * Gets or Sets typeCustomer
-	 */
 	public enum TypeCustomerEnum {
 		
-		PERSONAL("personal"), PERSONAL_VIP("personal_vip"), BUSINESS("business"), BUSINESS_PYME("business_pyme");
+		PERSONAL("personal"), PERSONAL_VIP("personal_vip"),
+		BUSINESS("business"), BUSINESS_PYME("business_pyme");
 
 		private String value;
 

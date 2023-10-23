@@ -8,12 +8,9 @@ import com.example.bank.model.LoanModel;
 import com.example.bank.repository.AccountRepository;
 import com.example.bank.repository.CustomerRepository;
 import com.example.bank.repository.LoanRepository;
-
 import java.util.logging.Logger;
-
-import org.springframework.stereotype.Service;
-
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 /**.
 * Class CustomerApiDelegateImpl
@@ -38,13 +35,13 @@ public class CustomerApiDelegateImpl implements CustomerApiDelegate {
 	}
 
 	public void validateCustomer(CustomerModel customer) {
-		if(TypeCustomerEnum.PERSONAL.equals(customer.getTypeCustomer())) {
+		if (TypeCustomerEnum.PERSONAL.equals(customer.getTypeCustomer())) {
 			validatePersonal(customer);
 		} else if (TypeCustomerEnum.BUSINESS.equals(customer.getTypeCustomer())) {
 			validateBusiness(customer);
 		} else if (TypeCustomerEnum.PERSONAL_VIP.equals(customer.getTypeCustomer())) {
 			validatePersonalVip(customer);
-		} else if(TypeCustomerEnum.BUSINESS_PYME.equals(customer.getTypeCustomer())) {
+		} else if (TypeCustomerEnum.BUSINESS_PYME.equals(customer.getTypeCustomer())) {
 			validateBusinessPyme(customer);
 		}
 	}
@@ -57,22 +54,21 @@ public class CustomerApiDelegateImpl implements CustomerApiDelegate {
 
 	private void validatePersonalVip(CustomerModel customer) {
 		logger.info("PERSONAL_VIP");
-		validateAccountVIP(customer);		
-		if(customer.getLoans().size() <= 1) {
+		validateAccountVip(customer);		
+		if (customer.getLoans().size() <= 1) {
 			saveLoan(customer);
 		} else {
 			logger.info("Un cliente puede tener un producto de crédito");
 		}
 	}
 
-	private void validateAccountVIP(CustomerModel customer) {
-		
+	private void validateAccountVip(CustomerModel customer) {
 	}
 
 	public void validatePersonal(CustomerModel customer) {
 		logger.info("PERSONAL");
 		validateAccount(customer);		
-		if(customer.getLoans().size() <= 1) {
+		if (customer.getLoans().size() <= 1) {
 			saveLoan(customer);
 		} else {
 			logger.info("Un cliente puede tener un producto de crédito");
@@ -84,17 +80,17 @@ public class CustomerApiDelegateImpl implements CustomerApiDelegate {
 		int nroAccountCurrent = 0;
 		int nroAccountFixedTerm = 0;
 		for (AccountModel account : customer.getAccounts()) {
-			if((nroAccountSaving < 1 || nroAccountCurrent < 1 || nroAccountFixedTerm < 1) &&
-					(account.getOwners().isEmpty() && account.getAuthorizedSignatories().isEmpty())) {
-				if(TypeAccountEnum.SAVING.equals(account.getTypeAccount())) {
+			if ((nroAccountSaving < 1 || nroAccountCurrent < 1 || nroAccountFixedTerm < 1) 
+					&& (account.getOwners().isEmpty() && account.getAuthorizedSignatories().isEmpty())) {
+				if (TypeAccountEnum.SAVING.equals(account.getTypeAccount())) {
 					setDataCustomer(account, false, 0, 3);
 					nroAccountSaving++;
 				}
-				if(TypeAccountEnum.CURRENT.equals(account.getTypeAccount())) {
+				if (TypeAccountEnum.CURRENT.equals(account.getTypeAccount())) {
 					setDataCustomer(account, true, 5, null);
 					nroAccountCurrent++;
 				}
-				if(TypeAccountEnum.FIXED_TERM.equals(account.getTypeAccount())) {
+				if (TypeAccountEnum.FIXED_TERM.equals(account.getTypeAccount())) {
 					setDataCustomer(account, false, 0, 1);
 					nroAccountFixedTerm++;
 				}				
@@ -106,18 +102,18 @@ public class CustomerApiDelegateImpl implements CustomerApiDelegate {
 		}
 	}
 	
-	public void setDataCustomer(AccountModel account, boolean mFee, Integer mValue, Integer limit) {
-		account.setMaintenanceFee(mFee);
-		account.setMaintenanceValue(mValue);
-		account.setMonthlyTransactionLimit(limit);
+	public void setDataCustomer(AccountModel account, boolean mainFee, Integer mainValue, Integer transLimit) {
+		account.setMaintenanceFee(mainFee);
+		account.setMaintenanceValue(mainValue);
+		account.setMonthlyTransactionLimit(transLimit);
 	}
 
 	public void validateBusiness(CustomerModel customer) {
 		logger.info("BUSINESS");
 		for (AccountModel account : customer.getAccounts()) {
 			
-			if((!TypeAccountEnum.CURRENT.equals(account.getTypeAccount())) &&
-					(account.getOwners().size() <= 1 && account.getAuthorizedSignatories().isEmpty())) {
+			if ((!TypeAccountEnum.CURRENT.equals(account.getTypeAccount())) 
+					&& (account.getOwners().size() <= 1 && account.getAuthorizedSignatories().isEmpty())) {
 				logger.info("Un cliente empresarial no puede tener una cuenta de ahorro o de plazo fijo");
 				logger.info("Las cuentas bancarias empresariales deben tener uno o más titulares y cero o más firmantes autorizados");
 			}
@@ -129,7 +125,7 @@ public class CustomerApiDelegateImpl implements CustomerApiDelegate {
 	}
 	
 	private void saveLoan(CustomerModel customer) {
-		for(LoanModel loan : customer.getLoans()) {
+		for (LoanModel loan : customer.getLoans()) {
 			loanRepository.save(loan);
 		}
 	}

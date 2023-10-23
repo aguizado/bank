@@ -10,6 +10,6 @@ import com.example.bank.model.OperationModel;
 */
 public interface OperationApiDelegate {
 	
-	public OperationModel createOperation (OperationModel operation);
+	public OperationModel createOperation(OperationModel operation);
 
 }

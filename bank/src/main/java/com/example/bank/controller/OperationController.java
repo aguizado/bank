@@ -3,9 +3,8 @@ package com.example.bank.controller;
 import com.example.bank.model.OperationModel;
 import com.example.bank.repository.OperationRepository;
 import com.example.bank.service.OperationApiDelegate;
-
 import java.util.Optional;
-
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,8 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import lombok.RequiredArgsConstructor;
 
 /**.
 * Class OperationController
@@ -42,7 +39,7 @@ public class OperationController {
 	@GetMapping("/transactions/{customerId}")
 	public ResponseEntity<OperationModel> transactionsCustomerIdGet(@PathVariable("customerId") Integer customerId) {
 		Optional<OperationModel> opCustomer = operationRepository.findById(customerId);
-		if(opCustomer.isPresent()) {
+		if (opCustomer.isPresent()) {
 			return ResponseEntity.status(HttpStatus.OK).body(opCustomer.get());
 		}
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
