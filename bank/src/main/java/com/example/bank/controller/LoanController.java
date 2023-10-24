@@ -6,6 +6,7 @@ import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -60,7 +61,7 @@ public class LoanController {
    * . This method is to update Loan
    *
    * @param loanId This is the first parameter
-   * @param loan This is the second parameter
+   * @param loan   This is the second parameter
    * @return a HTTP Status
    */
   @PutMapping("/loans/{loanId}")
@@ -73,14 +74,20 @@ public class LoanController {
     return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
   }
 
-//	@DeleteMapping("/loans/{loanId}")
-//	public ResponseEntity<Void> loansLoanIdDelete(@PathVariable("loanId") Integer loanId) {
-//		try {
-//			loanRepository.deleteById(loanId);
-//		    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//		} catch (Exception e) {
-//			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//		}
-//	}
+  /**
+   * . This method is to delete Loan
+   *
+   * @param loanId This is the first parameter
+   * @return a HTTP Status
+   */
+  @DeleteMapping("/loans/{loanId}")
+  public ResponseEntity<Void> loansLoanIdDelete(@PathVariable("loanId") Integer loanId) {
+    try {
+      loanRepository.deleteById(loanId);
+      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    } catch (Exception e) {
+      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+  }
 
 }

@@ -6,6 +6,7 @@ import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -61,12 +62,13 @@ public class AccountController {
    * . This method is to update Account
    *
    * @param accountId This is the first parameter
-   * @param account This is the second parameter
+   * @param account   This is the second parameter
    * @return a HTTP Status
    */
   @PutMapping("/accounts/{accountId}")
   public ResponseEntity<AccountModel> accountsAccountIdPut(
-      @PathVariable("accountId") Integer accountId, @RequestBody AccountModel account) {
+      @PathVariable("accountId") Integer accountId,
+      @RequestBody AccountModel account) {
     Optional<AccountModel> opAccount = accountRepository.findById(accountId);
     if (opAccount.isPresent()) {
       return new ResponseEntity<>(accountRepository.save(account), HttpStatus.OK);
@@ -74,14 +76,21 @@ public class AccountController {
     return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
   }
 
-//	@DeleteMapping("/accounts/{accountId}")
-//	public ResponseEntity<Void> accountsAccountIdDelete(@PathVariable("accountId") Integer accountId) {
-//		try {
-//			accountRepository.deleteById(accountId);
-//		    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//		} catch (Exception e) {
-//			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//		}
-//	}
+  /**
+   * . This method is to delete Account
+   *
+   * @param accountId This is the first parameter
+   * @return a HTTP Status
+   */
+  @DeleteMapping("/accounts/{accountId}")
+  public ResponseEntity<Void> accountsAccountIdDelete(
+      @PathVariable("accountId") Integer accountId) {
+    try {
+      accountRepository.deleteById(accountId);
+      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    } catch (Exception e) {
+      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+  }
 
 }

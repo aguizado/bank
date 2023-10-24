@@ -74,29 +74,29 @@
 					</excludes>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.openapitools</groupId>
-				<artifactId>openapi-generator-maven-plugin</artifactId>
-				<version>4.3.1</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-						<configuration>
-							<inputSpec>
-								${project.basedir}/src/main/resources/bank.yaml</inputSpec>
-							<generatorName>spring</generatorName>
-							<apiPackage>com.example.bank.api</apiPackage>
-							<modelPackage>com.example.bank.model</modelPackage>
-							<supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>
-							<configOptions>
-								<delegatePattern>true</delegatePattern>
-							</configOptions>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+<!--			<plugin>-->
+<!--				<groupId>org.openapitools</groupId>-->
+<!--				<artifactId>openapi-generator-maven-plugin</artifactId>-->
+<!--				<version>4.3.1</version>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<goals>-->
+<!--							<goal>generate</goal>-->
+<!--						</goals>-->
+<!--						<configuration>-->
+<!--							<inputSpec>-->
+<!--								${project.basedir}/src/main/resources/bank.yaml</inputSpec>-->
+<!--							<generatorName>spring</generatorName>-->
+<!--							<apiPackage>com.example.bank.api</apiPackage>-->
+<!--							<modelPackage>com.example.bank.model</modelPackage>-->
+<!--							<supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>-->
+<!--							<configOptions>-->
+<!--								<delegatePattern>true</delegatePattern>-->
+<!--							</configOptions>-->
+<!--						</configuration>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--			</plugin>-->
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

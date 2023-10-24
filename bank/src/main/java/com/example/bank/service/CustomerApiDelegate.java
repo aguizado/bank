@@ -1,6 +1,7 @@
 package com.example.bank.service;
 
 import com.example.bank.model.CustomerModel;
+import java.util.Optional;
 
 /**
  * . Interface CustomerApiDelegate
@@ -11,5 +12,11 @@ import com.example.bank.model.CustomerModel;
 public interface CustomerApiDelegate {
 
   public CustomerModel createCustomer(CustomerModel customer);
+  
+  public Optional<CustomerModel> getCustomer(Integer customerId);
+  
+  public CustomerModel editCustomer(CustomerModel customer);
+  
+  void deleteCustomer(Integer customerId);
 
 }

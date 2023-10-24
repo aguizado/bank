@@ -8,6 +8,7 @@ import com.example.bank.model.LoanModel;
 import com.example.bank.repository.AccountRepository;
 import com.example.bank.repository.CustomerRepository;
 import com.example.bank.repository.LoanRepository;
+import java.util.Optional;
 import java.util.logging.Logger;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -91,6 +92,7 @@ public class CustomerApiDelegateImpl implements CustomerApiDelegate {
     int nroAccountFixedTerm = 0;
     for (AccountModel account : customer.getAccounts()) {
       if ((nroAccountSaving < 1 || nroAccountCurrent < 1 || nroAccountFixedTerm < 1)
+          && account != null
           && (account.getOwners().isEmpty() && account.getAuthorizedSignatories().isEmpty())) {
         if (TypeAccountEnum.SAVING.equals(account.getTypeAccount())) {
           setDataCustomer(account, false, 0, 3);
@@ -156,6 +158,23 @@ public class CustomerApiDelegateImpl implements CustomerApiDelegate {
     for (LoanModel loan : customer.getLoans()) {
       loanRepository.save(loan);
     }
+  }
+
+  @Override
+  public Optional<CustomerModel> getCustomer(Integer customerId) {
+    return customerRepository.findById(customerId);
+  }
+
+  @Override
+  public CustomerModel editCustomer(CustomerModel customer) {
+    validateCustomer(customer);
+    return customerRepository.save(customer);
+  }
+
+  @Override
+  public void deleteCustomer(Integer customerId) {
+    customerRepository.deleteById(customerId);
+    //borrar cuenta y/o loan
   }
 
 }
