@@ -1,51 +1,41 @@
-package com.example.bank.model;
+package com.example.bank.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
- * . Class CustomerModel
+ * . Class LoanDto
  *
  * @author Andres Guizado
- * @version 0.1, 2023/10/19
+ * @version 0.1, 2023/10/25
  */
 @Setter
 @Getter
 @ToString
 @RequiredArgsConstructor
-@Document(collection = "loan")
-public class LoanModel {
-
-  @Id
-  @JsonProperty("id")
+public class LoanDto {
+  
   private Integer id;
-
-  @JsonProperty("loan_number")
   private String loanNumber;
-
-  @JsonProperty("loan_value")
   private Integer loanValue;
-
+  
   /**
-   * . Enum TypeLoanEnum
+   * . Enum TypeLoanEnumDTO
    *
    * @author Andres Guizado
    * @version 0.1, 2023/10/23
    */
-  public enum TypeLoanEnum {
+  public enum TypeLoanEnumDto {
 
     PERSONAL("personal"), BUSINESS("business"), CREDIT_CARD("credit_card");
 
     private String value;
 
-    TypeLoanEnum(String value) {
+    TypeLoanEnumDto(String value) {
       this.value = value;
     }
 
@@ -66,8 +56,8 @@ public class LoanModel {
      * @return a new value
      */
     @JsonCreator
-    public static TypeLoanEnum fromValue(String value) {
-      for (TypeLoanEnum b : TypeLoanEnum.values()) {
+    public static TypeLoanEnumDto fromValue(String value) {
+      for (TypeLoanEnumDto b : TypeLoanEnumDto.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -76,11 +66,8 @@ public class LoanModel {
     }
 
   }
-
-  @JsonProperty("type_loan")
-  private TypeLoanEnum typeLoan;
-
-  @JsonProperty("unit_limit")
+  
+  private TypeLoanEnumDto typeLoan;
   private Integer unitLimit;
 
 }

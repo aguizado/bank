@@ -1,7 +1,7 @@
 package com.example.bank.controller;
 
 import com.example.bank.model.CustomerModel;
-import com.example.bank.service.ICustomerService;
+import com.example.bank.service.IcustomerService;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CustomerController {
 
   @Autowired
-  ICustomerService customerService;
+  IcustomerService customerService;
 
   /**
    * . This method is to save Customer

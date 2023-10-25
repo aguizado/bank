@@ -1,7 +1,7 @@
 package com.example.bank.controller;
 
 import com.example.bank.model.OperationModel;
-import com.example.bank.service.IOperationService;
+import com.example.bank.service.IoperationService;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class OperationController {
 
   @Autowired
-  IOperationService operationService;
+  IoperationService operationService;
 
   /**
    * . This method is to create Operation

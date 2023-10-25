@@ -1,7 +1,7 @@
 package com.example.bank.controller;
 
 import com.example.bank.model.LoanModel;
-import com.example.bank.service.ILoanService;
+import com.example.bank.service.IloanService;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoanController {
 
   @Autowired
-  ILoanService loanService;
+  IloanService loanService;
 
   /**
    * . This method is to create Loan

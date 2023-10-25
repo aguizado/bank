@@ -4,7 +4,7 @@ import com.example.bank.model.AccountModel;
 import com.example.bank.model.OperationModel;
 import com.example.bank.model.OperationModel.TypeOperationEnum;
 import com.example.bank.repository.OperationRepository;
-import com.example.bank.service.IOperationService;
+import com.example.bank.service.IoperationService;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @RequiredArgsConstructor
-public class OperationServicempl implements IOperationService {
+public class OperationServicempl implements IoperationService {
 
   private final OperationRepository operationRepository;
 

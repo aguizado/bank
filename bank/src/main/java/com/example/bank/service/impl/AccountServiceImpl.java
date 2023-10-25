@@ -3,7 +3,7 @@ package com.example.bank.service.impl;
 import com.example.bank.model.AccountModel;
 import com.example.bank.model.AccountModel.TypeAccountEnum;
 import com.example.bank.repository.AccountRepository;
-import com.example.bank.service.IAccountService;
+import com.example.bank.service.IaccountService;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @RequiredArgsConstructor
-public class AccountServiceImpl implements IAccountService {
+public class AccountServiceImpl implements IaccountService {
 
   private final AccountRepository accountRepository;
 

@@ -1,51 +1,42 @@
-package com.example.bank.model;
+package com.example.bank.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.List;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
- * . Class CustomerModel
+ * . Class AccountDto
  *
  * @author Andres Guizado
- * @version 0.1, 2023/10/19
+ * @version 0.1, 2023/10/25
  */
 @Setter
 @Getter
 @ToString
 @RequiredArgsConstructor
-@Document(collection = "loan")
-public class LoanModel {
-
-  @Id
-  @JsonProperty("id")
+public class AccountDto {
+  
   private Integer id;
-
-  @JsonProperty("loan_number")
-  private String loanNumber;
-
-  @JsonProperty("loan_value")
-  private Integer loanValue;
-
+  private String accountNumber;
+  private Integer accountValue;
+  
   /**
-   * . Enum TypeLoanEnum
+   * . Enum TypeAccountEnumDto
    *
    * @author Andres Guizado
    * @version 0.1, 2023/10/23
    */
-  public enum TypeLoanEnum {
+  public enum TypeAccountEnumDto {
 
-    PERSONAL("personal"), BUSINESS("business"), CREDIT_CARD("credit_card");
+    SAVING("saving"), CURRENT("current"), FIXED_TERM("fixed_term");
 
     private String value;
 
-    TypeLoanEnum(String value) {
+    TypeAccountEnumDto(String value) {
       this.value = value;
     }
 
@@ -60,27 +51,27 @@ public class LoanModel {
     }
 
     /**
-     * . This method is fromValue TypeLoanEnum
+     * . This method is fromValue TypeAccountEnum
      *
      * @param value This is the first parameter
      * @return a new value
      */
     @JsonCreator
-    public static TypeLoanEnum fromValue(String value) {
-      for (TypeLoanEnum b : TypeLoanEnum.values()) {
+    public static TypeAccountEnumDto fromValue(String value) {
+      for (TypeAccountEnumDto b : TypeAccountEnumDto.values()) {
         if (b.value.equals(value)) {
           return b;
         }
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
   }
-
-  @JsonProperty("type_loan")
-  private TypeLoanEnum typeLoan;
-
-  @JsonProperty("unit_limit")
-  private Integer unitLimit;
+  
+  private TypeAccountEnumDto typeAccount;
+  private Boolean maintenanceFee;
+  private Integer maintenanceValue;
+  private Integer monthlyTransactionLimit;
+  private List<CustomerDto> owners = null;
+  private List<CustomerDto> authorizedSignatories = null;
 
 }

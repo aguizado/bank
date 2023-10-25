@@ -8,7 +8,7 @@ import com.example.bank.model.LoanModel;
 import com.example.bank.repository.AccountRepository;
 import com.example.bank.repository.CustomerRepository;
 import com.example.bank.repository.LoanRepository;
-import com.example.bank.service.ICustomerService;
+import com.example.bank.service.IcustomerService;
 import java.util.Optional;
 import java.util.logging.Logger;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @RequiredArgsConstructor
-public class CustomerServiceImpl implements ICustomerService {
+public class CustomerServiceImpl implements IcustomerService {
 
   private final CustomerRepository customerRepository;
   private final AccountRepository accountRepository;
