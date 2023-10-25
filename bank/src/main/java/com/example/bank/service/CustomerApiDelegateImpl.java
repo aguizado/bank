@@ -167,8 +167,7 @@ public class CustomerApiDelegateImpl implements CustomerApiDelegate {
 
   @Override
   public CustomerModel editCustomer(CustomerModel customer) {
-    validateCustomer(customer);
-    return customerRepository.save(customer);
+    return createCustomer(customer);
   }
 
   @Override

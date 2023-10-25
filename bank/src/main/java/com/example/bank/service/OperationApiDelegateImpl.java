@@ -4,6 +4,7 @@ import com.example.bank.model.AccountModel;
 import com.example.bank.model.OperationModel;
 import com.example.bank.model.OperationModel.TypeOperationEnum;
 import com.example.bank.repository.OperationRepository;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -44,6 +45,11 @@ public class OperationApiDelegateImpl implements OperationApiDelegate {
         account.setAccountValue(value);
       }
     }
+  }
+
+  @Override
+  public Optional<OperationModel> getOperation(Integer operationId) {
+    return operationRepository.findById(operationId);
   }
 
 }

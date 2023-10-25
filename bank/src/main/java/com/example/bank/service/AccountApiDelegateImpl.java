@@ -3,6 +3,7 @@ package com.example.bank.service;
 import com.example.bank.model.AccountModel;
 import com.example.bank.model.AccountModel.TypeAccountEnum;
 import com.example.bank.repository.AccountRepository;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -54,6 +55,21 @@ public class AccountApiDelegateImpl implements AccountApiDelegate {
     account.setMaintenanceFee(mainFee);
     account.setMaintenanceValue(mainValue);
     account.setMonthlyTransactionLimit(transLimit);
+  }
+
+  @Override
+  public Optional<AccountModel> getAccount(Integer accountId) {
+    return accountRepository.findById(accountId);
+  }
+
+  @Override
+  public AccountModel editAccount(AccountModel account) {
+    return createAccount(account);
+  }
+
+  @Override
+  public void deleteAccount(Integer accountId) {
+    accountRepository.deleteById(accountId);
   }
 
 }

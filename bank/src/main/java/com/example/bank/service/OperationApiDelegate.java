@@ -1,6 +1,7 @@
 package com.example.bank.service;
 
 import com.example.bank.model.OperationModel;
+import java.util.Optional;
 
 /**
  * . Interface OperationApiDelegate
@@ -11,5 +12,7 @@ import com.example.bank.model.OperationModel;
 public interface OperationApiDelegate {
 
   public OperationModel createOperation(OperationModel operation);
+  
+  public Optional<OperationModel> getOperation(Integer operationId);
 
 }

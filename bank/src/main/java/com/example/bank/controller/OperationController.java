@@ -1,10 +1,10 @@
 package com.example.bank.controller;
 
 import com.example.bank.model.OperationModel;
-import com.example.bank.repository.OperationRepository;
 import com.example.bank.service.OperationApiDelegate;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class OperationController {
 
-  private final OperationRepository operationRepository;
+  @Autowired
   OperationApiDelegate operationApiDelegate;
 
   /**
@@ -51,7 +51,7 @@ public class OperationController {
   @GetMapping("/transactions/{customerId}")
   public ResponseEntity<OperationModel> transactionsCustomerIdGet(
       @PathVariable("customerId") Integer customerId) {
-    Optional<OperationModel> opCustomer = operationRepository.findById(customerId);
+    Optional<OperationModel> opCustomer = operationApiDelegate.getOperation(customerId);
     if (opCustomer.isPresent()) {
       return ResponseEntity.status(HttpStatus.OK).body(opCustomer.get());
     }
