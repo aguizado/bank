@@ -9,7 +9,7 @@ import java.util.Optional;
  * @author Andres Guizado
  * @version 0.1, 2023/10/25
  */
-public interface LoanApiDelegate {
+public interface ILoanService {
   
   public LoanModel createLoan(LoanModel loan);
   

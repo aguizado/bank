@@ -1,7 +1,7 @@
 package com.example.bank.controller;
 
 import com.example.bank.model.LoanModel;
-import com.example.bank.service.LoanApiDelegate;
+import com.example.bank.service.ILoanService;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoanController {
 
   @Autowired
-  LoanApiDelegate loanApiDelegate;
+  ILoanService loanService;
 
   /**
    * . This method is to create Loan
@@ -37,7 +37,7 @@ public class LoanController {
   @PostMapping("/loans")
   public ResponseEntity<LoanModel> createLoan(@RequestBody LoanModel loan) {
     try {
-      LoanModel loanModel = loanApiDelegate.createLoan(loan);
+      LoanModel loanModel = loanService.createLoan(loan);
       return new ResponseEntity<>(loanModel, HttpStatus.CREATED);
     } catch (Exception e) {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -52,7 +52,7 @@ public class LoanController {
    */
   @GetMapping("/loans/{loanId}")
   public ResponseEntity<LoanModel> getLoan(@PathVariable("loanId") Integer loanId) {
-    Optional<LoanModel> opLoan = loanApiDelegate.getLoan(loanId);
+    Optional<LoanModel> opLoan = loanService.getLoan(loanId);
     if (opLoan.isPresent()) {
       return ResponseEntity.status(HttpStatus.OK).body(opLoan.get());
     }
@@ -69,9 +69,9 @@ public class LoanController {
   @PutMapping("/loans/{loanId}")
   public ResponseEntity<LoanModel> editLoan(
       @PathVariable("loanId") Integer loanId, @RequestBody LoanModel loan) {
-    Optional<LoanModel> opLoan = loanApiDelegate.getLoan(loanId);
+    Optional<LoanModel> opLoan = loanService.getLoan(loanId);
     if (opLoan.isPresent()) {
-      return new ResponseEntity<>(loanApiDelegate.editLoan(loan), HttpStatus.OK);
+      return new ResponseEntity<>(loanService.editLoan(loan), HttpStatus.OK);
     }
     return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
   }
@@ -85,7 +85,7 @@ public class LoanController {
   @DeleteMapping("/loans/{loanId}")
   public ResponseEntity<Void> deleteLoan(@PathVariable("loanId") Integer loanId) {
     try {
-      loanApiDelegate.deleteLoan(loanId);
+      loanService.deleteLoan(loanId);
       return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     } catch (Exception e) {
       return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

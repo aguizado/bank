@@ -1,7 +1,8 @@
-package com.example.bank.service;
+package com.example.bank.service.impl;
 
 import com.example.bank.model.LoanModel;
 import com.example.bank.repository.LoanRepository;
+import com.example.bank.service.ILoanService;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @RequiredArgsConstructor
-public class LoanApiDelegateImpl implements LoanApiDelegate {
+public class LoanServiceImpl implements ILoanService {
   
   private final LoanRepository loanRepository;
 

@@ -1,7 +1,7 @@
 package com.example.bank.controller;
 
 import com.example.bank.model.AccountModel;
-import com.example.bank.service.AccountApiDelegate;
+import com.example.bank.service.IAccountService;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AccountController {
 
   @Autowired
-  AccountApiDelegate accountApiDelegate;
+  IAccountService accountService;
 
   /**
    * . This method is to save Account
@@ -37,7 +37,7 @@ public class AccountController {
   @PostMapping("/accounts")
   public ResponseEntity<AccountModel> createAccount(@RequestBody AccountModel account) {
     try {
-      AccountModel accountModel = accountApiDelegate.createAccount(account);
+      AccountModel accountModel = accountService.createAccount(account);
       return new ResponseEntity<>(accountModel, HttpStatus.CREATED);
     } catch (Exception e) {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -53,7 +53,7 @@ public class AccountController {
   @GetMapping("/accounts/{accountId}")
   public ResponseEntity<AccountModel> getAccount(
       @PathVariable("accountId") Integer accountId) {
-    Optional<AccountModel> opAccount = accountApiDelegate.getAccount(accountId);
+    Optional<AccountModel> opAccount = accountService.getAccount(accountId);
     if (opAccount.isPresent()) {
       return ResponseEntity.status(HttpStatus.OK).body(opAccount.get());
     }
@@ -71,9 +71,9 @@ public class AccountController {
   public ResponseEntity<AccountModel> editAccount(
       @PathVariable("accountId") Integer accountId,
       @RequestBody AccountModel account) {
-    Optional<AccountModel> opAccount = accountApiDelegate.getAccount(accountId);
+    Optional<AccountModel> opAccount = accountService.getAccount(accountId);
     if (opAccount.isPresent()) {
-      return new ResponseEntity<>(accountApiDelegate.editAccount(account), HttpStatus.OK);
+      return new ResponseEntity<>(accountService.editAccount(account), HttpStatus.OK);
     }
     return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
   }
@@ -88,7 +88,7 @@ public class AccountController {
   public ResponseEntity<Void> deleteAccount(
       @PathVariable("accountId") Integer accountId) {
     try {
-      accountApiDelegate.deleteAccount(accountId);
+      accountService.deleteAccount(accountId);
       return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     } catch (Exception e) {
       return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

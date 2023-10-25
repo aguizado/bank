@@ -1,8 +1,9 @@
-package com.example.bank.service;
+package com.example.bank.service.impl;
 
 import com.example.bank.model.AccountModel;
 import com.example.bank.model.AccountModel.TypeAccountEnum;
 import com.example.bank.repository.AccountRepository;
+import com.example.bank.service.IAccountService;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @RequiredArgsConstructor
-public class AccountApiDelegateImpl implements AccountApiDelegate {
+public class AccountServiceImpl implements IAccountService {
 
   private final AccountRepository accountRepository;
 

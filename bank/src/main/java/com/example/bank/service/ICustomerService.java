@@ -9,7 +9,7 @@ import java.util.Optional;
  * @author Andres Guizado
  * @version 0.1, 2023/10/16
  */
-public interface CustomerApiDelegate {
+public interface ICustomerService {
 
   public CustomerModel createCustomer(CustomerModel customer);
   

@@ -1,4 +1,4 @@
-package com.example.bank.service;
+package com.example.bank.service.impl;
 
 import com.example.bank.model.AccountModel;
 import com.example.bank.model.AccountModel.TypeAccountEnum;
@@ -8,6 +8,7 @@ import com.example.bank.model.LoanModel;
 import com.example.bank.repository.AccountRepository;
 import com.example.bank.repository.CustomerRepository;
 import com.example.bank.repository.LoanRepository;
+import com.example.bank.service.ICustomerService;
 import java.util.Optional;
 import java.util.logging.Logger;
 import lombok.RequiredArgsConstructor;
@@ -21,13 +22,13 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @RequiredArgsConstructor
-public class CustomerApiDelegateImpl implements CustomerApiDelegate {
+public class CustomerServiceImpl implements ICustomerService {
 
   private final CustomerRepository customerRepository;
   private final AccountRepository accountRepository;
   private final LoanRepository loanRepository;
 
-  static Logger logger = Logger.getLogger(CustomerApiDelegateImpl.class.getName());
+  static Logger logger = Logger.getLogger(CustomerServiceImpl.class.getName());
 
   @Override
   public CustomerModel createCustomer(CustomerModel customer) {

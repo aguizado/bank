@@ -1,9 +1,10 @@
-package com.example.bank.service;
+package com.example.bank.service.impl;
 
 import com.example.bank.model.AccountModel;
 import com.example.bank.model.OperationModel;
 import com.example.bank.model.OperationModel.TypeOperationEnum;
 import com.example.bank.repository.OperationRepository;
+import com.example.bank.service.IOperationService;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @RequiredArgsConstructor
-public class OperationApiDelegateImpl implements OperationApiDelegate {
+public class OperationServicempl implements IOperationService {
 
   private final OperationRepository operationRepository;
 

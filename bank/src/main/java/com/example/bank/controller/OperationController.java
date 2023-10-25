@@ -1,7 +1,7 @@
 package com.example.bank.controller;
 
 import com.example.bank.model.OperationModel;
-import com.example.bank.service.OperationApiDelegate;
+import com.example.bank.service.IOperationService;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class OperationController {
 
   @Autowired
-  OperationApiDelegate operationApiDelegate;
+  IOperationService operationService;
 
   /**
    * . This method is to create Operation
@@ -35,7 +35,7 @@ public class OperationController {
   @PostMapping("/transactions")
   public ResponseEntity<OperationModel> createOperation(@RequestBody OperationModel operation) {
     try {
-      OperationModel operationModel = operationApiDelegate.createOperation(operation);
+      OperationModel operationModel = operationService.createOperation(operation);
       return new ResponseEntity<>(operationModel, HttpStatus.CREATED);
     } catch (Exception e) {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -51,7 +51,7 @@ public class OperationController {
   @GetMapping("/transactions/{customerId}")
   public ResponseEntity<OperationModel> getOperation(
       @PathVariable("customerId") Integer customerId) {
-    Optional<OperationModel> opCustomer = operationApiDelegate.getOperation(customerId);
+    Optional<OperationModel> opCustomer = operationService.getOperation(customerId);
     if (opCustomer.isPresent()) {
       return ResponseEntity.status(HttpStatus.OK).body(opCustomer.get());
     }

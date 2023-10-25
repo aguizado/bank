@@ -1,7 +1,7 @@
 package com.example.bank.controller;
 
 import com.example.bank.model.CustomerModel;
-import com.example.bank.service.CustomerApiDelegate;
+import com.example.bank.service.ICustomerService;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CustomerController {
 
   @Autowired
-  CustomerApiDelegate customerApiDelegate;
+  ICustomerService customerService;
 
   /**
    * . This method is to save Customer
@@ -37,7 +37,7 @@ public class CustomerController {
   @PostMapping("/customers")
   public ResponseEntity<CustomerModel> createCustomer(@RequestBody CustomerModel customer) {
     try {
-      CustomerModel customerModel = customerApiDelegate.createCustomer(customer);
+      CustomerModel customerModel = customerService.createCustomer(customer);
       return new ResponseEntity<>(customerModel, HttpStatus.CREATED);
     } catch (Exception e) {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -53,7 +53,7 @@ public class CustomerController {
   @GetMapping("/customers/{customerId}")
   public ResponseEntity<CustomerModel> getCustomer(
       @PathVariable("customerId") Integer customerId) {
-    Optional<CustomerModel> opCustomer = customerApiDelegate.getCustomer(customerId);
+    Optional<CustomerModel> opCustomer = customerService.getCustomer(customerId);
     if (opCustomer.isPresent()) {
       return ResponseEntity.status(HttpStatus.OK).body(opCustomer.get());
     }
@@ -71,9 +71,9 @@ public class CustomerController {
   public ResponseEntity<CustomerModel> editCustomer(
       @PathVariable("customerId") Integer customerId,
       @RequestBody CustomerModel customer) {
-    Optional<CustomerModel> opCustomer = customerApiDelegate.getCustomer(customerId);
+    Optional<CustomerModel> opCustomer = customerService.getCustomer(customerId);
     if (opCustomer.isPresent()) {
-      return new ResponseEntity<>(customerApiDelegate.editCustomer(customer), HttpStatus.OK);
+      return new ResponseEntity<>(customerService.editCustomer(customer), HttpStatus.OK);
     }
     return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
   }
@@ -88,7 +88,7 @@ public class CustomerController {
   public ResponseEntity<HttpStatus> deleteCustomer(
       @PathVariable("customerId") Integer customerId) {
     try {
-      customerApiDelegate.deleteCustomer(customerId);
+      customerService.deleteCustomer(customerId);
       return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     } catch (Exception e) {
       return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
