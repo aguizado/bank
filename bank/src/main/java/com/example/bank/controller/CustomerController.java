@@ -35,7 +35,7 @@ public class CustomerController {
    * @return a HTTP Status
    */
   @PostMapping("/customers")
-  public ResponseEntity<CustomerModel> customersPost(@RequestBody CustomerModel customer) {
+  public ResponseEntity<CustomerModel> createCustomer(@RequestBody CustomerModel customer) {
     try {
       CustomerModel customerModel = customerApiDelegate.createCustomer(customer);
       return new ResponseEntity<>(customerModel, HttpStatus.CREATED);
@@ -51,7 +51,7 @@ public class CustomerController {
    * @return a HTTP Status
    */
   @GetMapping("/customers/{customerId}")
-  public ResponseEntity<CustomerModel> customersCustomerIdGet(
+  public ResponseEntity<CustomerModel> getCustomer(
       @PathVariable("customerId") Integer customerId) {
     Optional<CustomerModel> opCustomer = customerApiDelegate.getCustomer(customerId);
     if (opCustomer.isPresent()) {
@@ -68,7 +68,7 @@ public class CustomerController {
    * @return a HTTP Status
    */
   @PutMapping("/customers/{customerId}")
-  public ResponseEntity<CustomerModel> customersCustomerIdPut(
+  public ResponseEntity<CustomerModel> editCustomer(
       @PathVariable("customerId") Integer customerId,
       @RequestBody CustomerModel customer) {
     Optional<CustomerModel> opCustomer = customerApiDelegate.getCustomer(customerId);
@@ -85,7 +85,7 @@ public class CustomerController {
    * @return a HTTP Status
    */
   @DeleteMapping("/customers/{customerId}")
-  public ResponseEntity<HttpStatus> customersCustomerIdDelete(
+  public ResponseEntity<HttpStatus> deleteCustomer(
       @PathVariable("customerId") Integer customerId) {
     try {
       customerApiDelegate.deleteCustomer(customerId);

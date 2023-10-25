@@ -35,7 +35,7 @@ public class LoanController {
    * @return a HTTP Status
    */
   @PostMapping("/loans")
-  public ResponseEntity<LoanModel> loansPost(@RequestBody LoanModel loan) {
+  public ResponseEntity<LoanModel> createLoan(@RequestBody LoanModel loan) {
     try {
       LoanModel loanModel = loanApiDelegate.createLoan(loan);
       return new ResponseEntity<>(loanModel, HttpStatus.CREATED);
@@ -51,7 +51,7 @@ public class LoanController {
    * @return a HTTP Status
    */
   @GetMapping("/loans/{loanId}")
-  public ResponseEntity<LoanModel> loansLoanIdGet(@PathVariable("loanId") Integer loanId) {
+  public ResponseEntity<LoanModel> getLoan(@PathVariable("loanId") Integer loanId) {
     Optional<LoanModel> opLoan = loanApiDelegate.getLoan(loanId);
     if (opLoan.isPresent()) {
       return ResponseEntity.status(HttpStatus.OK).body(opLoan.get());
@@ -67,7 +67,7 @@ public class LoanController {
    * @return a HTTP Status
    */
   @PutMapping("/loans/{loanId}")
-  public ResponseEntity<LoanModel> loansLoanIdPut(
+  public ResponseEntity<LoanModel> editLoan(
       @PathVariable("loanId") Integer loanId, @RequestBody LoanModel loan) {
     Optional<LoanModel> opLoan = loanApiDelegate.getLoan(loanId);
     if (opLoan.isPresent()) {
@@ -83,7 +83,7 @@ public class LoanController {
    * @return a HTTP Status
    */
   @DeleteMapping("/loans/{loanId}")
-  public ResponseEntity<Void> loansLoanIdDelete(@PathVariable("loanId") Integer loanId) {
+  public ResponseEntity<Void> deleteLoan(@PathVariable("loanId") Integer loanId) {
     try {
       loanApiDelegate.deleteLoan(loanId);
       return new ResponseEntity<>(HttpStatus.NO_CONTENT);

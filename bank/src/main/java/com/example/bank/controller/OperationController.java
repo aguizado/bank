@@ -33,7 +33,7 @@ public class OperationController {
    * @return a HTTP Status
    */
   @PostMapping("/transactions")
-  public ResponseEntity<OperationModel> transactionsPost(@RequestBody OperationModel operation) {
+  public ResponseEntity<OperationModel> createOperation(@RequestBody OperationModel operation) {
     try {
       OperationModel operationModel = operationApiDelegate.createOperation(operation);
       return new ResponseEntity<>(operationModel, HttpStatus.CREATED);
@@ -49,7 +49,7 @@ public class OperationController {
    * @return a HTTP Status
    */
   @GetMapping("/transactions/{customerId}")
-  public ResponseEntity<OperationModel> transactionsCustomerIdGet(
+  public ResponseEntity<OperationModel> getOperation(
       @PathVariable("customerId") Integer customerId) {
     Optional<OperationModel> opCustomer = operationApiDelegate.getOperation(customerId);
     if (opCustomer.isPresent()) {

@@ -35,7 +35,7 @@ public class AccountController {
    * @return a HTTP Status
    */
   @PostMapping("/accounts")
-  public ResponseEntity<AccountModel> accountsPost(@RequestBody AccountModel account) {
+  public ResponseEntity<AccountModel> createAccount(@RequestBody AccountModel account) {
     try {
       AccountModel accountModel = accountApiDelegate.createAccount(account);
       return new ResponseEntity<>(accountModel, HttpStatus.CREATED);
@@ -51,7 +51,7 @@ public class AccountController {
    * @return a HTTP Status
    */
   @GetMapping("/accounts/{accountId}")
-  public ResponseEntity<AccountModel> accountsAccountIdGet(
+  public ResponseEntity<AccountModel> getAccount(
       @PathVariable("accountId") Integer accountId) {
     Optional<AccountModel> opAccount = accountApiDelegate.getAccount(accountId);
     if (opAccount.isPresent()) {
@@ -68,7 +68,7 @@ public class AccountController {
    * @return a HTTP Status
    */
   @PutMapping("/accounts/{accountId}")
-  public ResponseEntity<AccountModel> accountsAccountIdPut(
+  public ResponseEntity<AccountModel> editAccount(
       @PathVariable("accountId") Integer accountId,
       @RequestBody AccountModel account) {
     Optional<AccountModel> opAccount = accountApiDelegate.getAccount(accountId);
@@ -85,7 +85,7 @@ public class AccountController {
    * @return a HTTP Status
    */
   @DeleteMapping("/accounts/{accountId}")
-  public ResponseEntity<Void> accountsAccountIdDelete(
+  public ResponseEntity<Void> deleteAccount(
       @PathVariable("accountId") Integer accountId) {
     try {
       accountApiDelegate.deleteAccount(accountId);
