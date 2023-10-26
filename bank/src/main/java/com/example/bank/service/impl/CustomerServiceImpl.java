@@ -10,8 +10,9 @@ import com.example.bank.repository.CustomerRepository;
 import com.example.bank.repository.LoanRepository;
 import com.example.bank.service.IcustomerService;
 import java.util.Optional;
-import java.util.logging.Logger;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+
 import org.springframework.stereotype.Service;
 
 /**
@@ -21,14 +22,13 @@ import org.springframework.stereotype.Service;
  * @version 0.1, 2023/10/16
  */
 @Service
+@Log4j2
 @RequiredArgsConstructor
 public class CustomerServiceImpl implements IcustomerService {
 
   private final CustomerRepository customerRepository;
   private final AccountRepository accountRepository;
   private final LoanRepository loanRepository;
-
-  static Logger logger = Logger.getLogger(CustomerServiceImpl.class.getName());
 
   @Override
   public CustomerModel createCustomer(CustomerModel customer) {
@@ -60,12 +60,12 @@ public class CustomerServiceImpl implements IcustomerService {
   }
 
   private void validatePersonalVip(CustomerModel customer) {
-    logger.info("PERSONAL_VIP");
+    log.info("PERSONAL_VIP");
     validateAccountVip(customer);
     if (customer.getLoans().size() <= 1) {
       saveLoan(customer);
     } else {
-      logger.info("Un cliente puede tener un producto de crédito");
+      log.info("Un cliente puede tener un producto de crédito");
     }
   }
 
@@ -78,12 +78,12 @@ public class CustomerServiceImpl implements IcustomerService {
    * @param customer This is the first parameter
    */
   public void validatePersonal(CustomerModel customer) {
-    logger.info("PERSONAL");
+    log.info("PERSONAL");
     validateAccount(customer);
     if (customer.getLoans().size() <= 1) {
       saveLoan(customer);
     } else {
-      logger.info("Un cliente puede tener un producto de crédito");
+      log.info("Un cliente puede tener un producto de crédito");
     }
   }
 
@@ -108,10 +108,10 @@ public class CustomerServiceImpl implements IcustomerService {
           nroAccountFixedTerm++;
         }
       } else {
-        logger.info(
+        log.info(
             "Un cliente personal solo puede tener un máximo de una cuenta de ahorro,"
             + " una cuenta corriente o cuentas a plazo fijo.");
-        logger.info("Un cliente personal no necesita tilutales y/o firmantes");
+        log.info("Un cliente personal no necesita tilutales y/o firmantes");
       }
       accountRepository.save(account);
     }
@@ -138,13 +138,13 @@ public class CustomerServiceImpl implements IcustomerService {
    * @param customer This is the first parameter
    */
   public void validateBusiness(CustomerModel customer) {
-    logger.info("BUSINESS");
+    log.info("BUSINESS");
     for (AccountModel account : customer.getAccounts()) {
 
       if ((!TypeAccountEnum.CURRENT.equals(account.getTypeAccount()))
           && (account.getOwners().size() <= 1 && account.getAuthorizedSignatories().isEmpty())) {
-        logger.info("Un cliente empresarial no puede tener una cuenta de ahorro o de plazo fijo");
-        logger.info(
+        log.info("Un cliente empresarial no puede tener una cuenta de ahorro o de plazo fijo");
+        log.info(
             "Las cuentas bancarias empresariales deben tener uno o más titulares y"
             + " cero o más firmantes autorizados");
       }
