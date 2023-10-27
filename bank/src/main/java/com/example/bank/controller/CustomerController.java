@@ -41,9 +41,9 @@ public class CustomerController {
    */
   @PostMapping("/customer")
   public ResponseEntity<CustomerDto> createCustomer(@RequestBody CustomerDto customer) {
-    Optional<CustomerTypeDto> opCustomer = customerTypeService.getCustomerType(
+    Optional<CustomerTypeDto> opCustomerType = customerTypeService.getCustomerType(
         customer.getTypeCustomer().getId());
-    if (opCustomer.isPresent()) {
+    if (opCustomerType.isPresent()) {
       CustomerDto customerDto = customerService.createCustomer(customer);
       return new ResponseEntity<>(customerDto, HttpStatus.CREATED);
     }

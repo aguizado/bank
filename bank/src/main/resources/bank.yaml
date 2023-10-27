@@ -391,6 +391,25 @@ paths:
                 $ref: '#/components/schemas/Product_Type'
         400:
           description: Bad Request - Invalid Product Type data
+  
+  /product_type/getAll:
+    get:
+      tags:
+        - Product Type
+      summary: Product Type Details
+      description: Product Type Details
+      responses:
+        200:
+          description: Product Type details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product_Type' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Product_Type'
+        400:
+          description: Bad Request - Invalid
           
   /product_type/{productTypeId}:
     get:
@@ -482,6 +501,25 @@ paths:
                 $ref: '#/components/schemas/Product'
         400:
           description: Bad Request - Invalid Product data
+  
+  /product/getAll:
+    get:
+      tags:
+        - Product
+      summary: Product Details
+      description: Product Details
+      responses:
+        200:
+          description: Product details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Product'
+        400:
+          description: Bad Request - Invalid
           
   /product/{productId}:
     get:
@@ -542,24 +580,6 @@ paths:
                 $ref: '#/components/schemas/Product'
         400:
           description: Bad Request - Invalid Product data
-        404:
-          description: Product not found
-    
-    delete:
-      tags:
-        - Product
-      summary: Delete Product
-      description: Delete Product
-      parameters:
-        - in: path
-          name: productId
-          required: true
-          schema:
-            type: integer
-          description: Product ID
-      responses:
-        204:
-          description: Product deleted successfully
         404:
           description: Product not found
   
@@ -1243,6 +1263,10 @@ components:
           example: account
         type_product:
           $ref: '#/components/schemas/Product_Type'
+        is_delete:
+          type: boolean
+          default: false
+          example: false
           
     Customer_Product:
       type: object

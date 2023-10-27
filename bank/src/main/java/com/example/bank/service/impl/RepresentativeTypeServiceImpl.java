@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @RequiredArgsConstructor
-public class RepresentativeTypeImpl implements IrepresentativeTypeService {
+public class RepresentativeTypeServiceImpl implements IrepresentativeTypeService {
   
   private final RepresentativeTypeRepository representativeTypeRepository;
   

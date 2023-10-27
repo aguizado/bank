@@ -4,7 +4,7 @@ import com.example.bank.model.dto.CustomerDto;
 import java.util.Optional;
 
 /**
- * . Interface CustomerApiDelegate
+ * . Interface IcustomerService
  *
  * @author Andres Guizado
  * @version 0.1, 2023/10/16

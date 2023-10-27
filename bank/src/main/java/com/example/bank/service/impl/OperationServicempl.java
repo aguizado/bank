@@ -1,11 +1,6 @@
 package com.example.bank.service.impl;
 
-import com.example.bank.model.AccountModel;
-import com.example.bank.model.OperationModel;
-import com.example.bank.model.OperationModel.TypeOperationEnum;
-import com.example.bank.repository.OperationRepository;
 import com.example.bank.service.IoperationService;
-import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
