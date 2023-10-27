@@ -23,39 +23,39 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class OperationController {
 
-  @Autowired
-  IoperationService operationService;
-
-  /**
-   * . This method is to create Operation
-   *
-   * @param operation This is the first parameter
-   * @return a HTTP Status
-   */
-  @PostMapping("/transactions")
-  public ResponseEntity<OperationModel> createOperation(@RequestBody OperationModel operation) {
-    try {
-      OperationModel operationModel = operationService.createOperation(operation);
-      return new ResponseEntity<>(operationModel, HttpStatus.CREATED);
-    } catch (Exception e) {
-      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-  }
-
-  /**
-   * . This method is to get Operation
-   *
-   * @param customerId This is the first parameter
-   * @return a HTTP Status
-   */
-  @GetMapping("/transactions/{customerId}")
-  public ResponseEntity<OperationModel> getOperation(
-      @PathVariable("customerId") Integer customerId) {
-    Optional<OperationModel> opCustomer = operationService.getOperation(customerId);
-    if (opCustomer.isPresent()) {
-      return ResponseEntity.status(HttpStatus.OK).body(opCustomer.get());
-    }
-    return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-  }
+//  @Autowired
+//  IoperationService operationService;
+//
+//  /**
+//   * . This method is to create Operation
+//   *
+//   * @param operation This is the first parameter
+//   * @return a HTTP Status
+//   */
+//  @PostMapping("/transactions")
+//  public ResponseEntity<OperationModel> createOperation(@RequestBody OperationModel operation) {
+//    try {
+//      OperationModel operationModel = operationService.createOperation(operation);
+//      return new ResponseEntity<>(operationModel, HttpStatus.CREATED);
+//    } catch (Exception e) {
+//      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//    }
+//  }
+//
+//  /**
+//   * . This method is to get Operation
+//   *
+//   * @param customerId This is the first parameter
+//   * @return a HTTP Status
+//   */
+//  @GetMapping("/transactions/{customerId}")
+//  public ResponseEntity<OperationModel> getOperation(
+//      @PathVariable("customerId") Integer customerId) {
+//    Optional<OperationModel> opCustomer = operationService.getOperation(customerId);
+//    if (opCustomer.isPresent()) {
+//      return ResponseEntity.status(HttpStatus.OK).body(opCustomer.get());
+//    }
+//    return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+//  }
 
 }

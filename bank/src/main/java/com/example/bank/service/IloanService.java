@@ -11,12 +11,12 @@ import java.util.Optional;
  */
 public interface IloanService {
   
-  public LoanModel createLoan(LoanModel loan);
-  
-  public Optional<LoanModel> getLoan(Integer loanId);
-  
-  public LoanModel editLoan(LoanModel loan);
-  
-  void deleteLoan(Integer loanId);
+//  public LoanModel createLoan(LoanModel loan);
+//  
+//  public Optional<LoanModel> getLoan(Integer loanId);
+//  
+//  public LoanModel editLoan(LoanModel loan);
+//  
+//  void deleteLoan(Integer loanId);
 
 }

@@ -11,12 +11,12 @@ import java.util.Optional;
  */
 public interface IcustomerService {
 
-  public CustomerModel createCustomer(CustomerModel customer);
-  
-  public Optional<CustomerModel> getCustomer(Integer customerId);
-  
-  public CustomerModel editCustomer(CustomerModel customer);
-  
-  void deleteCustomer(Integer customerId);
+//  public CustomerModel createCustomer(CustomerModel customer);
+//  
+//  public Optional<CustomerModel> getCustomer(Integer customerId);
+//  
+//  public CustomerModel editCustomer(CustomerModel customer);
+//  
+//  void deleteCustomer(Integer customerId);
 
 }

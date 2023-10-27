@@ -25,74 +25,74 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class CustomerController {
 
-  @Autowired
-  IcustomerService customerService;
-
-  /**
-   * . This method is to save Customer
-   *
-   * @param customer This is the first parameter
-   * @return a HTTP Status
-   */
-  @PostMapping("/customers")
-  public ResponseEntity<CustomerModel> createCustomer(@RequestBody CustomerModel customer) {
-    try {
-      CustomerModel customerModel = customerService.createCustomer(customer);
-      return new ResponseEntity<>(customerModel, HttpStatus.CREATED);
-    } catch (Exception e) {
-      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-  }
-
-  /**
-   * . This method is to get Customer
-   *
-   * @param customerId This is the first parameter
-   * @return a HTTP Status
-   */
-  @GetMapping("/customers/{customerId}")
-  public ResponseEntity<CustomerModel> getCustomer(
-      @PathVariable("customerId") Integer customerId) {
-    Optional<CustomerModel> opCustomer = customerService.getCustomer(customerId);
-    if (opCustomer.isPresent()) {
-      return ResponseEntity.status(HttpStatus.OK).body(opCustomer.get());
-    }
-    return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-  }
-
-  /**
-   * . This method is to update Customer
-   *
-   * @param customerId This is the first parameter
-   * @param customer   This is the second parameter
-   * @return a HTTP Status
-   */
-  @PutMapping("/customers/{customerId}")
-  public ResponseEntity<CustomerModel> editCustomer(
-      @PathVariable("customerId") Integer customerId,
-      @RequestBody CustomerModel customer) {
-    Optional<CustomerModel> opCustomer = customerService.getCustomer(customerId);
-    if (opCustomer.isPresent()) {
-      return new ResponseEntity<>(customerService.editCustomer(customer), HttpStatus.OK);
-    }
-    return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-  }
-
-  /**
-   * . This method is to delete Customer
-   *
-   * @param customerId This is the first parameter
-   * @return a HTTP Status
-   */
-  @DeleteMapping("/customers/{customerId}")
-  public ResponseEntity<HttpStatus> deleteCustomer(
-      @PathVariable("customerId") Integer customerId) {
-    try {
-      customerService.deleteCustomer(customerId);
-      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    } catch (Exception e) {
-      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-  }
+//  @Autowired
+//  IcustomerService customerService;
+//
+//  /**
+//   * . This method is to save Customer
+//   *
+//   * @param customer This is the first parameter
+//   * @return a HTTP Status
+//   */
+//  @PostMapping("/customers")
+//  public ResponseEntity<CustomerModel> createCustomer(@RequestBody CustomerModel customer) {
+//    try {
+//      CustomerModel customerModel = customerService.createCustomer(customer);
+//      return new ResponseEntity<>(customerModel, HttpStatus.CREATED);
+//    } catch (Exception e) {
+//      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//    }
+//  }
+//
+//  /**
+//   * . This method is to get Customer
+//   *
+//   * @param customerId This is the first parameter
+//   * @return a HTTP Status
+//   */
+//  @GetMapping("/customers/{customerId}")
+//  public ResponseEntity<CustomerModel> getCustomer(
+//      @PathVariable("customerId") Integer customerId) {
+//    Optional<CustomerModel> opCustomer = customerService.getCustomer(customerId);
+//    if (opCustomer.isPresent()) {
+//      return ResponseEntity.status(HttpStatus.OK).body(opCustomer.get());
+//    }
+//    return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+//  }
+//
+//  /**
+//   * . This method is to update Customer
+//   *
+//   * @param customerId This is the first parameter
+//   * @param customer   This is the second parameter
+//   * @return a HTTP Status
+//   */
+//  @PutMapping("/customers/{customerId}")
+//  public ResponseEntity<CustomerModel> editCustomer(
+//      @PathVariable("customerId") Integer customerId,
+//      @RequestBody CustomerModel customer) {
+//    Optional<CustomerModel> opCustomer = customerService.getCustomer(customerId);
+//    if (opCustomer.isPresent()) {
+//      return new ResponseEntity<>(customerService.editCustomer(customer), HttpStatus.OK);
+//    }
+//    return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+//  }
+//
+//  /**
+//   * . This method is to delete Customer
+//   *
+//   * @param customerId This is the first parameter
+//   * @return a HTTP Status
+//   */
+//  @DeleteMapping("/customers/{customerId}")
+//  public ResponseEntity<HttpStatus> deleteCustomer(
+//      @PathVariable("customerId") Integer customerId) {
+//    try {
+//      customerService.deleteCustomer(customerId);
+//      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//    } catch (Exception e) {
+//      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//    }
+//  }
 
 }

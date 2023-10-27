@@ -1,12 +1,15 @@
 package com.example.bank.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.List;
+import javax.validation.Valid;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.data.annotation.Id;
 
 /**
  * . Class AccountDto
@@ -20,8 +23,14 @@ import lombok.ToString;
 @RequiredArgsConstructor
 public class AccountDto {
   
+  @Id
+  @JsonProperty("id")
   private Integer id;
+  
+  @JsonProperty("account_number")
   private String accountNumber;
+  
+  @JsonProperty("account_value")
   private Integer accountValue;
   
   /**
@@ -67,11 +76,24 @@ public class AccountDto {
     }
   }
   
+  @JsonProperty("type_account")
   private TypeAccountEnumDto typeAccount;
+  
+  @JsonProperty("maintenance_fee")
   private Boolean maintenanceFee;
+  
+  @JsonProperty("maintenance_value")
   private Integer maintenanceValue;
+  
+  @JsonProperty("monthly_transaction_limit")
   private Integer monthlyTransactionLimit;
+  
+  @JsonProperty("owners")
+  @Valid
   private List<CustomerDto> owners = null;
+  
+  @JsonProperty("authorized_signatories")
+  @Valid
   private List<CustomerDto> authorizedSignatories = null;
 
 }

@@ -1,6 +1,6 @@
 package com.example.bank.service;
 
-import com.example.bank.model.AccountModel;
+import com.example.bank.model.dto.AccountDto;
 import java.util.Optional;
 
 /**
@@ -11,11 +11,11 @@ import java.util.Optional;
  */
 public interface IaccountService {
 
-  public AccountModel createAccount(AccountModel account);
+  public AccountDto createAccount(AccountDto account);
   
-  public Optional<AccountModel> getAccount(Integer accountId);
+  public Optional<AccountDto> getAccount(Integer accountId);
   
-  public AccountModel editAccount(AccountModel account);
+  public AccountDto editAccount(AccountDto account);
   
   void deleteAccount(Integer accountId);
   

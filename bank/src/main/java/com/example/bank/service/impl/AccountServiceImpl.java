@@ -1,7 +1,9 @@
 package com.example.bank.service.impl;
 
 import com.example.bank.model.AccountModel;
-import com.example.bank.model.AccountModel.TypeAccountEnum;
+import com.example.bank.model.dto.AccountDto;
+import com.example.bank.model.dto.AccountDto.TypeAccountEnumDto;
+import com.example.bank.model.mapper.AccountMapper;
 import com.example.bank.repository.AccountRepository;
 import com.example.bank.service.IaccountService;
 import java.util.Optional;
@@ -19,11 +21,14 @@ import org.springframework.stereotype.Service;
 public class AccountServiceImpl implements IaccountService {
 
   private final AccountRepository accountRepository;
+  
+  private final AccountMapper accountMapper;
 
   @Override
-  public AccountModel createAccount(AccountModel account) {
-    validateAccount(account);
-    return accountRepository.save(account);
+  public AccountDto createAccount(AccountDto account) {
+    validateAccount(account);    
+    AccountModel accountModel = accountMapper.toAccount(account);    
+    return accountMapper.INSTANCE.toEntity(accountRepository.save(accountModel));
   }
 
   /**
@@ -31,14 +36,14 @@ public class AccountServiceImpl implements IaccountService {
    *
    * @param account This is the first parameter
    */
-  public void validateAccount(AccountModel account) {
-    if (TypeAccountEnum.SAVING.equals(account.getTypeAccount())) {
+  public void validateAccount(AccountDto account) {
+    if (TypeAccountEnumDto.SAVING.equals(account.getTypeAccount())) {
       setDataCustomer(account, false, 0, 3);
     }
-    if (TypeAccountEnum.CURRENT.equals(account.getTypeAccount())) {
+    if (TypeAccountEnumDto.CURRENT.equals(account.getTypeAccount())) {
       setDataCustomer(account, true, 5, null);
     }
-    if (TypeAccountEnum.FIXED_TERM.equals(account.getTypeAccount())) {
+    if (TypeAccountEnumDto.FIXED_TERM.equals(account.getTypeAccount())) {
       setDataCustomer(account, false, 0, 1);
     }
   }
@@ -51,7 +56,7 @@ public class AccountServiceImpl implements IaccountService {
    * @param mainValue This is the third parameter
    * @param transLimit This is the fourth parameter
    */
-  public void setDataCustomer(AccountModel account, boolean mainFee,
+  public void setDataCustomer(AccountDto account, boolean mainFee,
       Integer mainValue, Integer transLimit) {
     account.setMaintenanceFee(mainFee);
     account.setMaintenanceValue(mainValue);
@@ -59,12 +64,12 @@ public class AccountServiceImpl implements IaccountService {
   }
 
   @Override
-  public Optional<AccountModel> getAccount(Integer accountId) {
-    return accountRepository.findById(accountId);
+  public Optional<AccountDto> getAccount(Integer accountId) {
+    return Optional.of(accountMapper.toEntity(accountRepository.findById(accountId).get()));
   }
 
   @Override
-  public AccountModel editAccount(AccountModel account) {
+  public AccountDto editAccount(AccountDto account) {
     return createAccount(account);
   }
 

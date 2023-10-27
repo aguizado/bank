@@ -17,26 +17,26 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class LoanServiceImpl implements IloanService {
   
-  private final LoanRepository loanRepository;
-
-  @Override
-  public LoanModel createLoan(LoanModel loan) {
-    return loanRepository.save(loan);
-  }
-
-  @Override
-  public Optional<LoanModel> getLoan(Integer loanId) {
-    return loanRepository.findById(loanId);
-  }
-
-  @Override
-  public LoanModel editLoan(LoanModel loan) {
-    return createLoan(loan);
-  }
-
-  @Override
-  public void deleteLoan(Integer loanId) {
-    loanRepository.deleteById(loanId);
-  }
+//  private final LoanRepository loanRepository;
+//
+//  @Override
+//  public LoanModel createLoan(LoanModel loan) {
+//    return loanRepository.save(loan);
+//  }
+//
+//  @Override
+//  public Optional<LoanModel> getLoan(Integer loanId) {
+//    return loanRepository.findById(loanId);
+//  }
+//
+//  @Override
+//  public LoanModel editLoan(LoanModel loan) {
+//    return createLoan(loan);
+//  }
+//
+//  @Override
+//  public void deleteLoan(Integer loanId) {
+//    loanRepository.deleteById(loanId);
+//  }
 
 }

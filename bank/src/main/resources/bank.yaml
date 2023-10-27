@@ -7,22 +7,237 @@ info:
 servers:
   - url: https://localhost:8080
     description: Production Server
-    
+
 tags:
-  - name: customer
+  - name: Profile
+    description: Everything about Profiles
+  - name: Customer Type
+    description: Everything about Customer Types
+  - name: Customer
     description: Everything about Customers
-  - name: account
-    description: Everything about Accounts
-  - name: loan
-    description: Everything about Loans
-  - name: transaction
-    description: Everything about Transactions
+  - name: Product Type
+    description: Everything about Product Types
+  - name: Product
+    description: Everything about Products
+  - name: Customer Product
+    description: Everything about Customer Products
+  - name: Card
+    description: Everything about Cards
+  - name: Representative Type
+    description: Everything about Representative Types
+  - name: Representative
+    description: Everything about Representatives
+  - name: Operation Type
+    description: Everything about Operation Types
+  - name: Operation
+    description: Everything about Operations
 
 paths:
-  /customers:
+
+  /profile:
     post:
       tags:
-        - customer
+        - Profile
+      summary: Create a New Profile
+      description: Create a New Profile
+      requestBody:
+        description: Create a New Profile
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Profile'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Profile'
+        required: true
+      responses:
+        201:
+          description: Profile created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Profile'
+        400:
+          description: Bad Request - Invalid Profile data
+    
+    get:
+      tags:
+        - Profile
+      summary: Profile Details
+      description: Profile Details
+      responses:
+        200:
+          description: Profile details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Profile'
+        400:
+          description: Bad Request - Invalid
+  
+  /profile/{profileId}:
+    get:
+      tags:
+        - Profile
+      summary: Profile Details by ID
+      description: Profile Details by ID
+      parameters:
+        - in: path
+          name: profileId
+          required: true
+          schema:
+            type: integer
+          description: Profile ID
+      responses:
+        200:
+          description: Profile details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Profile'
+        400:
+          description: Bad Request - Invalid Profile ID
+    
+    put:
+      tags:
+        - Profile
+      summary: Update Profile Details
+      description: Update Profile Details
+      parameters:
+        - in: path
+          name: profileId
+          required: true
+          schema:
+            type: integer
+          description: Profile ID
+      requestBody:
+        description: Update Profile Details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Profile'
+          application/xml:
+              schema:
+                $ref: '#/components/schemas/Profile'
+      responses:
+        200:
+          description: Profile details updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Profile'
+        400:
+          description: Bad Request - Invalid Profile data
+        404:
+          description: Profile not found
+          
+  /customer_type:
+    post:
+      tags:
+        - Customer Type
+      summary: Create a New Customer Type
+      description: Create a New Customer Type
+      requestBody:
+        description: Create a New Customer Type
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer_Type'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Customer_Type'
+        required: true
+      responses:
+        201:
+          description: Customer Type created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer_Type' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Customer_Type'
+        400:
+          description: Bad Request - Invalid Customer Type data
+  
+  /customer_type/{customerTypeId}:
+    get:
+      tags:
+        - Customer Type
+      summary: Customer Type Details by ID
+      description: Customer Type Details by ID
+      parameters:
+        - in: path
+          name: customerTypeId
+          required: true
+          schema:
+            type: integer
+          description: Customer Type ID
+      responses:
+        200:
+          description: Customer Type details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer_Type' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Customer_Type'
+        400:
+          description: Bad Request - Invalid Customer Type ID
+    
+    put:
+      tags:
+        - Customer Type
+      summary: Update Customer Type Details
+      description: Update Customer Type Details
+      parameters:
+        - in: path
+          name: customerTypeId
+          required: true
+          schema:
+            type: integer
+          description: Customer Type ID
+      requestBody:
+        description: Update Customer Type Details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer_Type'
+          application/xml:
+              schema:
+                $ref: '#/components/schemas/Customer_Type'
+      responses:
+        200:
+          description: Customer Type details updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer_Type' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Customer_Type'
+        400:
+          description: Bad Request - Invalid Customer Type data
+        404:
+          description: Customer Type not found
+  
+  /customer:
+    post:
+      tags:
+        - Customer
       summary: Create a New Customer
       description: Create a New Customer
       requestBody:
@@ -46,12 +261,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/Customer'
         400:
-          description: Bad Request - Invalid customer data
+          description: Bad Request - Invalid Customer data
 
-  /customers/{customerId}:
+  /customer/{customerId}:
     get:
       tags:
-        - customer
+        - Customer
       summary: Customer Details by ID
       description: Customer Details by ID
       parameters:
@@ -72,11 +287,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/Customer'
         400:
-          description: Bad Request - Invalid customer ID
+          description: Bad Request - Invalid Customer ID
     
     put:
       tags:
-        - customer
+        - Customer
       summary: Update Customer Details
       description: Update Customer Details
       parameters:
@@ -106,12 +321,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/Customer'
         400:
-          description: Bad Request - Invalid customer data
+          description: Bad Request - Invalid Customer data
         404:
           description: Customer not found
+    
     delete:
       tags:
-        - customer
+        - Customer
       summary: Delete Customer
       description: Delete Customer
       parameters:
@@ -127,285 +343,241 @@ paths:
         404:
           description: Customer not found
           
-  /customers/getByType:
-    get:
-      tags:
-        - customer
-      summary: Customer Details by type
-      description: Customer Details by type
-      parameters:
-        - in: query
-          name: type
-          required: true
-          schema:
-            type: string
-            default: personal
-            enum:
-              - personal
-              - business
-          description: Type
-      responses:
-        200:
-          description: Customer details by type
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Customer' 
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/Customer'
-        400:
-          description: Bad Request - Invalid customer ID
-
-  /accounts:
+  /product_type:
     post:
       tags:
-        - account
-      summary: Create a New Bank Account
-      description: Create a New Bank Account
+        - Product Type
+      summary: Create a New Product Type
+      description: Create a New Product Type
       requestBody:
-        description: Create a New Bank Account
+        description: Create a New Product Type
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Account'
+              $ref: '#/components/schemas/Product_Type'
           application/xml:
             schema:
-              $ref: '#/components/schemas/Account'
+              $ref: '#/components/schemas/Product_Type'
         required: true
       responses:
         201:
-          description: Bank account created successfully
+          description: Product Type created successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Account' 
+                $ref: '#/components/schemas/Product_Type' 
             application/xml:
               schema:
-                $ref: '#/components/schemas/Account'
+                $ref: '#/components/schemas/Product_Type'
         400:
-          description: Bad Request - Invalid account data
-
-  /accounts/{accountId}:
+          description: Bad Request - Invalid Product Type data
+          
+  /product_type/{productTypeId}:
     get:
       tags:
-        - account
-      summary: Bank Account Details
-      description: Bank Account Details
+        - Product Type
+      summary: Product Type Details by ID
+      description: Product Type Details by ID
       parameters:
         - in: path
-          name: accountId
+          name: productTypeId
           required: true
           schema:
             type: integer
-          description: Account ID
+          description: Product Type ID
       responses:
         200:
-          description: Bank account details
+          description: Product Type details
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Account' 
+                $ref: '#/components/schemas/Product_Type' 
             application/xml:
               schema:
-                $ref: '#/components/schemas/Account'
+                $ref: '#/components/schemas/Product_Type'
         400:
-          description: Bad Request - Invalid account ID
+          description: Bad Request - Invalid Product Type ID
+    
     put:
       tags:
-        - account
-      summary: Update Bank Account Details
-      description: Update Bank Account Details
+        - Product Type
+      summary: Update Product Type Details
+      description: Update Product Type Details
       parameters:
         - in: path
-          name: accountId
+          name: productTypeId
           required: true
           schema:
             type: integer
-          description: Account ID
+          description: Product Type ID
       requestBody:
-        description: Update Bank Account Details
+        description: Update Product Type Details
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Account'
+              $ref: '#/components/schemas/Product_Type'
           application/xml:
               schema:
-                $ref: '#/components/schemas/Account'
+                $ref: '#/components/schemas/Product_Type'
       responses:
         200:
-          description: Bank account details updated
+          description: Product Type details updated
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Account' 
+                $ref: '#/components/schemas/Product_Type' 
             application/xml:
               schema:
-                $ref: '#/components/schemas/Account'
+                $ref: '#/components/schemas/Product_Type'
         400:
-          description: Bad Request - Invalid account data
+          description: Bad Request - Invalid Product Type data
         404:
-          description: Account not found
-    delete:
-      tags:
-        - account
-      summary: Delete Bank Account
-      description: Delete Bank Account
-      parameters:
-        - in: path
-          name: accountId
-          required: true
-          schema:
-            type: integer
-          description: Account ID
-      responses:
-        204:
-          description: Bank account deleted successfully
-        404:
-          description: Account not found
-
-  /loans:
-    post:
-      tags:
-        - loan
-      summary: Create a New Credit Product
-      description: Create a New Credit Product
-      requestBody:
-        description: Create a New Credit Product
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Loan'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/Loan'
-        required: true
-      responses:
-        201:
-          description: Credit product created successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Loan' 
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/Loan'
-        400:
-          description: Bad Request - Invalid credit product data
-
-  /loans/{loanId}:
-    get:
-      tags:
-        - loan
-      summary: Credit Product Details
-      description: Credit Product Details
-      parameters:
-        - in: path
-          name: loanId
-          required: true
-          schema:
-            type: integer
-          description: Loan ID
-      responses:
-        200:
-          description: Credit product details
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Loan' 
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/Loan'
-        400:
-          description: Bad Request - Invalid loan ID
-    put:
-      tags:
-        - loan
-      summary: Update Credit Product Details
-      description: Update Credit Product Details
-      parameters:
-        - in: path
-          name: loanId
-          required: true
-          schema:
-            type: integer
-          description: Loan ID
-      requestBody:
-        description: Update Credit Product Details
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Loan'
-          application/xml:
-              schema:
-                $ref: '#/components/schemas/Loan'
-      responses:
-        200:
-          description: Credit product details updated
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Loan' 
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/Loan'
-        400:
-          description: Bad Request - Invalid credit product data
-        404:
-          description: Credit product not found
-    delete:
-      tags:
-        - loan
-      summary: Delete Credit Product
-      description: Delete Credit Product
-      parameters:
-        - in: path
-          name: loanId
-          required: true
-          schema:
-            type: integer
-          description: Loan ID
-      responses:
-        204:
-          description: Credit product deleted successfully
-        404:
-          description: Credit product not found
-
-  /transactions:
-    post:
-      tags:
-        - transaction
-      summary: Create a New Transaction
-      description: Create a New Transaction
-      requestBody:
-        description: Create a New Transaction
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Operation'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/Operation'
-        required: true
-      responses:
-        201:
-          description: Transaction created successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Operation' 
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/Operation'
-        400:
-          description: Bad Request - Invalid Transaction data
+          description: Product Type not found
   
-  /transactions/{customerId}:
+  /product:
+    post:
+      tags:
+        - Product
+      summary: Create a New Product
+      description: Create a New Product
+      requestBody:
+        description: Create a New Product
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Product'
+        required: true
+      responses:
+        201:
+          description: Product created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Product'
+        400:
+          description: Bad Request - Invalid Product data
+          
+  /product/{productId}:
     get:
       tags:
-        - transaction
-      summary: List Transactions of a Bank Product
-      description: List Transactions of a Bank Product
+        - Product
+      summary: Product Details by ID
+      description: Product Details by ID
+      parameters:
+        - in: path
+          name: productId
+          required: true
+          schema:
+            type: integer
+          description: Product ID
+      responses:
+        200:
+          description: Product details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Product'
+        400:
+          description: Bad Request - Invalid Product ID
+    
+    put:
+      tags:
+        - Product
+      summary: Update Product Details
+      description: Update Product Details
+      parameters:
+        - in: path
+          name: productId
+          required: true
+          schema:
+            type: integer
+          description: Product ID
+      requestBody:
+        description: Update Product Details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+          application/xml:
+              schema:
+                $ref: '#/components/schemas/Product'
+      responses:
+        200:
+          description: Product details updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Product'
+        400:
+          description: Bad Request - Invalid Product data
+        404:
+          description: Product not found
+    
+    delete:
+      tags:
+        - Product
+      summary: Delete Product
+      description: Delete Product
+      parameters:
+        - in: path
+          name: productId
+          required: true
+          schema:
+            type: integer
+          description: Product ID
+      responses:
+        204:
+          description: Product deleted successfully
+        404:
+          description: Product not found
+  
+  /customer_product:
+    post:
+      tags:
+        - Customer Product
+      summary: Assign a product to a customer
+      description: Assign a product to a customer
+      requestBody:
+        description: Assign a product to a customer
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer_Product'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Customer_Product'
+        required: true
+      responses:
+        201:
+          description: Data created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer_Product' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Customer_Product'
+        400:
+          description: Bad Request - Invalid data
+  
+  /customer_product/check_balance/{customerId}:
+    get:
+      tags:
+        - Customer Product
+      summary: Check balances by customerId
+      description: Check balances by customerId
       parameters:
         - in: path
           name: customerId
@@ -415,7 +587,444 @@ paths:
           description: Customer ID
       responses:
         200:
-          description: List of transactions of a bank product
+          description: Balances details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer_Product' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Customer_Product'
+        400:
+          description: Bad Request - Invalid Customer ID
+          
+  /customer_product/check_products/{customerId}:
+    get:
+      tags:
+        - Customer Product
+      summary: Check products by customerId
+      description: Check products by customerId
+      parameters:
+        - in: path
+          name: customerId
+          required: true
+          schema:
+            type: integer
+          description: Customer ID
+      responses:
+        200:
+          description: Products details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer_Product' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Customer_Product'
+        400:
+          description: Bad Request - Invalid Customer ID
+          
+  /card:
+    post:
+      tags:
+        - Card
+      summary: Create a New Card
+      description: Create a New Card
+      requestBody:
+        description: Create a New Card
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Card'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Card'
+        required: true
+      responses:
+        201:
+          description: Card created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Card'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Card'
+        400:
+          description: Bad Request - Invalid Card data
+  
+  /card/{cardId}:
+    get:
+      tags:
+        - Card
+      summary: Card Details by ID
+      description: Card Details by ID
+      parameters:
+        - in: path
+          name: cardId
+          required: true
+          schema:
+            type: integer
+          description: Card ID
+      responses:
+        200:
+          description: Card details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Card' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Card'
+        400:
+          description: Bad Request - Invalid Card ID
+    
+    put:
+      tags:
+        - Card
+      summary: Update Card Details
+      description: Update Card Details
+      parameters:
+        - in: path
+          name: cardId
+          required: true
+          schema:
+            type: integer
+          description: Card ID
+      requestBody:
+        description: Update Card Details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Card'
+          application/xml:
+              schema:
+                $ref: '#/components/schemas/Card'
+      responses:
+        200:
+          description: Card details updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Card' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Card'
+        400:
+          description: Bad Request - Invalid Card data
+        404:
+          description: Card not found
+  
+  /representative_type:
+    post:
+      tags:
+        - Representative Type
+      summary: Create a New Representative Type
+      description: Create a New Representative Type
+      requestBody:
+        description: Create a New Representative Type
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Representative_Type'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Representative_Type'
+        required: true
+      responses:
+        201:
+          description: Representative Type created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Representative_Type'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Representative_Type'
+        400:
+          description: Bad Request - Invalid Representative Type data
+  
+  /representative_type/{representativeTypeId}:
+    get:
+      tags:
+        - Representative Type
+      summary: Representative Type Details by ID
+      description: Representative Type Details by ID
+      parameters:
+        - in: path
+          name: representativeTypeId
+          required: true
+          schema:
+            type: integer
+          description: Representative Type ID
+      responses:
+        200:
+          description: Representative Type details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Representative_Type' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Representative_Type'
+        400:
+          description: Bad Request - Invalid Representative Type ID
+    
+    put:
+      tags:
+        - Representative Type
+      summary: Update Representative Type Details
+      description: Update Representative Type Details
+      parameters:
+        - in: path
+          name: representativeTypeId
+          required: true
+          schema:
+            type: integer
+          description: Representative Type ID
+      requestBody:
+        description: Update Representative Type Details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Representative_Type'
+          application/xml:
+              schema:
+                $ref: '#/components/schemas/Representative_Type'
+      responses:
+        200:
+          description: Representative Type details updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Representative_Type' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Representative_Type'
+        400:
+          description: Bad Request - Invalid Representative Type data
+        404:
+          description: Representative Type not found
+  
+  /representative:
+    post:
+      tags:
+        - Representative
+      summary: Create a New Representative
+      description: Create a New Representative
+      requestBody:
+        description: Create a New Representative
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Representative'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Representative'
+        required: true
+      responses:
+        201:
+          description: Representative created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Representative' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Representative'
+        400:
+          description: Bad Request - Invalid Representative data
+
+  /representative/{representativeId}:
+    get:
+      tags:
+        - Representative
+      summary: Representative Details by ID
+      description: Representative Details by ID
+      parameters:
+        - in: path
+          name: representativeId
+          required: true
+          schema:
+            type: integer
+          description: Representative ID
+      responses:
+        200:
+          description: Representative details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Representative' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Representative'
+        400:
+          description: Bad Request - Invalid Representative ID
+    
+    put:
+      tags:
+        - Representative
+      summary: Update Representative Details
+      description: Update Representative Details
+      parameters:
+        - in: path
+          name: representativeId
+          required: true
+          schema:
+            type: integer
+          description: Representative ID
+      requestBody:
+        description: Update Representative Details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Representative'
+          application/xml:
+              schema:
+                $ref: '#/components/schemas/Representative'
+      responses:
+        200:
+          description: Representative details updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Representative' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Representative'
+        400:
+          description: Bad Request - Invalid Representative data
+        404:
+          description: Representative not found
+    
+    delete:
+      tags:
+        - Representative
+      summary: Delete Representative
+      description: Delete Representative
+      parameters:
+        - in: path
+          name: representativeId
+          required: true
+          schema:
+            type: integer
+          description: Representative ID
+      responses:
+        204:
+          description: Representative deleted successfully
+        404:
+          description: Representative not found
+          
+  /operation_type:
+    post:
+      tags:
+        - Operation Type
+      summary: Create a Operation Type Profile
+      description: Create a Operation Type Profile
+      requestBody:
+        description: Create a New Operation Type
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Operation_Type'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Operation_Type'
+        required: true
+      responses:
+        201:
+          description: Operation Type created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation_Type' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Operation_Type'
+        400:
+          description: Bad Request - Invalid Operation Type data
+  
+  /operation_type/{operationTypeId}:
+    get:
+      tags:
+        - Operation Type
+      summary: Operation Type Details by ID
+      description: Operation Type Details by ID
+      parameters:
+        - in: path
+          name: operationTypeId
+          required: true
+          schema:
+            type: integer
+          description: Operation Type ID
+      responses:
+        200:
+          description: Operation Type details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation_Type' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Operation_Type'
+        400:
+          description: Bad Request - Invalid Operation Type ID
+    
+    put:
+      tags:
+        - Operation Type
+      summary: Update Operation Type Details
+      description: Update Operation Type Details
+      parameters:
+        - in: path
+          name: operationTypeId
+          required: true
+          schema:
+            type: integer
+          description: Operation Type ID
+      requestBody:
+        description: Update Operation Type Details
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Operation_Type'
+          application/xml:
+              schema:
+                $ref: '#/components/schemas/Operation_Type'
+      responses:
+        200:
+          description: Operation Type details updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation_Type' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Operation_Type'
+        400:
+          description: Bad Request - Invalid Operation Type data
+        404:
+          description: Operation Type not found
+  
+  /operation:
+    post:
+      tags:
+        - Operation
+      summary: Create a New Operation
+      description: Create a New Operation
+      requestBody:
+        description: Create a New Operation
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Operation'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Operation'
+        required: true
+      responses:
+        201:
+          description: Operation created successfully
           content:
             application/json:
               schema:
@@ -424,10 +1033,102 @@ paths:
               schema:
                 $ref: '#/components/schemas/Operation'
         400:
-          description: Bad Request - Invalid parameters
+          description: Bad Request - Invalid Operation data
+  
+  /operation/check_movements/{customerId}:
+    get:
+      tags:
+        - Operation
+      summary: Check movements by customerId
+      description: Check movements by customerId
+      parameters:
+        - in: path
+          name: customerId
+          required: true
+          schema:
+            type: integer
+          description: Customer ID
+      responses:
+        200:
+          description: Movements details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Operation'
+        400:
+          description: Bad Request - Invalid Customer ID
+          
+  /operation/get_report_last_movements/{customerId}:
+    get:
+      tags:
+        - Operation
+      summary: Obtain report of the last movements by customerId
+      description: Obtain report of the last movements by customerId
+      parameters:
+        - in: path
+          name: customerId
+          required: true
+          schema:
+            type: integer
+          description: Customer ID
+        - in: query
+          name: movementsNumber
+          required: true
+          schema:
+            type: integer
+          description: Movements Number
+      responses:
+        200:
+          description: report of the last ten movements
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Operation'
+        400:
+          description: Bad Request - Invalid Customer ID
 
 components:
   schemas:
+  
+    Profile:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        description:
+          type: string
+          enum: [regular, vip, pyme]
+          default: regular
+          example: regular
+        is_delete:
+          type: boolean
+          default: false
+          example: false
+  
+    Customer_Type:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        description:
+          type: string
+          enum: [personal, empresarial]
+          example: personal
+        type_profile:
+          $ref: '#/components/schemas/Profile'
+        is_delete:
+          type: boolean
+          default: false
+          example: false
+  
     Customer:
       type: object
       properties:
@@ -441,87 +1142,154 @@ components:
           type: string
           example: Guizado
         type_customer:
-          type: string
-          enum: [personal, personal_vip, business, business_pyme]
-          example: personal
-        accounts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Account'
-        loans:
-          type: array
-          items:
-            $ref: '#/components/schemas/Loan'
+          $ref: '#/components/schemas/Customer_Type'
           
-    Account:
+    Product_Type:
       type: object
       properties:
         id:
           type: integer
           example: 1
-        account_number:
+        description:
           type: string
-          example: '0123456789'
-        account_value:
-          type: integer
-          example: 500
-        type_account:
-          type: string
-          enum: [saving, current, fixed_term]
+          enum: [saving, current, fixed_term, personal, business, credit_card]
+          default: saving
           example: saving
         maintenance_fee:
-          type: boolean
-          example: true
-        maintenance_value:
           type: integer
           example: 15
         monthly_transaction_limit:
           type: integer
           example: 3
-        owners:
-          type: array
-          items:
-            $ref: '#/components/schemas/Customer'
-        authorized_signatories:
-          type: array
-          items:
-            $ref: '#/components/schemas/Customer'
-    
-    Loan:
+        transaction_day:
+          type: integer
+          example: 15
+        opening_amount:
+          type: integer
+          example: 500
+        is_delete:
+          type: boolean
+          default: false
+          example: false
+          
+    Product:
       type: object
       properties:
         id:
           type: integer
           example: 1
-        loan_number:
+        description:
           type: string
-          example: '500188'
-        loan_value:
-          type: integer
-          example: 1200
-        type_loan:
-          type: string
-          enum: [personal, business, credit_card]
-          example: personal
-        unit_limit:
+          enum: [account, credit]
+          default: account
+          example: account
+        type_product:
+          $ref: '#/components/schemas/Product_Type'
+          
+    Customer_Product:
+      type: object
+      properties:
+        id:
           type: integer
           example: 1
-    
+        customer:
+          $ref: '#/components/schemas/Customer'
+        product:
+          $ref: '#/components/schemas/Product'
+        Representative:
+          $ref: '#/components/schemas/Representative'
+        product_number:
+          type: string
+          example: '0123456789123'
+        number_card:
+          $ref: '#/components/schemas/Card'
+        amount:
+          type: integer
+          example: 800
+        number_transaction_limit:
+          type: integer
+          example: 1
+        creation_date:
+          type: string
+          example: '26102023'
+          
+    Card:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        number:
+          type: string
+          example: '0000005012345678'
+        is_delete:
+          type: boolean
+          default: false
+          example: false
+          
+    Representative_Type:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        description:
+          type: string
+          enum: [owners, signatories]
+          default: owners
+          example: owners
+        is_delete:
+          type: boolean
+          default: false
+          example: false
+          
+    Representative:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        type_representative:
+          $ref: '#/components/schemas/Representative_Type'
+        name:
+          type: string
+          example: Mery
+        last_name:
+          type: string
+          example: Diaz
+          
+    Operation_Type:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        description:
+          type: string
+          enum: [deposit, withdrawal, payment, consumption, transfer]
+          default: deposit
+          example: deposit
+        is_delete:
+          type: boolean
+          default: false
+          example: false
+          
     Operation:
-     type: object
-     properties:
-      id:
-        type: integer
-        example: 1
-      customer:
-        $ref: '#/components/schemas/Customer'
-      type_operation:
-        type: string
-        enum: [deposit, withdrawal,payment,consumption]
-        example: deposit
-      balance:
-        type: integer
-        example: 500
-      operation_date:
-        type: string
-        example: 12102023
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        type_operation:
+          $ref: '#/components/schemas/Operation_Type'
+        customer_producto:
+          $ref: '#/components/schemas/Customer_Product'
+        balance:
+          type: integer
+          example: 500
+        commission:
+          type: integer
+          example: 0
+        operation_date:
+          type: string
+          example: 12102023

@@ -11,8 +11,8 @@ import java.util.Optional;
  */
 public interface IoperationService {
 
-  public OperationModel createOperation(OperationModel operation);
-  
-  public Optional<OperationModel> getOperation(Integer operationId);
+//  public OperationModel createOperation(OperationModel operation);
+//  
+//  public Optional<OperationModel> getOperation(Integer operationId);
 
 }
