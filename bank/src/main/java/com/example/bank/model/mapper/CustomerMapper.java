@@ -4,6 +4,7 @@ import com.example.bank.model.CustomerModel;
 import com.example.bank.model.dto.CustomerDto;
 import java.util.List;
 import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 
 /**
  * . Class CustomerMapper
@@ -14,10 +15,14 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface CustomerMapper {
   
+  CustomerMapper INSTANCE = Mappers.getMapper(CustomerMapper.class);
+  
   CustomerModel toCustomer(CustomerDto customerDto);
   
   List<CustomerModel> toCustomers(List<CustomerDto> customerDto);
   
   CustomerDto toEntity(CustomerModel customerModel);
+  
+  List<CustomerDto> toEntityList(List<CustomerModel> customerModel);
 
 }

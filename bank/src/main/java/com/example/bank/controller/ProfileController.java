@@ -2,7 +2,6 @@ package com.example.bank.controller;
 
 import com.example.bank.model.dto.ProfileDto;
 import com.example.bank.service.IprofileService;
-
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -48,10 +47,9 @@ public class ProfileController {
   /**
    * . This method is to get Profile
    *
-   * @param profileId This is the first parameter
    * @return a HTTP Status
    */
-  @GetMapping("/profile")
+  @GetMapping("/profile/getAll")
   public ResponseEntity<List<ProfileDto>> getProfiles() { 
     try {
       List<ProfileDto> profileList = profileService.getProfiles();
@@ -87,8 +85,8 @@ public class ProfileController {
   @PutMapping("/profile/{profileId}")
   public ResponseEntity<ProfileDto> editCard(@PathVariable("profileId") Integer profileId,
       @RequestBody ProfileDto profile) {
-    Optional<ProfileDto> opAccount = profileService.getProfile(profileId);
-    if (opAccount.isPresent()) {
+    Optional<ProfileDto> opProfile = profileService.getProfile(profileId);
+    if (opProfile.isPresent()) {
       return new ResponseEntity<>(profileService.editProfile(profile), HttpStatus.OK);
     }
     return ResponseEntity.status(HttpStatus.NOT_FOUND).build();

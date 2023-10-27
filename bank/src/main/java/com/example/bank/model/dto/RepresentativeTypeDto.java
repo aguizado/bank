@@ -1,41 +1,43 @@
 package com.example.bank.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.data.annotation.Id;
 
 /**
- * . Class LoanDto
+ * . Class RepresentativeTypeDto
  *
  * @author Andres Guizado
- * @version 0.1, 2023/10/25
+ * @version 0.1, 2023/10/27
  */
 @Setter
 @Getter
 @ToString
 @RequiredArgsConstructor
-public class LoanDto {
+public class RepresentativeTypeDto {
   
+  @Id
+  @JsonProperty("id")
   private Integer id;
-  private String loanNumber;
-  private Integer loanValue;
-  
+
   /**
-   * . Enum TypeLoanEnumDTO
+   * . Enum DescriptionEnum
    *
    * @author Andres Guizado
-   * @version 0.1, 2023/10/23
+   * @version 0.1, 2023/10/27
    */
-  public enum TypeLoanEnumDto {
-
-    PERSONAL("personal"), BUSINESS("business"), CREDIT_CARD("credit_card");
+  public enum DescriptionEnum {
+    
+    OWNERS("owners"), SIGNATORIES("signatories");
 
     private String value;
 
-    TypeLoanEnumDto(String value) {
+    DescriptionEnum(String value) {
       this.value = value;
     }
 
@@ -50,24 +52,26 @@ public class LoanDto {
     }
 
     /**
-     * . This method is fromValue TypeLoanEnum
+     * . This method is fromValue DescriptionEnum
      *
      * @param value This is the first parameter
      * @return a new value
      */
     @JsonCreator
-    public static TypeLoanEnumDto fromValue(String value) {
-      for (TypeLoanEnumDto b : TypeLoanEnumDto.values()) {
+    public static DescriptionEnum fromValue(String value) {
+      for (DescriptionEnum b : DescriptionEnum.values()) {
         if (b.value.equals(value)) {
           return b;
         }
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
   }
-  
-  private TypeLoanEnumDto typeLoan;
-  private Integer unitLimit;
+
+  @JsonProperty("description")
+  private DescriptionEnum description = DescriptionEnum.OWNERS;
+
+  @JsonProperty("is_delete")
+  private Boolean isDelete = false;
 
 }

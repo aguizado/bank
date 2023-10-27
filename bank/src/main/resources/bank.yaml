@@ -63,6 +63,7 @@ paths:
         400:
           description: Bad Request - Invalid Profile data
     
+  /profile/getAll:
     get:
       tags:
         - Profile
@@ -171,6 +172,25 @@ paths:
                 $ref: '#/components/schemas/Customer_Type'
         400:
           description: Bad Request - Invalid Customer Type data
+  
+  /customer_type/getAll:
+    get:
+      tags:
+        - Customer Type
+      summary: Customer Type Details
+      description: Customer Type Details
+      responses:
+        200:
+          description: Customer Type details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer_Type' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Customer_Type'
+        400:
+          description: Bad Request - Invalid
   
   /customer_type/{customerTypeId}:
     get:
@@ -744,6 +764,25 @@ paths:
         400:
           description: Bad Request - Invalid Representative Type data
   
+  /representative_type/getAll:
+    get:
+      tags:
+        - Representative Type
+      summary: Representative Type Details
+      description: Representative Type Details
+      responses:
+        200:
+          description: Representative Type details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Representative_Type' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Representative_Type'
+        400:
+          description: Bad Request - Invalid
+  
   /representative_type/{representativeTypeId}:
     get:
       tags:
@@ -943,6 +982,25 @@ paths:
                 $ref: '#/components/schemas/Operation_Type'
         400:
           description: Bad Request - Invalid Operation Type data
+  
+  /operation_type/getAll:
+    get:
+      tags:
+        - Operation Type
+      summary: Operation Type Details
+      description: Operation Type Details
+      responses:
+        200:
+          description: Operation Type details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation_Type' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Operation_Type'
+        400:
+          description: Bad Request - Invalid
   
   /operation_type/{operationTypeId}:
     get:

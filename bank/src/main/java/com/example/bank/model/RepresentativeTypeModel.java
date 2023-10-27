@@ -11,41 +11,35 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
- * . Class CustomerModel
+ * . Class RepresentativeTypeModel
  *
  * @author Andres Guizado
- * @version 0.1, 2023/10/19
+ * @version 0.1, 2023/10/27
  */
 @Setter
 @Getter
 @ToString
 @RequiredArgsConstructor
-@Document(collection = "loan")
-public class LoanModel {
-
+@Document(collection = "representative_type")
+public class RepresentativeTypeModel {
+  
   @Id
   @JsonProperty("id")
   private Integer id;
 
-  @JsonProperty("loan_number")
-  private String loanNumber;
-
-  @JsonProperty("loan_value")
-  private Integer loanValue;
-
   /**
-   * . Enum TypeLoanEnum
+   * . Enum DescriptionEnum
    *
    * @author Andres Guizado
-   * @version 0.1, 2023/10/23
+   * @version 0.1, 2023/10/27
    */
-  public enum TypeLoanEnum {
-
-    PERSONAL("personal"), BUSINESS("business"), CREDIT_CARD("credit_card");
+  public enum DescriptionEnum {
+    
+    OWNERS("owners"), SIGNATORIES("signatories");
 
     private String value;
 
-    TypeLoanEnum(String value) {
+    DescriptionEnum(String value) {
       this.value = value;
     }
 
@@ -60,27 +54,26 @@ public class LoanModel {
     }
 
     /**
-     * . This method is fromValue TypeLoanEnum
+     * . This method is fromValue DescriptionEnum
      *
      * @param value This is the first parameter
      * @return a new value
      */
     @JsonCreator
-    public static TypeLoanEnum fromValue(String value) {
-      for (TypeLoanEnum b : TypeLoanEnum.values()) {
+    public static DescriptionEnum fromValue(String value) {
+      for (DescriptionEnum b : DescriptionEnum.values()) {
         if (b.value.equals(value)) {
           return b;
         }
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
   }
 
-  @JsonProperty("type_loan")
-  private TypeLoanEnum typeLoan;
+  @JsonProperty("description")
+  private DescriptionEnum description = DescriptionEnum.OWNERS;
 
-  @JsonProperty("unit_limit")
-  private Integer unitLimit;
+  @JsonProperty("is_delete")
+  private Boolean isDelete = false;
 
 }

@@ -1,170 +1,48 @@
 package com.example.bank.service.impl;
 
+import com.example.bank.model.CustomerModel;
+import com.example.bank.model.dto.CustomerDto;
+import com.example.bank.model.mapper.CustomerMapper;
+import com.example.bank.repository.CustomerRepository;
 import com.example.bank.service.IcustomerService;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 /**
- * . Class CustomerApiDelegateImpl
+ * . Class CustomerServiceImpl
  *
  * @author Andres Guizado
  * @version 0.1, 2023/10/16
  */
 @Service
-@Log4j2
 @RequiredArgsConstructor
 public class CustomerServiceImpl implements IcustomerService {
+  
+  private final CustomerRepository customerRepository;
+  
+  private final CustomerMapper customerMapper;
+  
+  @Override
+  public CustomerDto createCustomer(CustomerDto customer) {
+    CustomerModel customerModel = customerMapper.toCustomer(customer);
+    return customerMapper.INSTANCE.toEntity(customerRepository.save(customerModel));
+  }
 
-//  private final CustomerRepository customerRepository;
-//  private final AccountRepository accountRepository;
-//  private final LoanRepository loanRepository;
-//
-//  @Override
-//  public CustomerModel createCustomer(CustomerModel customer) {
-//    validateCustomer(customer);
-//    return customerRepository.save(customer);
-//  }
-//
-//  /**
-//   * . This method validate Customer
-//   *
-//   * @param customer This is the first parameter
-//   */
-//  public void validateCustomer(CustomerModel customer) {
-//    if (TypeCustomerEnum.PERSONAL.equals(customer.getTypeCustomer())) {
-//      validatePersonal(customer);
-//    } else if (TypeCustomerEnum.BUSINESS.equals(customer.getTypeCustomer())) {
-//      validateBusiness(customer);
-//    } else if (TypeCustomerEnum.PERSONAL_VIP.equals(customer.getTypeCustomer())) {
-//      validatePersonalVip(customer);
-//    } else if (TypeCustomerEnum.BUSINESS_PYME.equals(customer.getTypeCustomer())) {
-//      validateBusinessPyme(customer);
-//    }
-//  }
-//
-//  private void validateBusinessPyme(CustomerModel customer) {
-//    // Como requisito debe de tener una cuenta corriente.
-//    // Como requisito, el cliente debe tener una tarjeta de crédito con el banco al
-//    // momento de la creación de la cuenta.
-//  }
-//
-//  private void validatePersonalVip(CustomerModel customer) {
-//    log.info("PERSONAL_VIP");
-//    validateAccountVip(customer);
-//    if (customer.getLoans().size() <= 1) {
-//      saveLoan(customer);
-//    } else {
-//      log.info("Un cliente puede tener un producto de crédito");
-//    }
-//  }
-//
-//  private void validateAccountVip(CustomerModel customer) {
-//  }
-//
-//  /**
-//   * . This method validate Personal Customer
-//   *
-//   * @param customer This is the first parameter
-//   */
-//  public void validatePersonal(CustomerModel customer) {
-//    log.info("PERSONAL");
-//    validateAccount(customer);
-//    if (customer.getLoans().size() <= 1) {
-//      saveLoan(customer);
-//    } else {
-//      log.info("Un cliente puede tener un producto de crédito");
-//    }
-//  }
-//
-//  private void validateAccount(CustomerModel customer) {
-//    int nroAccountSaving = 0;
-//    int nroAccountCurrent = 0;
-//    int nroAccountFixedTerm = 0;
-//    for (AccountModel account : customer.getAccounts()) {
-//      if ((nroAccountSaving < 1 || nroAccountCurrent < 1 || nroAccountFixedTerm < 1)
-//          && account != null
-//          && (account.getOwners().isEmpty() && account.getAuthorizedSignatories().isEmpty())) {
-//        if (TypeAccountEnum.SAVING.equals(account.getTypeAccount())) {
-//          setDataCustomer(account, false, 0, 3);
-//          nroAccountSaving++;
-//        }
-//        if (TypeAccountEnum.CURRENT.equals(account.getTypeAccount())) {
-//          setDataCustomer(account, true, 5, null);
-//          nroAccountCurrent++;
-//        }
-//        if (TypeAccountEnum.FIXED_TERM.equals(account.getTypeAccount())) {
-//          setDataCustomer(account, false, 0, 1);
-//          nroAccountFixedTerm++;
-//        }
-//      } else {
-//        log.info(
-//            "Un cliente personal solo puede tener un máximo de una cuenta de ahorro,"
-//            + " una cuenta corriente o cuentas a plazo fijo.");
-//        log.info("Un cliente personal no necesita tilutales y/o firmantes");
-//      }
-//      accountRepository.save(account);
-//    }
-//  }
-//
-//  /**
-//   * . This method set data Customer
-//   *
-//   * @param account This is the first parameter
-//   * @param mainFee This is the second parameter
-//   * @param mainValue This is the third parameter
-//   * @param transLimit This is the fourth parameter
-//   */
-//  public void setDataCustomer(AccountModel account, boolean mainFee,
-//      Integer mainValue, Integer transLimit) {
-//    account.setMaintenanceFee(mainFee);
-//    account.setMaintenanceValue(mainValue);
-//    account.setMonthlyTransactionLimit(transLimit);
-//  }
-//
-//  /**
-//   * . This method validate Business Customer
-//   *
-//   * @param customer This is the first parameter
-//   */
-//  public void validateBusiness(CustomerModel customer) {
-//    log.info("BUSINESS");
-//    for (AccountModel account : customer.getAccounts()) {
-//
-//      if ((!TypeAccountEnum.CURRENT.equals(account.getTypeAccount()))
-//          && (account.getOwners().size() <= 1 && account.getAuthorizedSignatories().isEmpty())) {
-//        log.info("Un cliente empresarial no puede tener una cuenta de ahorro o de plazo fijo");
-//        log.info(
-//            "Las cuentas bancarias empresariales deben tener uno o más titulares y"
-//            + " cero o más firmantes autorizados");
-//      }
-//
-//      setDataCustomer(account, true, 5, null);
-//      accountRepository.save(account);
-//    }
-//    saveLoan(customer);
-//  }
-//
-//  private void saveLoan(CustomerModel customer) {
-//    for (LoanModel loan : customer.getLoans()) {
-//      loanRepository.save(loan);
-//    }
-//  }
-//
-//  @Override
-//  public Optional<CustomerModel> getCustomer(Integer customerId) {
-//    return customerRepository.findById(customerId);
-//  }
-//
-//  @Override
-//  public CustomerModel editCustomer(CustomerModel customer) {
-//    return createCustomer(customer);
-//  }
-//
-//  @Override
-//  public void deleteCustomer(Integer customerId) {
-//    customerRepository.deleteById(customerId);
-//    //borrar cuenta y/o loan
-//  }
+  @Override
+  public Optional<CustomerDto> getCustomer(Integer customerId) {
+    return Optional.of(customerMapper.toEntity(customerRepository
+        .findById(customerId).get()));
+  }
 
+  @Override
+  public CustomerDto editCustomer(CustomerDto customer) {
+    return createCustomer(customer);
+  }
+
+  @Override
+  public void deleteCustomer(Integer customerId) {
+    customerRepository.deleteById(customerId);
+  }
+  
 }

@@ -1,6 +1,6 @@
 package com.example.bank.service;
 
-import com.example.bank.model.CustomerModel;
+import com.example.bank.model.dto.CustomerDto;
 import java.util.Optional;
 
 /**
@@ -11,12 +11,12 @@ import java.util.Optional;
  */
 public interface IcustomerService {
 
-//  public CustomerModel createCustomer(CustomerModel customer);
-//  
-//  public Optional<CustomerModel> getCustomer(Integer customerId);
-//  
-//  public CustomerModel editCustomer(CustomerModel customer);
-//  
-//  void deleteCustomer(Integer customerId);
+  public CustomerDto createCustomer(CustomerDto customer);
+  
+  public Optional<CustomerDto> getCustomer(Integer customerId);
+  
+  public CustomerDto editCustomer(CustomerDto customer);
+  
+  void deleteCustomer(Integer customerId);
 
 }

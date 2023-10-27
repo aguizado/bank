@@ -5,7 +5,6 @@ import com.example.bank.model.dto.ProfileDto;
 import com.example.bank.model.mapper.ProfileMapper;
 import com.example.bank.repository.ProfileRepository;
 import com.example.bank.service.IprofileService;
-
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
