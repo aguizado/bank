@@ -1,11 +1,11 @@
 package com.example.bank.model.dto;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.data.annotation.Id;
 
 /**
  * . Class OperationDto
@@ -19,54 +19,23 @@ import lombok.ToString;
 @RequiredArgsConstructor
 public class OperationDto {
   
+  @Id
+  @JsonProperty("id")
   private Integer id;
-  private CustomerDto customer;
-  
-  /**
-   * . Enum TypeOperationEnumDto
-   *
-   * @author Andres Guizado
-   * @version 0.1, 2023/10/23
-   */
-  public enum TypeOperationEnumDto {
 
-    DEPOSIT("deposit"), WITHDRAWAL("withdrawal"), PAYMENT("payment"), CONSUMPTION("consumption");
+  @JsonProperty("type_operation")
+  private OperationTypeDto typeOperation;
 
-    private String value;
+  @JsonProperty("customer_producto")
+  private CustomerProductDto customerProducto;
 
-    TypeOperationEnumDto(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    /**
-     * . This method is fromValue TypeOperationEnum
-     *
-     * @param value This is the first parameter
-     * @return a new value
-     */
-    @JsonCreator
-    public static TypeOperationEnumDto fromValue(String value) {
-      for (TypeOperationEnumDto b : TypeOperationEnumDto.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-  
-  private TypeOperationEnumDto typeOperation;
+  @JsonProperty("balance")
   private Integer balance;
+
+  @JsonProperty("commission")
+  private Integer commission;
+
+  @JsonProperty("operation_date")
   private String operationDate;
 
 }

@@ -4,6 +4,7 @@ import com.example.bank.model.OperationModel;
 import com.example.bank.model.dto.OperationDto;
 import java.util.List;
 import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 
 /**
  * . Class OperationMapper
@@ -14,10 +15,14 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface OperationMapper {
   
+  OperationMapper INSTANCE = Mappers.getMapper(OperationMapper.class);
+  
   OperationModel toOperation(OperationDto operationDto);
   
   List<OperationModel> toOperations(List<OperationDto> operationDto);
   
   OperationDto toEntity(OperationModel operationModel);
+  
+  List<OperationDto> toEntityList(List<OperationModel> operationModel);
 
 }

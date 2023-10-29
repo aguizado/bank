@@ -1,18 +1,20 @@
 package com.example.bank.service;
 
-import com.example.bank.model.OperationModel;
+import com.example.bank.model.dto.OperationDto;
 import java.util.Optional;
 
 /**
- * . Interface OperationApiDelegate
+ * . Interface IoperationService
  *
  * @author Andres Guizado
  * @version 0.1, 2023/10/16
  */
 public interface IoperationService {
 
-//  public OperationModel createOperation(OperationModel operation);
-//  
-//  public Optional<OperationModel> getOperation(Integer operationId);
+  public OperationDto createOperation(OperationDto operationDto);
+  
+  public Optional<OperationDto> getMovements(Integer customerId);
+  
+  public Optional<OperationDto> getReportLastMovements(Integer customerId);
 
 }
