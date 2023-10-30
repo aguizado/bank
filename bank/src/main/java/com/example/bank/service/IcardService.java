@@ -1,7 +1,7 @@
 package com.example.bank.service;
 
 import com.example.bank.model.dto.CardDto;
-import java.util.Optional;
+import io.reactivex.rxjava3.core.Single;
 
 /**
  * . Interface IcardService
@@ -11,10 +11,10 @@ import java.util.Optional;
  */
 public interface IcardService {
   
-  public CardDto createCard(CardDto card);
+  public Single<CardDto> createCard(CardDto card);
   
-  public Optional<CardDto> getCard(Integer cardId);
+  public Single<CardDto> getCard(Integer cardId);
   
-  public CardDto editCard(CardDto card);
+  public Single<CardDto> editCard(CardDto card);
 
 }

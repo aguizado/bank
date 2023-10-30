@@ -2,11 +2,9 @@ package com.example.bank.controller;
 
 import com.example.bank.model.dto.CardDto;
 import com.example.bank.service.IcardService;
-import java.util.Optional;
+import io.reactivex.rxjava3.core.Single;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,13 +32,8 @@ public class CardController {
    * @return a HTTP Status
    */
   @PostMapping("/card")
-  public ResponseEntity<CardDto> createCard(@RequestBody CardDto card) {
-    try {
-      CardDto cardDto = cardService.createCard(card);
-      return new ResponseEntity<>(cardDto, HttpStatus.CREATED);
-    } catch (Exception e) {
-      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
+  public Single<CardDto> createCard(@RequestBody CardDto card) {
+    return cardService.createCard(card);
   }
   
   /**
@@ -50,13 +43,9 @@ public class CardController {
    * @return a HTTP Status
    */
   @GetMapping("/card/{cardId}")
-  public ResponseEntity<CardDto> getCard(
+  public Single<CardDto> getCard(
       @PathVariable("cardId") Integer cardId) {
-    Optional<CardDto> opCard = cardService.getCard(cardId);
-    if (opCard.isPresent()) {
-      return ResponseEntity.status(HttpStatus.OK).body(opCard.get());
-    }
-    return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    return cardService.getCard(cardId);
   }
   
   /**
@@ -65,15 +54,11 @@ public class CardController {
    * @param cardId This is the first parameter
    * @param card   This is the second parameter
    * @return a HTTP Status
-   */
+   */  
   @PutMapping("/card/{cardId}")
-  public ResponseEntity<CardDto> editCard(@PathVariable("cardId") Integer cardId,
+  public Single<CardDto> editCard(@PathVariable("cardId") Integer cardId,
       @RequestBody CardDto card) {
-    Optional<CardDto> opAccount = cardService.getCard(cardId);
-    if (opAccount.isPresent()) {
-      return new ResponseEntity<>(cardService.editCard(card), HttpStatus.OK);
-    }
-    return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    return cardService.editCard(card);
   }
-
+  
 }
