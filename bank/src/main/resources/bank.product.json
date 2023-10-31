@@ -1,0 +1,90 @@
+[{
+  "_id": 1,
+  "description": "ACCOUNT",
+  "typeProduct": {
+    "_id": 1,
+    "description": "SAVING",
+    "maintenanceFee": 15,
+    "monthlyTransactionLimit": 3,
+    "transactionDay": 15,
+    "openingAmount": 500,
+    "isDelete": false
+  },
+  "isDelete": false,
+  "_class": "com.example.bank.model.ProductModel"
+},
+{
+  "_id": 2,
+  "description": "ACCOUNT",
+  "typeProduct": {
+    "_id": 2,
+    "description": "CURRENT",
+    "maintenanceFee": 5,
+    "monthlyTransactionLimit": 0,
+    "transactionDay": 0,
+    "openingAmount": 0,
+    "isDelete": false
+  },
+  "isDelete": false,
+  "_class": "com.example.bank.model.ProductModel"
+},
+{
+  "_id": 3,
+  "description": "ACCOUNT",
+  "typeProduct": {
+    "_id": 3,
+    "description": "FIXED_TERM",
+    "maintenanceFee": 0,
+    "monthlyTransactionLimit": 1,
+    "transactionDay": 15,
+    "openingAmount": 0,
+    "isDelete": false
+  },
+  "isDelete": false,
+  "_class": "com.example.bank.model.ProductModel"
+},
+{
+  "_id": 4,
+  "description": "CREDIT",
+  "typeProduct": {
+    "_id": 4,
+    "description": "PERSONAL",
+    "maintenanceFee": 0,
+    "monthlyTransactionLimit": 0,
+    "transactionDay": 0,
+    "openingAmount": 0,
+    "isDelete": false
+  },
+  "isDelete": false,
+  "_class": "com.example.bank.model.ProductModel"
+},
+{
+  "_id": 5,
+  "description": "CREDIT",
+  "typeProduct": {
+    "_id": 5,
+    "description": "BUSINESS",
+    "maintenanceFee": 0,
+    "monthlyTransactionLimit": 0,
+    "transactionDay": 0,
+    "openingAmount": 0,
+    "isDelete": false
+  },
+  "isDelete": false,
+  "_class": "com.example.bank.model.ProductModel"
+},
+{
+  "_id": 6,
+  "description": "CREDIT",
+  "typeProduct": {
+    "_id": 6,
+    "description": "CREDIT_CARD",
+    "maintenanceFee": 0,
+    "monthlyTransactionLimit": 0,
+    "transactionDay": 0,
+    "openingAmount": 0,
+    "isDelete": false
+  },
+  "isDelete": false,
+  "_class": "com.example.bank.model.ProductModel"
+}]

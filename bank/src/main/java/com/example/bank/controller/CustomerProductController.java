@@ -2,10 +2,12 @@ package com.example.bank.controller;
 
 import com.example.bank.model.dto.CustomerProductDto;
 import com.example.bank.service.IcustomerProductService;
+import com.example.bank.util.Constants;
 import io.reactivex.rxjava3.core.Single;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,10 +35,12 @@ public class CustomerProductController {
    * @return a HTTP Status
    */
   @PostMapping("/customer_product")
-  public Single<CustomerProductDto> createCustomerProduct(
+  public Single<ResponseEntity<CustomerProductDto>> createCustomerProduct(
       @RequestBody CustomerProductDto customerProduct) {
-    log.info("Save Customer Product");
-    return customerProductService.createCustomerProduct(customerProduct);
+    return customerProductService.createCustomerProduct(customerProduct)
+        .map(ResponseEntity::ok)
+        .doOnError(throwable -> log.error(Constants.DO_ON_ERROR, throwable))
+        .doOnSuccess(response -> log.info(Constants.DO_ON_SUCCESS, response));
   }
   
   /**
@@ -46,9 +50,12 @@ public class CustomerProductController {
    * @return a HTTP Status
    */
   @GetMapping("/customer_product/check_balance/{customerId}")
-  public Single<CustomerProductDto> getBalance(
+  public Single<ResponseEntity<CustomerProductDto>> getBalance(
       @PathVariable("customerId") Integer customerId) {
-    return customerProductService.getBalance(customerId);
+    return customerProductService.getBalance(customerId)
+        .map(ResponseEntity::ok)
+        .doOnError(throwable -> log.error(Constants.DO_ON_ERROR, throwable))
+        .doOnSuccess(response -> log.info(Constants.DO_ON_SUCCESS, response));
   }
   
   /**
@@ -58,9 +65,12 @@ public class CustomerProductController {
    * @return a HTTP Status
    */
   @GetMapping("/customer_product/check_products/{customerId}")
-  public Single<CustomerProductDto> getProducts(
+  public Single<ResponseEntity<CustomerProductDto>> getProducts(
       @PathVariable("customerId") Integer customerId) {
-    return customerProductService.getBalance(customerId);
+    return customerProductService.getBalance(customerId)
+        .map(ResponseEntity::ok)
+        .doOnError(throwable -> log.error(Constants.DO_ON_ERROR, throwable))
+        .doOnSuccess(response -> log.info(Constants.DO_ON_SUCCESS, response));
   }
 
 }

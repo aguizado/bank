@@ -2,10 +2,13 @@ package com.example.bank.controller;
 
 import com.example.bank.model.dto.RepresentativeTypeDto;
 import com.example.bank.service.IrepresentativeTypeService;
+import com.example.bank.util.Constants;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.Single;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @version 0.1, 2023/10/27
  */
 @RestController
+@Log4j2
 @RequiredArgsConstructor
 public class RepresentativeTypeController {
   
@@ -33,9 +37,12 @@ public class RepresentativeTypeController {
    * @return a HTTP Status
    */
   @PostMapping("/representative_type")
-  public Single<RepresentativeTypeDto> createRepresentativeType(
+  public Single<ResponseEntity<RepresentativeTypeDto>> createRepresentativeType(
       @RequestBody RepresentativeTypeDto representativeType) {
-    return representativeTypeService.createRepresentativeType(representativeType);
+    return representativeTypeService.createRepresentativeType(representativeType)
+        .map(ResponseEntity::ok)
+        .doOnError(throwable -> log.error(Constants.DO_ON_ERROR, throwable))
+        .doOnSuccess(response -> log.info(Constants.DO_ON_SUCCESS, response));
   }
   
   /**
@@ -44,8 +51,9 @@ public class RepresentativeTypeController {
    * @return a HTTP Status
    */
   @GetMapping("/representative_type/getAll")
-  public Observable<RepresentativeTypeDto> getRepresentativeTypes() { 
-    return representativeTypeService.getRepresentativeTypes();
+  public Observable<ResponseEntity<RepresentativeTypeDto>> getRepresentativeTypes() { 
+    return representativeTypeService.getRepresentativeTypes().map(ResponseEntity::ok)
+        .doOnError(throwable -> log.error(Constants.DO_ON_ERROR, throwable));
   }
   
   /**
@@ -55,9 +63,12 @@ public class RepresentativeTypeController {
    * @return a HTTP Status
    */
   @GetMapping("/representative_type/{representativeTypeId}")
-  public Single<RepresentativeTypeDto> getRepresentativeType(
+  public Single<ResponseEntity<RepresentativeTypeDto>> getRepresentativeType(
       @PathVariable("representativeTypeId") Integer representativeTypeId) {
-    return representativeTypeService.getRepresentativeType(representativeTypeId);
+    return representativeTypeService.getRepresentativeType(representativeTypeId)
+        .map(ResponseEntity::ok)
+        .doOnError(throwable -> log.error(Constants.DO_ON_ERROR, throwable))
+        .doOnSuccess(response -> log.info(Constants.DO_ON_SUCCESS, response));
   }
   
   /**
@@ -68,10 +79,13 @@ public class RepresentativeTypeController {
    * @return a HTTP Status
    */
   @PutMapping("/representative_type/{representativeTypeId}")
-  public Single<RepresentativeTypeDto> editRepresentativeType(
+  public Single<ResponseEntity<RepresentativeTypeDto>> editRepresentativeType(
       @PathVariable("representativeTypeId") Integer representativeTypeId,
       @RequestBody RepresentativeTypeDto representativeType) {
-    return representativeTypeService.editRepresentativeType(representativeType);
+    return representativeTypeService.editRepresentativeType(representativeType)
+        .map(ResponseEntity::ok)
+        .doOnError(throwable -> log.error(Constants.DO_ON_ERROR, throwable))
+        .doOnSuccess(response -> log.info(Constants.DO_ON_SUCCESS, response));
   }
 
 }

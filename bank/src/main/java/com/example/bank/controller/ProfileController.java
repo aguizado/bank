@@ -2,10 +2,13 @@ package com.example.bank.controller;
 
 import com.example.bank.model.dto.ProfileDto;
 import com.example.bank.service.IprofileService;
+import com.example.bank.util.Constants;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.Single;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @version 0.1, 2023/10/26
  */
 @RestController
+@Log4j2
 @RequiredArgsConstructor
 public class ProfileController {
   
@@ -33,8 +37,11 @@ public class ProfileController {
    * @return a HTTP Status
    */
   @PostMapping("/profile")
-  public Single<ProfileDto> createProfile(@RequestBody ProfileDto profile) {
-    return profileService.createProfile(profile);
+  public Single<ResponseEntity<ProfileDto>> createProfile(@RequestBody ProfileDto profile) {
+    return profileService.createProfile(profile)
+        .map(ResponseEntity::ok)
+        .doOnError(throwable -> log.error(Constants.DO_ON_ERROR, throwable))
+        .doOnSuccess(response -> log.info(Constants.DO_ON_SUCCESS, response));
   }
   
   /**
@@ -43,8 +50,10 @@ public class ProfileController {
    * @return a HTTP Status
    */
   @GetMapping("/profile/getAll")
-  public Observable<ProfileDto> getProfiles() { 
-    return profileService.getProfiles();
+  public Observable<ResponseEntity<ProfileDto>> getProfiles() { 
+    return profileService.getProfiles()
+        .map(ResponseEntity::ok)
+        .doOnError(throwable -> log.error(Constants.DO_ON_ERROR, throwable));
   }
   
   /**
@@ -54,9 +63,12 @@ public class ProfileController {
    * @return a HTTP Status
    */
   @GetMapping("/profile/{profileId}")
-  public Single<ProfileDto> getProfile(
+  public Single<ResponseEntity<ProfileDto>> getProfile(
       @PathVariable("profileId") Integer profileId) {
-    return profileService.getProfile(profileId);
+    return profileService.getProfile(profileId)
+        .map(ResponseEntity::ok)
+        .doOnError(throwable -> log.error(Constants.DO_ON_ERROR, throwable))
+        .doOnSuccess(response -> log.info(Constants.DO_ON_SUCCESS, response));
   }
   
   /**
@@ -67,9 +79,12 @@ public class ProfileController {
    * @return a HTTP Status
    */
   @PutMapping("/profile/{profileId}")
-  public Single<ProfileDto> editCard(@PathVariable("profileId") Integer profileId,
+  public Single<ResponseEntity<ProfileDto>> editCard(@PathVariable("profileId") Integer profileId,
       @RequestBody ProfileDto profile) {
-    return profileService.editProfile(profile);
+    return profileService.editProfile(profile)
+        .map(ResponseEntity::ok)
+        .doOnError(throwable -> log.error(Constants.DO_ON_ERROR, throwable))
+        .doOnSuccess(response -> log.info(Constants.DO_ON_SUCCESS, response));
   }
 
 }

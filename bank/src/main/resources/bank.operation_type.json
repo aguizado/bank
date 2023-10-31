@@ -1,0 +1,30 @@
+[{
+  "_id": 1,
+  "description": "DEPOSIT",
+  "isDelete": false,
+  "_class": "com.example.bank.model.OperationTypeModel"
+},
+{
+  "_id": 2,
+  "description": "WITHDRAWAL",
+  "isDelete": false,
+  "_class": "com.example.bank.model.OperationTypeModel"
+},
+{
+  "_id": 3,
+  "description": "PAYMENT",
+  "isDelete": false,
+  "_class": "com.example.bank.model.OperationTypeModel"
+},
+{
+  "_id": 4,
+  "description": "CONSUMPTION",
+  "isDelete": false,
+  "_class": "com.example.bank.model.OperationTypeModel"
+},
+{
+  "_id": 5,
+  "description": "DEPOSIT",
+  "isDelete": false,
+  "_class": "com.example.bank.model.OperationTypeModel"
+}]

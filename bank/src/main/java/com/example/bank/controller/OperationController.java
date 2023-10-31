@@ -2,10 +2,12 @@ package com.example.bank.controller;
 
 import com.example.bank.model.dto.OperationDto;
 import com.example.bank.service.IoperationService;
+import com.example.bank.util.Constants;
 import io.reactivex.rxjava3.core.Single;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,10 +35,12 @@ public class OperationController {
    * @return a HTTP Status
    */
   @PostMapping("/operation")
-  public Single<OperationDto> createOperation(
+  public Single<ResponseEntity<OperationDto>> createOperation(
       @RequestBody OperationDto operation) {
-    log.info("Operation");
-    return operationService.createOperation(operation);
+    return operationService.createOperation(operation)
+        .map(ResponseEntity::ok)
+        .doOnError(throwable -> log.error(Constants.DO_ON_ERROR, throwable))
+        .doOnSuccess(response -> log.info(Constants.DO_ON_SUCCESS, response));
   }
   
   /**
@@ -46,9 +50,12 @@ public class OperationController {
    * @return a HTTP Status
    */
   @GetMapping("/operation/check_movements/{customerId}")
-  public Single<OperationDto> getMovements(
+  public Single<ResponseEntity<OperationDto>> getMovements(
       @PathVariable("customerId") Integer customerId) {
-    return operationService.getMovements(customerId);
+    return operationService.getMovements(customerId)
+        .map(ResponseEntity::ok)
+        .doOnError(throwable -> log.error(Constants.DO_ON_ERROR, throwable))
+        .doOnSuccess(response -> log.info(Constants.DO_ON_SUCCESS, response));
   }
   
   /**
@@ -58,9 +65,12 @@ public class OperationController {
    * @return a HTTP Status
    */
   @GetMapping("/operation/get_report_last_movements/{customerId}")
-  public Single<OperationDto> getReportLastMovements(
+  public Single<ResponseEntity<OperationDto>> getReportLastMovements(
       @PathVariable("customerId") Integer customerId) {
-    return operationService.getReportLastMovements(customerId);
+    return operationService.getReportLastMovements(customerId)
+        .map(ResponseEntity::ok)
+        .doOnError(throwable -> log.error(Constants.DO_ON_ERROR, throwable))
+        .doOnSuccess(response -> log.info(Constants.DO_ON_SUCCESS, response));
   }
 
 }

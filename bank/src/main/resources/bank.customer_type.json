@@ -1,0 +1,44 @@
+[{
+  "_id": 1,
+  "description": "PERSONAL",
+  "typeProfile": {
+    "_id": 1,
+    "description": "REGULAR",
+    "isDelete": false
+  },
+  "isDelete": false,
+  "_class": "com.example.bank.model.CustomerTypeModel"
+},
+{
+  "_id": 2,
+  "description": "PERSONAL",
+  "typeProfile": {
+    "_id": 2,
+    "description": "VIP",
+    "isDelete": false
+  },
+  "isDelete": false,
+  "_class": "com.example.bank.model.CustomerTypeModel"
+},
+{
+  "_id": 3,
+  "description": "EMPRESARIAL",
+  "typeProfile": {
+    "_id": 1,
+    "description": "REGULAR",
+    "isDelete": false
+  },
+  "isDelete": false,
+  "_class": "com.example.bank.model.CustomerTypeModel"
+},
+{
+  "_id": 4,
+  "description": "EMPRESARIAL",
+  "typeProfile": {
+    "_id": 3,
+    "description": "PYME",
+    "isDelete": false
+  },
+  "isDelete": false,
+  "_class": "com.example.bank.model.CustomerTypeModel"
+}]

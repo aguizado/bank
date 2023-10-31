@@ -1,0 +1,12 @@
+[{
+  "_id": 1,
+  "description": "OWNERS",
+  "isDelete": false,
+  "_class": "com.example.bank.model.RepresentativeTypeModel"
+},
+{
+  "_id": 2,
+  "description": "SIGNATORIES",
+  "isDelete": false,
+  "_class": "com.example.bank.model.RepresentativeTypeModel"
+}]
