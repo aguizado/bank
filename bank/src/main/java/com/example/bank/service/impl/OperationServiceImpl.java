@@ -5,9 +5,11 @@ import com.example.bank.model.dto.OperationDto;
 import com.example.bank.model.mapper.OperationMapper;
 import com.example.bank.repository.OperationRepository;
 import com.example.bank.service.IoperationService;
-import java.util.Optional;
+import io.reactivex.rxjava3.core.Single;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import reactor.adapter.rxjava.RxJava3Adapter;
+import reactor.core.publisher.Mono;
 
 /**
  * . Class OperationServiceImpl
@@ -24,23 +26,22 @@ public class OperationServiceImpl implements IoperationService {
   private final OperationMapper operationMapper;
   
   @Override
-  public OperationDto createOperation(OperationDto operationDto) {
-    OperationModel operationModel = operationMapper
-        .toOperation(operationDto);
-    return operationMapper.INSTANCE.toEntity(
-        operationRepository.save(operationModel));
+  public Single<OperationDto> createOperation(OperationDto operationDto) {
+    OperationModel operationModel = operationMapper.toOperation(operationDto);
+    Mono<OperationModel> operationMono = operationRepository.save(operationModel);
+    return RxJava3Adapter.monoToSingle(operationMono.map(operationMapper::toEntity));
   }
 
   @Override
-  public Optional<OperationDto> getMovements(Integer customerId) {
-    return Optional.of(operationMapper.toEntity(operationRepository
-        .findById(customerId).get()));
+  public Single<OperationDto> getMovements(Integer customerId) {
+    Mono<OperationModel> operationMono = operationRepository.findById(customerId);
+    return RxJava3Adapter.monoToSingle(operationMono.map(operationMapper::toEntity));
   }
 
   @Override
-  public Optional<OperationDto> getReportLastMovements(Integer customerId) {
-    return Optional.of(operationMapper.toEntity(operationRepository
-        .findById(customerId).get()));
+  public Single<OperationDto> getReportLastMovements(Integer customerId) {
+    Mono<OperationModel> operationMono = operationRepository.findById(customerId);
+    return RxJava3Adapter.monoToSingle(operationMono.map(operationMapper::toEntity));
   }
 
 }

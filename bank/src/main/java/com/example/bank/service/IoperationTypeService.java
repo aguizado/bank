@@ -1,8 +1,8 @@
 package com.example.bank.service;
 
 import com.example.bank.model.dto.OperationTypeDto;
-import java.util.List;
-import java.util.Optional;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Single;
 
 /**
  * . Interface IoperationTypeService
@@ -12,12 +12,12 @@ import java.util.Optional;
  */
 public interface IoperationTypeService {
   
-  public OperationTypeDto createOperationType(OperationTypeDto operationType);
+  public Single<OperationTypeDto> createOperationType(OperationTypeDto operationType);
   
-  public List<OperationTypeDto> getOperationTypes();
+  public Observable<OperationTypeDto> getOperationTypes();
   
-  public Optional<OperationTypeDto> getOperationType(Integer operationTypeId);
+  public Single<OperationTypeDto> getOperationType(Integer operationTypeId);
   
-  public OperationTypeDto editOperationType(OperationTypeDto operationType);
+  public Single<OperationTypeDto> editOperationType(OperationTypeDto operationType);
 
 }

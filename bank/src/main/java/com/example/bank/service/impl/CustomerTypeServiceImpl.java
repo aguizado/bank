@@ -5,10 +5,13 @@ import com.example.bank.model.dto.CustomerTypeDto;
 import com.example.bank.model.mapper.CustomerTypeMapper;
 import com.example.bank.repository.CustomerTypeRepository;
 import com.example.bank.service.IcustomerTypeService;
-import java.util.List;
-import java.util.Optional;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Single;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import reactor.adapter.rxjava.RxJava3Adapter;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 /**
  * . Class CustomerTypeServiceImpl
@@ -25,24 +28,26 @@ public class CustomerTypeServiceImpl implements IcustomerTypeService {
   private final CustomerTypeMapper customerTypeMapper;
 
   @Override
-  public CustomerTypeDto createCustomerType(CustomerTypeDto customerType) {
+  public Single<CustomerTypeDto> createCustomerType(CustomerTypeDto customerType) {
     CustomerTypeModel customerTypeModel = customerTypeMapper.toCustomerType(customerType);
-    return customerTypeMapper.INSTANCE.toEntity(customerTypeRepository.save(customerTypeModel));
+    Mono<CustomerTypeModel> customerTypeMono = customerTypeRepository.save(customerTypeModel);
+    return RxJava3Adapter.monoToSingle(customerTypeMono.map(customerTypeMapper::toEntity));
   }
 
   @Override
-  public List<CustomerTypeDto> getCustomerTypes() {
-    return customerTypeMapper.toEntityList(customerTypeRepository.findAll());
+  public Observable<CustomerTypeDto> getCustomerTypes() {
+    Flux<CustomerTypeModel> customerTypeFlux = customerTypeRepository.findAll();
+    return RxJava3Adapter.fluxToObservable(customerTypeFlux.map(customerTypeMapper::toEntity));
   }
 
   @Override
-  public Optional<CustomerTypeDto> getCustomerType(Integer customerTypeId) {
-    return Optional.of(customerTypeMapper.toEntity(customerTypeRepository
-        .findById(customerTypeId).get()));
+  public Single<CustomerTypeDto> getCustomerType(Integer customerTypeId) {
+    Mono<CustomerTypeModel> customerTypeMono = customerTypeRepository.findById(customerTypeId);
+    return RxJava3Adapter.monoToSingle(customerTypeMono.map(customerTypeMapper::toEntity));
   }
 
   @Override
-  public CustomerTypeDto editCustomerType(CustomerTypeDto customerType) {
+  public Single<CustomerTypeDto> editCustomerType(CustomerTypeDto customerType) {
     return createCustomerType(customerType);
   }
 

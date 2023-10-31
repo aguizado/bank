@@ -1,8 +1,8 @@
 package com.example.bank.service;
 
 import com.example.bank.model.dto.ProductTypeDto;
-import java.util.List;
-import java.util.Optional;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Single;
 
 /**
  * . Interface IproductTypeService
@@ -12,12 +12,12 @@ import java.util.Optional;
  */
 public interface IproductTypeService {
   
-  public ProductTypeDto createProductType(ProductTypeDto productType);
+  public Single<ProductTypeDto> createProductType(ProductTypeDto productType);
   
-  public List<ProductTypeDto> getProductTypes();
+  public Observable<ProductTypeDto> getProductTypes();
   
-  public Optional<ProductTypeDto> getProductType(Integer productTypeId);
+  public Single<ProductTypeDto> getProductType(Integer productTypeId);
   
-  public ProductTypeDto editProductType(ProductTypeDto productType);
+  public Single<ProductTypeDto> editProductType(ProductTypeDto productType);
 
 }

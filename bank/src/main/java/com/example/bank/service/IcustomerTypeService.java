@@ -1,8 +1,8 @@
 package com.example.bank.service;
 
 import com.example.bank.model.dto.CustomerTypeDto;
-import java.util.List;
-import java.util.Optional;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Single;
 
 /**
  * . Interface IcustomerTypeService
@@ -12,12 +12,12 @@ import java.util.Optional;
  */
 public interface IcustomerTypeService {
   
-  public CustomerTypeDto createCustomerType(CustomerTypeDto customerType);
+  public Single<CustomerTypeDto> createCustomerType(CustomerTypeDto customerType);
   
-  public List<CustomerTypeDto> getCustomerTypes();
+  public Observable<CustomerTypeDto> getCustomerTypes();
   
-  public Optional<CustomerTypeDto> getCustomerType(Integer customerTypeId);
+  public Single<CustomerTypeDto> getCustomerType(Integer customerTypeId);
   
-  public CustomerTypeDto editCustomerType(CustomerTypeDto customerType);
+  public Single<CustomerTypeDto> editCustomerType(CustomerTypeDto customerType);
 
 }

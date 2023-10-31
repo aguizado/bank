@@ -2,12 +2,10 @@ package com.example.bank.controller;
 
 import com.example.bank.model.dto.OperationTypeDto;
 import com.example.bank.service.IoperationTypeService;
-import java.util.List;
-import java.util.Optional;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Single;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,14 +33,9 @@ public class OperationTypeController {
    * @return a HTTP Status
    */
   @PostMapping("/operation_type")
-  public ResponseEntity<OperationTypeDto> createOperationType(
+  public Single<OperationTypeDto> createOperationType(
       @RequestBody OperationTypeDto operationType) {
-    try {
-      OperationTypeDto operationTypeDto = operationTypeService.createOperationType(operationType);
-      return new ResponseEntity<>(operationTypeDto, HttpStatus.CREATED);
-    } catch (Exception e) {
-      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
+    return operationTypeService.createOperationType(operationType);
   }
   
   /**
@@ -51,13 +44,8 @@ public class OperationTypeController {
    * @return a HTTP Status
    */
   @GetMapping("/operation_type/getAll")
-  public ResponseEntity<List<OperationTypeDto>> getOperationTypes() { 
-    try {
-      List<OperationTypeDto> operationTypeList = operationTypeService.getOperationTypes();
-      return ResponseEntity.ok(operationTypeList);
-    } catch (Exception e) {
-      return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-    }
+  public Observable<OperationTypeDto> getOperationTypes() { 
+    return operationTypeService.getOperationTypes();
   }
   
   /**
@@ -67,14 +55,9 @@ public class OperationTypeController {
    * @return a HTTP Status
    */
   @GetMapping("/operation_type/{operationTypeId}")
-  public ResponseEntity<OperationTypeDto> getOperationType(
+  public Single<OperationTypeDto> getOperationType(
       @PathVariable("operationTypeId") Integer operationTypeId) {
-    Optional<OperationTypeDto> opOperationType = operationTypeService
-        .getOperationType(operationTypeId);
-    if (opOperationType.isPresent()) {
-      return ResponseEntity.status(HttpStatus.OK).body(opOperationType.get());
-    }
-    return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    return operationTypeService.getOperationType(operationTypeId);
   }
   
   /**
@@ -85,16 +68,10 @@ public class OperationTypeController {
    * @return a HTTP Status
    */
   @PutMapping("/operation_type/{operationTypeId}")
-  public ResponseEntity<OperationTypeDto> editOperationType(
+  public Single<OperationTypeDto> editOperationType(
       @PathVariable("operationTypeId") Integer operationTypeId,
       @RequestBody OperationTypeDto operationType) {
-    Optional<OperationTypeDto> opOperationType = operationTypeService
-        .getOperationType(operationTypeId);
-    if (opOperationType.isPresent()) {
-      return new ResponseEntity<>(operationTypeService
-          .editOperationType(operationType), HttpStatus.OK);
-    }
-    return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    return operationTypeService.editOperationType(operationType);
   }
 
 }

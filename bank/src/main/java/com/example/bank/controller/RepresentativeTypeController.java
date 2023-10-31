@@ -2,12 +2,10 @@ package com.example.bank.controller;
 
 import com.example.bank.model.dto.RepresentativeTypeDto;
 import com.example.bank.service.IrepresentativeTypeService;
-import java.util.List;
-import java.util.Optional;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Single;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,15 +33,9 @@ public class RepresentativeTypeController {
    * @return a HTTP Status
    */
   @PostMapping("/representative_type")
-  public ResponseEntity<RepresentativeTypeDto> createRepresentativeType(
+  public Single<RepresentativeTypeDto> createRepresentativeType(
       @RequestBody RepresentativeTypeDto representativeType) {
-    try {
-      RepresentativeTypeDto representativeTypeDto = representativeTypeService
-          .createRepresentativeType(representativeType);
-      return new ResponseEntity<>(representativeTypeDto, HttpStatus.CREATED);
-    } catch (Exception e) {
-      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
+    return representativeTypeService.createRepresentativeType(representativeType);
   }
   
   /**
@@ -52,14 +44,8 @@ public class RepresentativeTypeController {
    * @return a HTTP Status
    */
   @GetMapping("/representative_type/getAll")
-  public ResponseEntity<List<RepresentativeTypeDto>> getRepresentativeTypes() { 
-    try {
-      List<RepresentativeTypeDto> representativeTypeList = representativeTypeService
-          .getRepresentativeTypes();
-      return ResponseEntity.ok(representativeTypeList);
-    } catch (Exception e) {
-      return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-    }
+  public Observable<RepresentativeTypeDto> getRepresentativeTypes() { 
+    return representativeTypeService.getRepresentativeTypes();
   }
   
   /**
@@ -69,14 +55,9 @@ public class RepresentativeTypeController {
    * @return a HTTP Status
    */
   @GetMapping("/representative_type/{representativeTypeId}")
-  public ResponseEntity<RepresentativeTypeDto> getRepresentativeType(
+  public Single<RepresentativeTypeDto> getRepresentativeType(
       @PathVariable("representativeTypeId") Integer representativeTypeId) {
-    Optional<RepresentativeTypeDto> opRepresentativeType = representativeTypeService
-        .getRepresentativeType(representativeTypeId);
-    if (opRepresentativeType.isPresent()) {
-      return ResponseEntity.status(HttpStatus.OK).body(opRepresentativeType.get());
-    }
-    return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    return representativeTypeService.getRepresentativeType(representativeTypeId);
   }
   
   /**
@@ -87,16 +68,10 @@ public class RepresentativeTypeController {
    * @return a HTTP Status
    */
   @PutMapping("/representative_type/{representativeTypeId}")
-  public ResponseEntity<RepresentativeTypeDto> editRepresentativeType(
+  public Single<RepresentativeTypeDto> editRepresentativeType(
       @PathVariable("representativeTypeId") Integer representativeTypeId,
       @RequestBody RepresentativeTypeDto representativeType) {
-    Optional<RepresentativeTypeDto> opRepresentativeType = representativeTypeService
-        .getRepresentativeType(representativeTypeId);
-    if (opRepresentativeType.isPresent()) {
-      return new ResponseEntity<>(representativeTypeService
-          .editRepresentativeType(representativeType), HttpStatus.OK);
-    }
-    return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    return representativeTypeService.editRepresentativeType(representativeType);
   }
 
 }

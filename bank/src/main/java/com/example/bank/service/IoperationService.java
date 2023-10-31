@@ -1,7 +1,7 @@
 package com.example.bank.service;
 
 import com.example.bank.model.dto.OperationDto;
-import java.util.Optional;
+import io.reactivex.rxjava3.core.Single;
 
 /**
  * . Interface IoperationService
@@ -11,10 +11,10 @@ import java.util.Optional;
  */
 public interface IoperationService {
 
-  public OperationDto createOperation(OperationDto operationDto);
+  public Single<OperationDto> createOperation(OperationDto operationDto);
   
-  public Optional<OperationDto> getMovements(Integer customerId);
+  public Single<OperationDto> getMovements(Integer customerId);
   
-  public Optional<OperationDto> getReportLastMovements(Integer customerId);
+  public Single<OperationDto> getReportLastMovements(Integer customerId);
 
 }

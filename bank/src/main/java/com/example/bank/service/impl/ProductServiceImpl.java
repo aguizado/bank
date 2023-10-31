@@ -5,10 +5,13 @@ import com.example.bank.model.dto.ProductDto;
 import com.example.bank.model.mapper.ProductMapper;
 import com.example.bank.repository.ProductRepository;
 import com.example.bank.service.IproductService;
-import java.util.List;
-import java.util.Optional;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Single;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import reactor.adapter.rxjava.RxJava3Adapter;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 /**
  * . Class ProductServiceImpl
@@ -25,25 +28,26 @@ public class ProductServiceImpl implements IproductService {
   private final ProductMapper productMapper;
 
   @Override
-  public ProductDto createProduct(ProductDto product) {
+  public Single<ProductDto> createProduct(ProductDto product) {
     ProductModel productModel = productMapper.toProduct(product);
-    return productMapper.INSTANCE.toEntity(
-        productRepository.save(productModel));
+    Mono<ProductModel> productMono = productRepository.save(productModel);
+    return RxJava3Adapter.monoToSingle(productMono.map(productMapper::toEntity));
   }
 
   @Override
-  public List<ProductDto> getProducts() {
-    return productMapper.toEntityList(productRepository.findAll());
+  public Observable<ProductDto> getProducts() {
+    Flux<ProductModel> productFlux = productRepository.findAll();
+    return RxJava3Adapter.fluxToObservable(productFlux.map(productMapper::toEntity));
   }
 
   @Override
-  public Optional<ProductDto> getProduct(Integer productId) {
-    return Optional.of(productMapper.toEntity(productRepository
-        .findById(productId).get()));
+  public Single<ProductDto> getProduct(Integer productId) {
+    Mono<ProductModel> productMono = productRepository.findById(productId);
+    return RxJava3Adapter.monoToSingle(productMono.map(productMapper::toEntity));
   }
 
   @Override
-  public ProductDto editProduct(ProductDto product) {
+  public Single<ProductDto> editProduct(ProductDto product) {
     return createProduct(product);
   }
 

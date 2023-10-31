@@ -1,7 +1,7 @@
 package com.example.bank.service;
 
 import com.example.bank.model.dto.CustomerProductDto;
-import java.util.Optional;
+import io.reactivex.rxjava3.core.Single;
 
 /**
  * . Interface IcustomerProductService
@@ -11,10 +11,10 @@ import java.util.Optional;
  */
 public interface IcustomerProductService {
   
-  public CustomerProductDto createCustomerProduct(CustomerProductDto customerProductDto);
+  public Single<CustomerProductDto> createCustomerProduct(CustomerProductDto customerProductDto);
   
-  public Optional<CustomerProductDto> getBalance(Integer customerProducId);
+  public Single<CustomerProductDto> getBalance(Integer customerProducId);
   
-  public Optional<CustomerProductDto> getProducts(Integer customerProducId);
+  public Single<CustomerProductDto> getProducts(Integer customerProducId);
 
 }

@@ -1,8 +1,8 @@
 package com.example.bank.service;
 
 import com.example.bank.model.dto.ProfileDto;
-import java.util.List;
-import java.util.Optional;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Single;
 
 /**
  * . Interface IprofileService
@@ -12,12 +12,12 @@ import java.util.Optional;
  */
 public interface IprofileService {
   
-  public ProfileDto createProfile(ProfileDto profile);
+  public Single<ProfileDto> createProfile(ProfileDto profile);
   
-  public List<ProfileDto> getProfiles();
+  public Observable<ProfileDto> getProfiles();
   
-  public Optional<ProfileDto> getProfile(Integer profileId);
+  public Single<ProfileDto> getProfile(Integer profileId);
   
-  public ProfileDto editProfile(ProfileDto profile);
+  public Single<ProfileDto> editProfile(ProfileDto profile);
 
 }

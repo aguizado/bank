@@ -5,9 +5,11 @@ import com.example.bank.model.dto.RepresentativeDto;
 import com.example.bank.model.mapper.RepresentativeMapper;
 import com.example.bank.repository.RepresentativeRepository;
 import com.example.bank.service.IrepresentativeService;
-import java.util.Optional;
+import io.reactivex.rxjava3.core.Single;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import reactor.adapter.rxjava.RxJava3Adapter;
+import reactor.core.publisher.Mono;
 
 /**
  * . Class RepresentativeServiceImpl
@@ -24,26 +26,33 @@ public class RepresentativeServiceImpl implements IrepresentativeService {
   private final RepresentativeMapper representativeMapper;
   
   @Override
-  public RepresentativeDto createRepresentative(RepresentativeDto representative) {
-    RepresentativeModel representativeModel = representativeMapper.toRepresentative(representative);
-    return representativeMapper.INSTANCE.toEntity(
-        representativeRepository.save(representativeModel));
+  public Single<RepresentativeDto> createRepresentative(RepresentativeDto representative) {
+    RepresentativeModel representativeModel = representativeMapper
+        .toRepresentative(representative);
+    Mono<RepresentativeModel> representativeMono = representativeRepository
+        .save(representativeModel);
+    return RxJava3Adapter.monoToSingle(representativeMono.map(representativeMapper::toEntity));
   }
 
   @Override
-  public Optional<RepresentativeDto> getRepresentative(Integer representativeId) {
-    return Optional.of(representativeMapper.toEntity(representativeRepository
-        .findById(representativeId).get()));
+  public Single<RepresentativeDto> getRepresentative(Integer representativeId) {
+    Mono<RepresentativeModel> representativeMono = representativeRepository
+        .findById(representativeId);
+    return RxJava3Adapter.monoToSingle(representativeMono.map(representativeMapper::toEntity));
   }
 
   @Override
-  public RepresentativeDto editRepresentative(RepresentativeDto representative) {
+  public Single<RepresentativeDto> editRepresentative(RepresentativeDto representative) {
     return createRepresentative(representative);
   }
 
   @Override
-  public void deleteRepresentative(Integer representativeId) {
-    representativeRepository.deleteById(representativeId);
+  public Single<RepresentativeDto> deleteRepresentative(Integer representativeId) {
+    Mono<RepresentativeModel> representativeMono = representativeRepository
+        .findById(representativeId)
+        .flatMap(existingRepres -> representativeRepository.delete(existingRepres)
+        .then(Mono.just(existingRepres)));
+    return RxJava3Adapter.monoToSingle(representativeMono.map(representativeMapper::toEntity));
   }
 
 }

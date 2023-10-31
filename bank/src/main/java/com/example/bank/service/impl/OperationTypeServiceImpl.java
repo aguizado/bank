@@ -5,10 +5,13 @@ import com.example.bank.model.dto.OperationTypeDto;
 import com.example.bank.model.mapper.OperationTypeMapper;
 import com.example.bank.repository.OperationTypeRepository;
 import com.example.bank.service.IoperationTypeService;
-import java.util.List;
-import java.util.Optional;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Single;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import reactor.adapter.rxjava.RxJava3Adapter;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 /**
  * . Class OperationTypeServiceImpl
@@ -25,24 +28,26 @@ public class OperationTypeServiceImpl implements IoperationTypeService {
   private final OperationTypeMapper operationTypeMapper;
   
   @Override
-  public OperationTypeDto createOperationType(OperationTypeDto operationType) {
+  public Single<OperationTypeDto> createOperationType(OperationTypeDto operationType) {
     OperationTypeModel operationTypeModel = operationTypeMapper.toOperationType(operationType);
-    return operationTypeMapper.INSTANCE.toEntity(operationTypeRepository.save(operationTypeModel));
+    Mono<OperationTypeModel> operationTypeMono = operationTypeRepository.save(operationTypeModel);
+    return RxJava3Adapter.monoToSingle(operationTypeMono.map(operationTypeMapper::toEntity));
   }
 
   @Override
-  public List<OperationTypeDto> getOperationTypes() {
-    return operationTypeMapper.toEntityList(operationTypeRepository.findAll());
+  public Observable<OperationTypeDto> getOperationTypes() {
+    Flux<OperationTypeModel> operationTypeFlux = operationTypeRepository.findAll();
+    return RxJava3Adapter.fluxToObservable(operationTypeFlux.map(operationTypeMapper::toEntity));
   }
 
   @Override
-  public Optional<OperationTypeDto> getOperationType(Integer operationTypeId) {
-    return Optional.of(operationTypeMapper.toEntity(operationTypeRepository
-        .findById(operationTypeId).get()));
+  public Single<OperationTypeDto> getOperationType(Integer operationTypeId) {
+    Mono<OperationTypeModel> operationTypeMono = operationTypeRepository.findById(operationTypeId);
+    return RxJava3Adapter.monoToSingle(operationTypeMono.map(operationTypeMapper::toEntity));
   }
 
   @Override
-  public OperationTypeDto editOperationType(OperationTypeDto operationType) {
+  public Single<OperationTypeDto> editOperationType(OperationTypeDto operationType) {
     return createOperationType(operationType);
   }
 

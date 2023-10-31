@@ -1,18 +1,11 @@
 package com.example.bank.controller;
 
-import com.example.bank.model.dto.CustomerDto;
-import com.example.bank.model.dto.CustomerProductDto;
 import com.example.bank.model.dto.OperationDto;
-import com.example.bank.model.dto.OperationTypeDto;
-import com.example.bank.service.IcustomerProductService;
 import com.example.bank.service.IoperationService;
-import com.example.bank.service.IoperationTypeService;
-import java.util.Optional;
+import io.reactivex.rxjava3.core.Single;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,12 +26,6 @@ public class OperationController {
   @Autowired
   IoperationService operationService;
   
-  @Autowired
-  IoperationTypeService operationTypeService;
-  
-  @Autowired
-  IcustomerProductService customerProductService;
-  
   /**
    * . This method is to save Operation
    *
@@ -46,19 +33,10 @@ public class OperationController {
    * @return a HTTP Status
    */
   @PostMapping("/operation")
-  public ResponseEntity<OperationDto> createOperation(
+  public Single<OperationDto> createOperation(
       @RequestBody OperationDto operation) {
-    log.info("Validate Operation Type");
-    Optional<OperationTypeDto> opOperationType = operationTypeService
-        .getOperationType(operation.getTypeOperation().getId());
-    log.info("Validate Customer Product");
-    Optional<CustomerProductDto> opCustomerProduct = customerProductService
-        .getProducts(operation.getCustomerProducto().getCustomer().getId());
-    if (opOperationType.isPresent() && opCustomerProduct.isPresent()) {
-      OperationDto operationDto = operationService.createOperation(operation);
-      return new ResponseEntity<>(operationDto, HttpStatus.CREATED);
-    }
-    return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    log.info("Operation");
+    return operationService.createOperation(operation);
   }
   
   /**
@@ -68,16 +46,9 @@ public class OperationController {
    * @return a HTTP Status
    */
   @GetMapping("/operation/check_movements/{customerId}")
-  public ResponseEntity<OperationDto> getMovements(
+  public Single<OperationDto> getMovements(
       @PathVariable("customerId") Integer customerId) {
-    Optional<CustomerProductDto> opCustomerProduct = customerProductService
-        .getProducts(customerId);
-    if (opCustomerProduct.isPresent()) {
-      Optional<OperationDto> opOperation = operationService
-          .getMovements(customerId);
-      return ResponseEntity.status(HttpStatus.OK).body(opOperation.get());
-    }
-    return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    return operationService.getMovements(customerId);
   }
   
   /**
@@ -87,16 +58,9 @@ public class OperationController {
    * @return a HTTP Status
    */
   @GetMapping("/operation/get_report_last_movements/{customerId}")
-  public ResponseEntity<OperationDto> getReportLastMovements(
+  public Single<OperationDto> getReportLastMovements(
       @PathVariable("customerId") Integer customerId) {
-    Optional<CustomerProductDto> opCustomerProduct = customerProductService
-        .getProducts(customerId);
-    if (opCustomerProduct.isPresent()) {
-      Optional<OperationDto> opOperation = operationService
-          .getMovements(customerId);
-      return ResponseEntity.status(HttpStatus.OK).body(opOperation.get());
-    }
-    return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    return operationService.getReportLastMovements(customerId);
   }
 
 }

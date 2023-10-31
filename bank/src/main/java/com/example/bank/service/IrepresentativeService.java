@@ -1,7 +1,7 @@
 package com.example.bank.service;
 
 import com.example.bank.model.dto.RepresentativeDto;
-import java.util.Optional;
+import io.reactivex.rxjava3.core.Single;
 
 /**
  * . Interface Irepresentative
@@ -11,12 +11,12 @@ import java.util.Optional;
  */
 public interface IrepresentativeService {
   
-  public RepresentativeDto createRepresentative(RepresentativeDto representative);
+  public Single<RepresentativeDto> createRepresentative(RepresentativeDto representative);
   
-  public Optional<RepresentativeDto> getRepresentative(Integer representativeId);
+  public Single<RepresentativeDto> getRepresentative(Integer representativeId);
   
-  public RepresentativeDto editRepresentative(RepresentativeDto representative);
+  public Single<RepresentativeDto> editRepresentative(RepresentativeDto representative);
   
-  void deleteRepresentative(Integer representativeId);
+  public Single<RepresentativeDto> deleteRepresentative(Integer representativeId);
 
 }

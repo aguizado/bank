@@ -5,9 +5,11 @@ import com.example.bank.model.dto.CustomerDto;
 import com.example.bank.model.mapper.CustomerMapper;
 import com.example.bank.repository.CustomerRepository;
 import com.example.bank.service.IcustomerService;
-import java.util.Optional;
+import io.reactivex.rxjava3.core.Single;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import reactor.adapter.rxjava.RxJava3Adapter;
+import reactor.core.publisher.Mono;
 
 /**
  * . Class CustomerServiceImpl
@@ -24,25 +26,29 @@ public class CustomerServiceImpl implements IcustomerService {
   private final CustomerMapper customerMapper;
   
   @Override
-  public CustomerDto createCustomer(CustomerDto customer) {
+  public Single<CustomerDto> createCustomer(CustomerDto customer) {
     CustomerModel customerModel = customerMapper.toCustomer(customer);
-    return customerMapper.INSTANCE.toEntity(customerRepository.save(customerModel));
+    Mono<CustomerModel> customerMono = customerRepository.save(customerModel);
+    return RxJava3Adapter.monoToSingle(customerMono.map(customerMapper::toEntity));
   }
 
   @Override
-  public Optional<CustomerDto> getCustomer(Integer customerId) {
-    return Optional.of(customerMapper.toEntity(customerRepository
-        .findById(customerId).get()));
+  public Single<CustomerDto> getCustomer(Integer customerId) {
+    Mono<CustomerModel> customerMono = customerRepository.findById(customerId);
+    return RxJava3Adapter.monoToSingle(customerMono.map(customerMapper::toEntity));
   }
 
   @Override
-  public CustomerDto editCustomer(CustomerDto customer) {
+  public Single<CustomerDto> editCustomer(CustomerDto customer) {
     return createCustomer(customer);
   }
 
   @Override
-  public void deleteCustomer(Integer customerId) {
-    customerRepository.deleteById(customerId);
+  public Single<CustomerDto> deleteCustomer(Integer customerId) {
+    Mono<CustomerModel> customerMono = customerRepository.findById(customerId)
+        .flatMap(existingUser -> customerRepository.delete(existingUser)
+        .then(Mono.just(existingUser)));
+    return RxJava3Adapter.monoToSingle(customerMono.map(customerMapper::toEntity));
   }
   
 }

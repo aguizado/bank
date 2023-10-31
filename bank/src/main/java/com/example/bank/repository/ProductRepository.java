@@ -1,7 +1,7 @@
 package com.example.bank.repository;
 
 import com.example.bank.model.ProductModel;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -11,6 +11,6 @@ import org.springframework.stereotype.Repository;
  * @version 0.1, 2023/10/27
  */
 @Repository
-public interface ProductRepository extends MongoRepository<ProductModel, Integer> {
+public interface ProductRepository extends ReactiveMongoRepository<ProductModel, Integer> {
 
 }
