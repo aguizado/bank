@@ -14,7 +14,6 @@ import io.reactivex.rxjava3.core.Single;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import reactor.adapter.rxjava.RxJava3Adapter;
 import reactor.core.publisher.Flux;
@@ -27,7 +26,6 @@ import reactor.core.publisher.Mono;
  * @version 0.1, 2023/10/27
  */
 @Service
-@Log4j2
 @RequiredArgsConstructor
 public class CustomerProductServiceImpl implements IcustomerProductService {
   
@@ -45,7 +43,10 @@ public class CustomerProductServiceImpl implements IcustomerProductService {
         customerProductDto.getCustomer().getId())
         .collectList()
         .flatMap(x -> {
-          if (x.isEmpty()) {
+          if (x.isEmpty() && !(DescriptionEnum.EMPRESARIAL.equals(
+              customerProductModel.getCustomer().getTypeCustomer().getDescription())
+              && !com.example.bank.model.ProductTypeModel.DescriptionEnum.CURRENT.equals(
+              customerProductModel.getProduct().getTypeProduct().getDescription()))) {
             setDataCustomerProduct(customerProductModel);
             return customerProductRepository.save(customerProductModel);
           } else {
@@ -53,7 +54,11 @@ public class CustomerProductServiceImpl implements IcustomerProductService {
               if (!(com.example.bank.model.ProductModel.DescriptionEnum.ACCOUNT.equals(
                   customerProductModel.getProduct().getDescription())
                   && com.example.bank.model.ProductModel.DescriptionEnum.ACCOUNT.equals(
-                      bd.getProduct().getDescription()))) {
+                      bd.getProduct().getDescription()))
+                  || (DescriptionEnum.EMPRESARIAL.equals(
+                      customerProductModel.getCustomer().getTypeCustomer().getDescription())
+                  && com.example.bank.model.ProductTypeModel.DescriptionEnum.CURRENT.equals(
+                      customerProductModel.getProduct().getTypeProduct().getDescription()))) {
                 setDataCustomerProduct(customerProductModel);
                 return customerProductRepository.save(customerProductModel);
               }
@@ -74,26 +79,16 @@ public class CustomerProductServiceImpl implements IcustomerProductService {
     ProductModel product = customerProductModel.getProduct();
     if (DescriptionEnum.PERSONAL.equals(customerProductModel.getCustomer()
         .getTypeCustomer().getDescription())) {
-      
-      if (com.example.bank.model.ProductModel.DescriptionEnum.ACCOUNT.equals(
-          customerProductModel.getProduct().getDescription())) {        
-        if (com.example.bank.model.ProductTypeModel.DescriptionEnum.SAVING.equals(
+      if (com.example.bank.model.ProductTypeModel.DescriptionEnum.SAVING.equals(
             customerProductModel.getProduct().getTypeProduct().getDescription())) {
-          setDataTypeProduct(0, 30, 0, product);          
-        } else if (com.example.bank.model.ProductTypeModel.DescriptionEnum.CURRENT.equals(
+        setDataTypeProduct(0, 30, 0, product);
+      } else if (com.example.bank.model.ProductTypeModel.DescriptionEnum.CURRENT.equals(
             customerProductModel.getProduct().getTypeProduct().getDescription())) {
-          setDataTypeProduct(5, 0, 0, product);          
-        } else if (com.example.bank.model.ProductTypeModel.DescriptionEnum.FIXED_TERM.equals(
+        setDataTypeProduct(5, 0, 0, product);
+      } else if (com.example.bank.model.ProductTypeModel.DescriptionEnum.FIXED_TERM.equals(
             customerProductModel.getProduct().getTypeProduct().getDescription())) {
-          setDataTypeProduct(0, 1, 15, product);          
-        }      
-      } 
-      
-    } else if (DescriptionEnum.EMPRESARIAL.equals(customerProductModel.getCustomer()
-        .getTypeCustomer().getDescription())) {
-      log.error("Muy Pronto");
-    } else {
-      log.error(Constants.ERROR_NOT_EXIST_CLIENT_TYPE);
+        setDataTypeProduct(0, 1, 15, product);
+      }
     }
     
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
