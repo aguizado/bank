@@ -40,8 +40,13 @@ public class CardServiceImpl implements IcardService {
   }
   
   @Override
-  public Single<CardDto> editCard(CardDto card) {
-    return createCard(card);
+  public Single<CardDto> editCard(Integer cardId, CardDto card) {
+    Mono<CardModel> cardMono = cardRepository.findById(cardId)
+        .flatMap(x -> {
+          x.setIsDelete(card.getIsDelete());
+          return cardRepository.save(x);
+        });
+    return RxJava3Adapter.monoToSingle(cardMono.map(cardMapper::toEntity));
   }
 
 }

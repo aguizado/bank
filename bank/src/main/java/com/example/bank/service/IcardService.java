@@ -15,6 +15,6 @@ public interface IcardService {
   
   public Single<CardDto> getCard(Integer cardId);
   
-  public Single<CardDto> editCard(CardDto card);
+  public Single<CardDto> editCard(Integer cardId, CardDto card);
 
 }

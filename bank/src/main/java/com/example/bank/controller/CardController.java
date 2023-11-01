@@ -67,7 +67,7 @@ public class CardController {
   @PutMapping("/card/{cardId}")
   public Single<ResponseEntity<CardDto>> editCard(@PathVariable("cardId") Integer cardId,
       @RequestBody CardDto card) {
-    return cardService.editCard(card)
+    return cardService.editCard(cardId, card)
         .map(ResponseEntity::ok)
         .doOnError(throwable -> log.error(Constants.DO_ON_ERROR, throwable))
         .doOnSuccess(response -> log.info(Constants.DO_ON_SUCCESS, response));

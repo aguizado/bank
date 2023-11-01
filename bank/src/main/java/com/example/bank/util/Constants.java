@@ -14,5 +14,10 @@ public class Constants {
   
   public static final String DO_ON_ERROR = "do on Error";
   public static final String DO_ON_SUCCESS = "do on Success";
+  
+  public static final String ERROR_UNEXPECTED = "Error Unexpected";
+  public static final String ERROR_NOT_EXIST_CLIENT_TYPE = "Client type does not exist";
+  public static final String ERROR_NOT_EXIST_PRODUCT_TYPE = "Product type does not exist";
+  public static final String ERROR_NOT_EXIST_PRODUCT = "Product does not exist";
 
 }
