@@ -1198,7 +1198,7 @@ components:
           example: 1
         description:
           type: string
-          enum: [personal, empresarial]
+          enum: [personal, business]
           example: personal
         type_profile:
           $ref: '#/components/schemas/Profile'

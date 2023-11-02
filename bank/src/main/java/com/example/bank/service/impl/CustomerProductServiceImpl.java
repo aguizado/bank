@@ -13,6 +13,7 @@ import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.Single;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.adapter.rxjava.RxJava3Adapter;
@@ -42,32 +43,44 @@ public class CustomerProductServiceImpl implements IcustomerProductService {
     Mono<CustomerProductModel> cpMono = customerProductRepository.findByCustomerId(
         customerProductDto.getCustomer().getId())
         .collectList()
-        .flatMap(x -> {
-          if (x.isEmpty() && !(DescriptionEnum.EMPRESARIAL.equals(
-              customerProductModel.getCustomer().getTypeCustomer().getDescription())
-              && !com.example.bank.model.ProductTypeModel.DescriptionEnum.CURRENT.equals(
-              customerProductModel.getProduct().getTypeProduct().getDescription()))) {
-            setDataCustomerProduct(customerProductModel);
-            return customerProductRepository.save(customerProductModel);
-          } else {
-            for (CustomerProductModel bd : x) {
-              if (!(com.example.bank.model.ProductModel.DescriptionEnum.ACCOUNT.equals(
-                  customerProductModel.getProduct().getDescription())
-                  && com.example.bank.model.ProductModel.DescriptionEnum.ACCOUNT.equals(
-                      bd.getProduct().getDescription()))
-                  || (DescriptionEnum.EMPRESARIAL.equals(
-                      customerProductModel.getCustomer().getTypeCustomer().getDescription())
-                  && com.example.bank.model.ProductTypeModel.DescriptionEnum.CURRENT.equals(
-                      customerProductModel.getProduct().getTypeProduct().getDescription()))) {
-                setDataCustomerProduct(customerProductModel);
-                return customerProductRepository.save(customerProductModel);
-              }
-            }
-          }
-          return Mono.error(new Exception(Constants.ERROR_UNEXPECTED));
-        }); 
+        .flatMap(x -> validateToSave(customerProductModel, x)); 
     
     return RxJava3Adapter.monoToSingle(cpMono.map(customerProductMapper::toEntity));
+  }
+
+  /**
+   * . This method is to set Data Customer Product
+   *
+   * @param customerProductModel This is the first parameter
+   * @param x This is the second parameter
+   * @return Mono value
+   */
+  private Mono<? extends CustomerProductModel> validateToSave(
+      CustomerProductModel customerProductModel, List<CustomerProductModel> x) {
+    boolean isPersonal = DescriptionEnum.PERSONAL.equals(
+        customerProductModel.getCustomer().getTypeCustomer().getDescription());
+    boolean isBusiness = DescriptionEnum.BUSSINESS.equals(
+        customerProductModel.getCustomer().getTypeCustomer().getDescription());
+    boolean isCurrent = com.example.bank.model.ProductTypeModel.DescriptionEnum.CURRENT
+        .equals(customerProductModel.getProduct().getTypeProduct().getDescription());
+    boolean isAccount = com.example.bank.model.ProductModel.DescriptionEnum.ACCOUNT.equals(
+        customerProductModel.getProduct().getDescription());
+    boolean isCredit = com.example.bank.model.ProductModel.DescriptionEnum.CREDIT.equals(
+        customerProductModel.getProduct().getDescription());
+    if (x.isEmpty() && (isPersonal || (isBusiness && (isCurrent || isCredit)))) {
+      setDataCustomerProduct(customerProductModel);
+      return customerProductRepository.save(customerProductModel);
+    } else {
+      for (CustomerProductModel bd : x) {
+        if ((isPersonal && !(com.example.bank.model.ProductModel.DescriptionEnum.ACCOUNT
+            .equals(bd.getProduct().getDescription()) && isAccount))
+            || (isBusiness && (isCurrent || isCredit))) {
+          setDataCustomerProduct(customerProductModel);
+          return customerProductRepository.save(customerProductModel);
+        }
+      }
+    }
+    return Mono.error(new Exception(Constants.ERROR_UNEXPECTED));
   }
   
   /**
@@ -89,6 +102,7 @@ public class CustomerProductServiceImpl implements IcustomerProductService {
             customerProductModel.getProduct().getTypeProduct().getDescription())) {
         setDataTypeProduct(0, 1, 15, product);
       }
+      customerProductModel.setRepresentative(null);
     }
     
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");

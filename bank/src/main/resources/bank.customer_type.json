@@ -22,7 +22,7 @@
 },
 {
   "_id": 3,
-  "description": "EMPRESARIAL",
+  "description": "BUSSINESS",
   "typeProfile": {
     "_id": 1,
     "description": "REGULAR",
@@ -33,7 +33,7 @@
 },
 {
   "_id": 4,
-  "description": "EMPRESARIAL",
+  "description": "BUSSINESS",
   "typeProfile": {
     "_id": 3,
     "description": "PYME",

@@ -12,7 +12,7 @@
 },
 {
   "_id": 3,
-  "description": "REGULAR",
+  "description": "PYME",
   "isDelete": false,
   "_class": "com.example.bank.model.ProfileModel"
 }]

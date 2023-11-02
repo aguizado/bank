@@ -35,7 +35,7 @@ public class CustomerTypeModel {
    */
   public enum DescriptionEnum {
     
-    PERSONAL("personal"), EMPRESARIAL("empresarial");
+    PERSONAL("personal"), BUSSINESS("business");
 
     private String value;
 

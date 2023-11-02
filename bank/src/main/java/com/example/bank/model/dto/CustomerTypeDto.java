@@ -31,7 +31,7 @@ public class CustomerTypeDto {
    */
   public enum DescriptionEnum {
     
-    PERSONAL("personal"), EMPRESARIAL("empresarial");
+    PERSONAL("personal"), BUSSINESS("business");
 
     private String value;
 
