@@ -3,6 +3,7 @@ package com.example.bank.repository;
 import com.example.bank.model.OperationModel;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;
+import reactor.core.publisher.Flux;
 
 /**
  * . Class OperationRepository
@@ -13,4 +14,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface OperationRepository extends ReactiveMongoRepository<OperationModel, Integer> {
 
+    Flux<OperationModel> findByCustomerProductoCustomerId(Integer customerId);
+  
 }

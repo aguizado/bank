@@ -51,12 +51,12 @@ public class CustomerProductController {
    * @return a HTTP Status
    */
   @GetMapping("/customer_product/check_balance/{customerId}")
-  public Single<ResponseEntity<CustomerProductDto>> getBalance(
+  public Observable<ResponseEntity<CustomerProductDto>> getBalance(
       @PathVariable("customerId") Integer customerId) {
     return customerProductService.getBalance(customerId)
         .map(ResponseEntity::ok)
         .doOnError(throwable -> log.error(Constants.DO_ON_ERROR, throwable))
-        .doOnSuccess(response -> log.info(Constants.DO_ON_SUCCESS, response));
+        .doOnNext(response -> log.info(Constants.DO_ON_SUCCESS, response));
   }
   
   /**
@@ -70,7 +70,8 @@ public class CustomerProductController {
       @PathVariable("customerId") Integer customerId) {
     return customerProductService.getProducts(customerId)
         .map(ResponseEntity::ok)
-        .doOnError(throwable -> log.error(Constants.DO_ON_ERROR, throwable));
+        .doOnError(throwable -> log.error(Constants.DO_ON_ERROR, throwable))
+        .doOnNext(response -> log.info(Constants.DO_ON_SUCCESS, response));
   }
 
 }

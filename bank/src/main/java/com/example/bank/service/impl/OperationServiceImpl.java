@@ -6,12 +6,15 @@ import com.example.bank.model.mapper.OperationMapper;
 import com.example.bank.repository.OperationRepository;
 import com.example.bank.service.IoperationService;
 import com.example.bank.util.Constants;
+
+import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.Single;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.adapter.rxjava.RxJava3Adapter;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
@@ -41,9 +44,9 @@ public class OperationServiceImpl implements IoperationService {
   }
 
   @Override
-  public Single<OperationDto> getMovements(Integer customerId) {
-    Mono<OperationModel> operationMono = operationRepository.findById(customerId);
-    return RxJava3Adapter.monoToSingle(operationMono.map(operationMapper::toEntity));
+  public Observable<OperationDto> getMovements(Integer customerId) {
+    Flux<OperationModel> operationMono = operationRepository.findByCustomerProductoCustomerId(customerId);
+    return RxJava3Adapter.fluxToObservable(operationMono.map(operationMapper::toEntity));
   }
 
   @Override

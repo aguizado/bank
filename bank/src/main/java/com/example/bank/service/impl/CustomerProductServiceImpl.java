@@ -142,9 +142,9 @@ public class CustomerProductServiceImpl implements IcustomerProductService {
   }  
 
   @Override
-  public Single<CustomerProductDto> getBalance(Integer customerId) {
-    Mono<CustomerProductModel> cpMono = customerProductRepository.findById(customerId);
-    return RxJava3Adapter.monoToSingle(cpMono.map(customerProductMapper::toEntity));
+  public Observable<CustomerProductDto> getBalance(Integer customerId) {
+    Flux<CustomerProductModel> cpFlux = customerProductRepository.findByCustomerId(customerId);
+    return RxJava3Adapter.fluxToObservable(cpFlux.map(customerProductMapper::toEntity));
   }
 
   @Override
@@ -216,6 +216,7 @@ public class CustomerProductServiceImpl implements IcustomerProductService {
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Constants.FORMAT_DATE_COMPLETE);
     String date = simpleDateFormat.format(new Date());
     customerProduct.setModificationDate(date);
+    operationModel.setCustomerProducto(customerProduct);
     
     log.info("Updating Balance in Customer Product");
     return customerProductRepository.save(customerProduct);
@@ -251,6 +252,7 @@ public class CustomerProductServiceImpl implements IcustomerProductService {
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Constants.FORMAT_DATE_COMPLETE);
     String date = simpleDateFormat.format(new Date());
     customerProduct.setModificationDate(date);
+    operationModel.setCustomerProducto(customerProduct);
     
     log.info("Updating Balance in Customer Product");
     return customerProductRepository.save(customerProduct);

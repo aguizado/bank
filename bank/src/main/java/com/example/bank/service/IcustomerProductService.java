@@ -15,7 +15,7 @@ public interface IcustomerProductService {
   
   public Single<CustomerProductDto> createCustomerProduct(CustomerProductDto customerProductDto);
   
-  public Single<CustomerProductDto> getBalance(Integer customerProducId);
+  public Observable<CustomerProductDto> getBalance(Integer customerProducId);
   
   public Observable<CustomerProductDto> getProducts(Integer customerProducId);
   
