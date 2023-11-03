@@ -5,7 +5,10 @@ import com.example.bank.model.dto.OperationDto;
 import com.example.bank.model.mapper.OperationMapper;
 import com.example.bank.repository.OperationRepository;
 import com.example.bank.service.IoperationService;
+import com.example.bank.util.Constants;
 import io.reactivex.rxjava3.core.Single;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.adapter.rxjava.RxJava3Adapter;
@@ -28,6 +31,11 @@ public class OperationServiceImpl implements IoperationService {
   @Override
   public Single<OperationDto> createOperation(OperationDto operationDto) {
     OperationModel operationModel = operationMapper.toOperation(operationDto);
+
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Constants.FORMAT_DATE_COMPLETE);
+    String date = simpleDateFormat.format(new Date());
+    operationModel.setOperationDate(date);
+
     Mono<OperationModel> operationMono = operationRepository.save(operationModel);
     return RxJava3Adapter.monoToSingle(operationMono.map(operationMapper::toEntity));
   }

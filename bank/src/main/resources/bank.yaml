@@ -1288,10 +1288,16 @@ components:
         amount:
           type: integer
           example: 800
+        credit_limit:
+          type: integer
+          example: 5000
         number_transaction_limit:
           type: integer
           example: 1
         creation_date:
+          type: string
+          example: '26102023'
+        modification_date:
           type: string
           example: '26102023'
           

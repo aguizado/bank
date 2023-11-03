@@ -1,6 +1,7 @@
 package com.example.bank.service;
 
 import com.example.bank.model.dto.CustomerProductDto;
+import com.example.bank.model.dto.OperationDto;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.Single;
 
@@ -17,5 +18,7 @@ public interface IcustomerProductService {
   public Single<CustomerProductDto> getBalance(Integer customerProducId);
   
   public Observable<CustomerProductDto> getProducts(Integer customerProducId);
+  
+  public Single<CustomerProductDto> validateToUpdate(OperationDto operationDto);
 
 }

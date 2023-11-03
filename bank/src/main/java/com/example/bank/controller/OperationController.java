@@ -1,6 +1,7 @@
 package com.example.bank.controller;
 
 import com.example.bank.model.dto.OperationDto;
+import com.example.bank.service.IcustomerProductService;
 import com.example.bank.service.IoperationService;
 import com.example.bank.util.Constants;
 import io.reactivex.rxjava3.core.Single;
@@ -28,6 +29,9 @@ public class OperationController {
   @Autowired
   IoperationService operationService;
   
+  @Autowired
+  IcustomerProductService customerProductService;
+  
   /**
    * . This method is to save Operation
    *
@@ -37,6 +41,13 @@ public class OperationController {
   @PostMapping("/operation")
   public Single<ResponseEntity<OperationDto>> createOperation(
       @RequestBody OperationDto operation) {
+         
+    customerProductService.validateToUpdate(operation)
+        .map(ResponseEntity::ok)
+        .doOnError(throwable -> log.error(Constants.DO_ON_ERROR, throwable))
+        .doOnSuccess(response -> log.info(Constants.DO_ON_SUCCESS, response))
+        .subscribe();
+      
     return operationService.createOperation(operation)
         .map(ResponseEntity::ok)
         .doOnError(throwable -> log.error(Constants.DO_ON_ERROR, throwable))

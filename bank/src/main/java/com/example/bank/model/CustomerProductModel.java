@@ -42,11 +42,17 @@ public class CustomerProductModel {
 
   @JsonProperty("amount")
   private Integer amount;
+  
+  @JsonProperty("credit_limit")
+  private Integer creditLimit;
 
   @JsonProperty("number_transaction_limit")
   private Integer numberTransactionLimit;
 
   @JsonProperty("creation_date")
   private String creationDate;
+  
+  @JsonProperty("modification_date")
+  private String modificationDate;
 
 }
