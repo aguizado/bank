@@ -6,7 +6,6 @@ import com.example.bank.model.mapper.OperationMapper;
 import com.example.bank.repository.OperationRepository;
 import com.example.bank.service.IoperationService;
 import com.example.bank.util.Constants;
-
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.Single;
 import java.text.SimpleDateFormat;
@@ -45,7 +44,8 @@ public class OperationServiceImpl implements IoperationService {
 
   @Override
   public Observable<OperationDto> getMovements(Integer customerId) {
-    Flux<OperationModel> operationMono = operationRepository.findByCustomerProductoCustomerId(customerId);
+    Flux<OperationModel> operationMono = operationRepository
+        .findByCustomerProductoCustomerId(customerId);
     return RxJava3Adapter.fluxToObservable(operationMono.map(operationMapper::toEntity));
   }
 

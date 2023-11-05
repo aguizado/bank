@@ -1,10 +1,13 @@
 package com.example.bank.service.impl;
 
+import com.example.bank.model.CustomerModel;
 import com.example.bank.model.CustomerProductModel;
+import com.example.bank.model.CustomerTypeModel;
 import com.example.bank.model.CustomerTypeModel.DescriptionEnum;
 import com.example.bank.model.OperationModel;
 import com.example.bank.model.ProductModel;
 import com.example.bank.model.ProductTypeModel;
+import com.example.bank.model.ProfileModel;
 import com.example.bank.model.dto.CustomerProductDto;
 import com.example.bank.model.dto.OperationDto;
 import com.example.bank.model.mapper.CustomerProductMapper;
@@ -74,14 +77,14 @@ public class CustomerProductServiceImpl implements IcustomerProductService {
     boolean isCredit = com.example.bank.model.ProductModel.DescriptionEnum.CREDIT.equals(
         customerProductModel.getProduct().getDescription());
     if (x.isEmpty() && (isPersonal || (isBusiness && (isCurrent || isCredit)))) {
-      setDataCustomerProduct(customerProductModel);
+      setDataCustomerProduct(customerProductModel, isPersonal, isBusiness);
       return customerProductRepository.save(customerProductModel);
     } else {
       for (CustomerProductModel bd : x) {
         if ((isPersonal && !(com.example.bank.model.ProductModel.DescriptionEnum.ACCOUNT
             .equals(bd.getProduct().getDescription()) && isAccount))
             || (isBusiness && (isCurrent || isCredit))) {
-          setDataCustomerProduct(customerProductModel);
+          setDataCustomerProduct(customerProductModel, isPersonal, isBusiness);
           return customerProductRepository.save(customerProductModel);
         }
       }
@@ -94,10 +97,18 @@ public class CustomerProductServiceImpl implements IcustomerProductService {
    *
    * @param customerProductModel This is the first parameter
    */
-  private void setDataCustomerProduct(CustomerProductModel customerProductModel) {
+  private void setDataCustomerProduct(CustomerProductModel customerProductModel,
+      boolean isPersonal, boolean isBusiness) {
     ProductModel product = customerProductModel.getProduct();
-    if (DescriptionEnum.PERSONAL.equals(customerProductModel.getCustomer()
-        .getTypeCustomer().getDescription())) {
+    boolean isRegular = com.example.bank.model.ProfileModel.DescriptionEnum.REGULAR.equals(
+        customerProductModel.getCustomer().getTypeCustomer().getTypeProfile().getDescription());
+    boolean isVip = com.example.bank.model.ProfileModel.DescriptionEnum.VIP.equals(
+        customerProductModel.getCustomer().getTypeCustomer().getTypeProfile().getDescription());
+    boolean isPyme = com.example.bank.model.ProfileModel.DescriptionEnum.PYME.equals(
+        customerProductModel.getCustomer().getTypeCustomer().getTypeProfile().getDescription());
+    boolean isCredit = com.example.bank.model.ProductModel.DescriptionEnum.CREDIT.equals(
+        customerProductModel.getProduct().getDescription());
+    if (isPersonal && isRegular) {
       if (com.example.bank.model.ProductTypeModel.DescriptionEnum.SAVING.equals(
             customerProductModel.getProduct().getTypeProduct().getDescription())) {
         setDataTypeProduct(0, 30, 0, product);
@@ -110,19 +121,44 @@ public class CustomerProductServiceImpl implements IcustomerProductService {
       }
       customerProductModel.setRepresentative(null);
       customerProductModel.setCreditLimit(null);
-    } else if (DescriptionEnum.BUSSINESS.equals(customerProductModel.getCustomer()
-        .getTypeCustomer().getDescription())) {
+    } else if (isPersonal && isVip && !(customerProductModel.getAmount() >= 500 && isCredit)) {
+      setDataProfile(customerProductModel, 1, DescriptionEnum.PERSONAL);      
+    } else if (isBusiness && isRegular) {
       setDataTypeProduct(5, 0, 0, product);
       customerProductModel.setAmount(customerProductModel.getCreditLimit());
-    }
-    
+    } else if (isBusiness && isPyme
+        && !(com.example.bank.model.ProductTypeModel.DescriptionEnum.CURRENT.equals(
+            customerProductModel.getProduct().getTypeProduct().getDescription())
+            && isCredit)) {
+      setDataProfile(customerProductModel, 3, DescriptionEnum.BUSSINESS);
+    }    
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Constants.FORMAT_DATE_COMPLETE);
-    String date = simpleDateFormat.format(new Date());
-    
+    String date = simpleDateFormat.format(new Date());    
     customerProductModel.setNumberTransactionLimit(0);
     customerProductModel.setCreationDate(date);
     customerProductModel.setModificationDate(date);
     customerProductModel.setProduct(product);
+  }
+
+  /**
+   * . This method is to set Data Profile
+   *
+   * @param customerProductModel This is the first parameter
+   * @param idCustomerType This is the second parameter
+   * @param description This is the third parameter
+   */
+  private void setDataProfile(CustomerProductModel customerProductModel,
+      Integer idCustomerType, DescriptionEnum description) {
+    CustomerModel customer = customerProductModel.getCustomer();
+    CustomerTypeModel customerType = customer.getTypeCustomer();
+    ProfileModel profile = customerType.getTypeProfile();
+    profile.setId(1);
+    profile.setDescription(com.example.bank.model.ProfileModel.DescriptionEnum.REGULAR);
+    customerType.setId(idCustomerType);
+    customerType.setDescription(description);
+    customerType.setTypeProfile(profile);
+    customer.setTypeCustomer(customerType);
+    customerProductModel.setCustomer(customer);
   }
   
   /**

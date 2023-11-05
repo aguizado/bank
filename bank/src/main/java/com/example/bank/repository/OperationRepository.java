@@ -14,6 +14,6 @@ import reactor.core.publisher.Flux;
 @Repository
 public interface OperationRepository extends ReactiveMongoRepository<OperationModel, Integer> {
 
-    Flux<OperationModel> findByCustomerProductoCustomerId(Integer customerId);
+  Flux<OperationModel> findByCustomerProductoCustomerId(Integer customerId);
   
 }

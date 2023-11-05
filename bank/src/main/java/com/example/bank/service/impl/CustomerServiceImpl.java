@@ -1,14 +1,19 @@
 package com.example.bank.service.impl;
 
 import com.example.bank.model.CustomerModel;
+import com.example.bank.model.CustomerProductModel;
+import com.example.bank.model.ProfileModel.DescriptionEnum;
 import com.example.bank.model.dto.CustomerDto;
 import com.example.bank.model.mapper.CustomerMapper;
+import com.example.bank.model.mapper.CustomerProductMapper;
+import com.example.bank.repository.CustomerProductRepository;
 import com.example.bank.repository.CustomerRepository;
 import com.example.bank.service.IcustomerService;
 import io.reactivex.rxjava3.core.Single;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.adapter.rxjava.RxJava3Adapter;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
@@ -25,6 +30,7 @@ public class CustomerServiceImpl implements IcustomerService {
   
   private final CustomerMapper customerMapper;
   
+  
   @Override
   public Single<CustomerDto> createCustomer(CustomerDto customer) {
     CustomerModel customerModel = customerMapper.toCustomer(customer);
@@ -40,7 +46,13 @@ public class CustomerServiceImpl implements IcustomerService {
 
   @Override
   public Single<CustomerDto> editCustomer(CustomerDto customer) {
-    return createCustomer(customer);
+    CustomerModel customerModel = customerMapper.toCustomer(customer);
+    
+    Mono<CustomerModel> customerMono = customerRepository.findById(customerModel.getId())
+        .flatMap(existingUser -> customerRepository.save(existingUser)
+            .then(Mono.just(existingUser)));
+    
+    return RxJava3Adapter.monoToSingle(customerMono.map(customerMapper::toEntity));
   }
 
   @Override
