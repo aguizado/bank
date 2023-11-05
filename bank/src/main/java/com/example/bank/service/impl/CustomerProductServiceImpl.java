@@ -235,14 +235,14 @@ public class CustomerProductServiceImpl implements IcustomerProductService {
     BigDecimal maintenanceFee = new BigDecimal("0.0");
     operationModel.setCommission(maintenanceFee);
     
-    if (nroTransactionLimit != 0 && nroTransaction >= nroTransactionLimit) {
-      maintenanceFee = product.getTypeProduct().getMaintenanceFee();
-      operationModel.setCommission(maintenanceFee);
-    }
-    
-    customerProduct.setNumberTransactionLimit(nroTransaction + 1);
     BigDecimal amount = customerProduct.getAmount();
     BigDecimal newAmount = new BigDecimal("0");
+    
+    if (nroTransactionLimit != 0 && nroTransaction >= nroTransactionLimit) {
+      maintenanceFee = product.getTypeProduct().getMaintenanceFee().multiply(amount);
+    }    
+    customerProduct.setNumberTransactionLimit(nroTransaction + 1);
+    operationModel.setCommission(maintenanceFee);
     
     if (com.example.bank.model.OperationTypeModel.DescriptionEnum.DEPOSIT.equals(
         operationModel.getTypeOperation().getDescription())) {
