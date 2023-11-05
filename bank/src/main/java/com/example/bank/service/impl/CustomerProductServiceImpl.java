@@ -17,6 +17,7 @@ import com.example.bank.service.IcustomerProductService;
 import com.example.bank.util.Constants;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.Single;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -111,20 +112,22 @@ public class CustomerProductServiceImpl implements IcustomerProductService {
     if (isPersonal && isRegular) {
       if (com.example.bank.model.ProductTypeModel.DescriptionEnum.SAVING.equals(
             customerProductModel.getProduct().getTypeProduct().getDescription())) {
-        setDataTypeProduct(0, 30, 0, product);
+        setDataTypeProduct(new BigDecimal("0"), 30, 0, product);
       } else if (com.example.bank.model.ProductTypeModel.DescriptionEnum.CURRENT.equals(
             customerProductModel.getProduct().getTypeProduct().getDescription())) {
-        setDataTypeProduct(5, 0, 0, product);
+        setDataTypeProduct(new BigDecimal("5"), 0, 0, product);
       } else if (com.example.bank.model.ProductTypeModel.DescriptionEnum.FIXED_TERM.equals(
             customerProductModel.getProduct().getTypeProduct().getDescription())) {
-        setDataTypeProduct(0, 1, 15, product);
+        setDataTypeProduct(new BigDecimal("0"), 1, 15, product);
       }
       customerProductModel.setRepresentative(null);
       customerProductModel.setCreditLimit(null);
-    } else if (isPersonal && isVip && !(customerProductModel.getAmount() >= 500 && isCredit)) {
+    } else if (isPersonal && isVip
+        && !(Constants.MINIMUM_MONTHLY_AMOUNT.compareTo(customerProductModel.getAmount()) == -1
+        && isCredit)) {
       setDataProfile(customerProductModel, 1, DescriptionEnum.PERSONAL);      
     } else if (isBusiness && isRegular) {
-      setDataTypeProduct(5, 0, 0, product);
+      setDataTypeProduct(new BigDecimal("5"), 0, 0, product);
       customerProductModel.setAmount(customerProductModel.getCreditLimit());
     } else if (isBusiness && isPyme
         && !(com.example.bank.model.ProductTypeModel.DescriptionEnum.CURRENT.equals(
@@ -169,7 +172,7 @@ public class CustomerProductServiceImpl implements IcustomerProductService {
    * @param day This is the third parameter
    * @param product This is the fourth parameter
    */
-  private void setDataTypeProduct(int fee, int limit, int day, ProductModel product) {
+  private void setDataTypeProduct(BigDecimal fee, int limit, int day, ProductModel product) {
     ProductTypeModel productType = product.getTypeProduct();
     productType.setMaintenanceFee(fee);
     productType.setMonthlyTransactionLimit(limit);
@@ -229,25 +232,30 @@ public class CustomerProductServiceImpl implements IcustomerProductService {
     
     Integer nroTransaction = customerProduct.getNumberTransactionLimit();
     Integer nroTransactionLimit = product.getTypeProduct().getMonthlyTransactionLimit();
+    BigDecimal maintenanceFee = new BigDecimal("0.0");
+    operationModel.setCommission(maintenanceFee);
     
     if (nroTransactionLimit != 0 && nroTransaction >= nroTransactionLimit) {
-      return Mono.error(new Exception(Constants.ERROR_LIMIT_TRANSACTION));
+      maintenanceFee = product.getTypeProduct().getMaintenanceFee();
+      operationModel.setCommission(maintenanceFee);
     }
     
     customerProduct.setNumberTransactionLimit(nroTransaction + 1);
-    Integer amount = customerProduct.getAmount();
-    Integer newAmount = 0;
+    BigDecimal amount = customerProduct.getAmount();
+    BigDecimal newAmount = new BigDecimal("0");
     
     if (com.example.bank.model.OperationTypeModel.DescriptionEnum.DEPOSIT.equals(
         operationModel.getTypeOperation().getDescription())) {
-      newAmount = amount + operationModel.getBalance();
+      newAmount = amount.add(operationModel.getBalance()).add(maintenanceFee);
     } else if (com.example.bank.model.OperationTypeModel.DescriptionEnum.WITHDRAWAL.equals(
         operationModel.getTypeOperation().getDescription())) {
-      if (amount < operationModel.getBalance()) {
+      if (amount.compareTo(operationModel.getBalance()) < 0) {
         return Mono.error(new Exception(Constants.ERROR_INSUFFICIENT_BALANCE));
       }
-      newAmount = amount - operationModel.getBalance();
+      newAmount = amount.subtract(operationModel.getBalance()).add(maintenanceFee);
     }
+    log.info("A commission of " + maintenanceFee + " was applied");
+    
     customerProduct.setAmount(newAmount);
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Constants.FORMAT_DATE_COMPLETE);
     String date = simpleDateFormat.format(new Date());
@@ -266,23 +274,23 @@ public class CustomerProductServiceImpl implements IcustomerProductService {
    */
   private Mono<CustomerProductModel> validateCredit(OperationModel operationModel) {    
     CustomerProductModel customerProduct = operationModel.getCustomerProducto();
-    Integer creditLimit = customerProduct.getCreditLimit();
-    Integer amount = customerProduct.getAmount();
-    Integer balance = operationModel.getBalance();
-    Integer newAmount = 0;
+    BigDecimal creditLimit = customerProduct.getCreditLimit();
+    BigDecimal amount = customerProduct.getAmount();
+    BigDecimal balance = operationModel.getBalance();
+    BigDecimal newAmount = new BigDecimal("0");
     
     if (com.example.bank.model.OperationTypeModel.DescriptionEnum.PAYMENT.equals(
         operationModel.getTypeOperation().getDescription())) {
-      if ((creditLimit - amount) < balance) {
+      if ((creditLimit.subtract(amount)).compareTo(balance) < 0) {
         return Mono.error(new Exception(Constants.ERROR_PAGING_MORE));
       }
-      newAmount = amount + balance;
+      newAmount = amount.add(balance);
     } else if (com.example.bank.model.OperationTypeModel.DescriptionEnum.CONSUMPTION.equals(
         operationModel.getTypeOperation().getDescription())) {
-      if (amount <= balance) {
+      if (amount.compareTo(balance) < 0) {
         return Mono.error(new Exception(Constants.ERROR_INSUFFICIENT_CREDIT));
       }
-      newAmount = amount - balance;
+      newAmount = amount.subtract(balance);
     }
     customerProduct.setAmount(newAmount);
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Constants.FORMAT_DATE_COMPLETE);

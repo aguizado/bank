@@ -1234,8 +1234,8 @@ components:
           default: saving
           example: saving
         maintenance_fee:
-          type: integer
-          example: 15
+          type: number
+          example: 0.15
         monthly_transaction_limit:
           type: integer
           example: 3
@@ -1243,7 +1243,7 @@ components:
           type: integer
           example: 15
         opening_amount:
-          type: integer
+          type: number
           example: 500
         is_delete:
           type: boolean
@@ -1286,10 +1286,10 @@ components:
         number_card:
           $ref: '#/components/schemas/Card'
         amount:
-          type: integer
+          type: number
           example: 800
         credit_limit:
-          type: integer
+          type: number
           example: 5000
         number_transaction_limit:
           type: integer
@@ -1373,10 +1373,10 @@ components:
         customer_producto:
           $ref: '#/components/schemas/Customer_Product'
         balance:
-          type: integer
+          type: number
           example: 500
         commission:
-          type: integer
+          type: number
           example: 0
         operation_date:
           type: string

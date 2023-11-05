@@ -1,6 +1,7 @@
 package com.example.bank.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.math.BigDecimal;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -32,10 +33,10 @@ public class OperationModel {
   private CustomerProductModel customerProducto;
 
   @JsonProperty("balance")
-  private Integer balance;
+  private BigDecimal balance;
 
   @JsonProperty("commission")
-  private Integer commission;
+  private BigDecimal commission;
 
   @JsonProperty("operation_date")
   private String operationDate;

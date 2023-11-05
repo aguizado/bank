@@ -3,6 +3,7 @@ package com.example.bank.model.dto;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.math.BigDecimal;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -73,7 +74,7 @@ public class ProductTypeDto {
   private DescriptionEnum description = DescriptionEnum.SAVING;
 
   @JsonProperty("maintenance_fee")
-  private Integer maintenanceFee;
+  private BigDecimal maintenanceFee;
 
   @JsonProperty("monthly_transaction_limit")
   private Integer monthlyTransactionLimit;
@@ -82,7 +83,7 @@ public class ProductTypeDto {
   private Integer transactionDay;
 
   @JsonProperty("opening_amount")
-  private Integer openingAmount;
+  private BigDecimal openingAmount;
 
   @JsonProperty("is_delete")
   private Boolean isDelete = false;
