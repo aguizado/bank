@@ -11,7 +11,6 @@ import io.reactivex.rxjava3.core.Single;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.stereotype.Service;
 import reactor.adapter.rxjava.RxJava3Adapter;
 import reactor.core.publisher.Flux;
@@ -31,8 +30,6 @@ public class OperationServiceImpl implements IoperationService {
   
   private final OperationMapper operationMapper;
   
-  private final ReactiveMongoTemplate template;
-  
   @Override
   public Single<OperationDto> createOperation(OperationDto operationDto) {
     OperationModel operationModel = operationMapper.toOperation(operationDto);
@@ -47,7 +44,7 @@ public class OperationServiceImpl implements IoperationService {
 
   @Override
   public Observable<OperationDto> getMovements(Integer customerId) {
-    Flux<OperationModel> operationFlux= operationRepository
+    Flux<OperationModel> operationFlux = operationRepository
         .findByCustomerProductoCustomerId(customerId);
     return RxJava3Adapter.fluxToObservable(operationFlux.map(operationMapper::toEntity));
   }
