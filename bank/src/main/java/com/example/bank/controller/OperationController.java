@@ -43,7 +43,7 @@ public class OperationController {
   public Single<ResponseEntity<OperationDto>> createOperation(
       @RequestBody OperationDto operation) {
          
-    customerProductService.validateToUpdate(operation)
+    customerProductService.validateToUpdateOperation(operation)
         .map(ResponseEntity::ok)
         .doOnError(throwable -> log.error(Constants.DO_ON_ERROR, throwable))
         .doOnSuccess(response -> log.info(Constants.DO_ON_SUCCESS, response))

@@ -233,7 +233,6 @@ public class CustomerProductServiceImpl implements IcustomerProductService {
     Integer nroTransaction = customerProduct.getNumberTransactionLimit();
     Integer nroTransactionLimit = product.getTypeProduct().getMonthlyTransactionLimit();
     BigDecimal maintenanceFee = new BigDecimal("0.0");
-    operationModel.setCommission(maintenanceFee);
     
     BigDecimal amount = customerProduct.getAmount();
     BigDecimal newAmount = new BigDecimal("0");
