@@ -193,7 +193,7 @@ public class CustomerProductServiceImpl implements IcustomerProductService {
   }
 
   @Override
-  public Single<CustomerProductDto> validateToUpdate(OperationDto operationDto) {
+  public Single<CustomerProductDto> validateToUpdateOperation(OperationDto operationDto) {
     
     OperationModel operationModel = operationMapper.toOperation(operationDto);
     Mono<CustomerProductModel> cpMono = Mono.empty();
@@ -300,6 +300,15 @@ public class CustomerProductServiceImpl implements IcustomerProductService {
     
     log.info("Updating Balance in Customer Product");
     return customerProductRepository.save(customerProduct);
+  }
+
+  @Override
+  public Single<CustomerProductDto> validateToUpdateTransfer(
+      CustomerProductDto customerProductDto) {
+    CustomerProductModel customerProduct = customerProductMapper
+        .toCustomerProduct(customerProductDto);
+    Mono<CustomerProductModel> cpMono = customerProductRepository.save(customerProduct);
+    return RxJava3Adapter.monoToSingle(cpMono.map(customerProductMapper::toEntity));
   }
 
 }

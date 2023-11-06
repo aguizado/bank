@@ -31,6 +31,8 @@ tags:
     description: Everything about Operation Types
   - name: Operation
     description: Everything about Operations
+  - name: Transfer
+    description: Everything about Transfer
 
 paths:
 
@@ -1170,6 +1172,35 @@ paths:
                 $ref: '#/components/schemas/Operation'
         400:
           description: Bad Request - Invalid Customer ID
+          
+  /transfer:
+    post:
+      tags:
+        - Transfer
+      summary: Create a New Transfer
+      description: Create a New Transfer
+      requestBody:
+        description: Create a New Transfer
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Transfer'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Transfer'
+        required: true
+      responses:
+        201:
+          description: Transfer created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transfer' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Transfer'
+        400:
+          description: Bad Request - Invalid Transfer data
 
 components:
   schemas:
@@ -1354,7 +1385,7 @@ components:
           example: 1
         description:
           type: string
-          enum: [deposit, withdrawal, payment, consumption, transfer]
+          enum: [deposit, withdrawal, payment, consumption]
           default: deposit
           example: deposit
         is_delete:
@@ -1380,4 +1411,31 @@ components:
           example: 0
         operation_date:
           type: string
-          example: 12102023
+          example: '03/11/2023 16:27:06'
+          
+    Transfer:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        type_transfer:
+          type: string
+          enum: [own, third]
+          default: own
+          example: own
+        customer_origin:
+          type: integer
+          example: 1
+        customer_destination:
+          type: integer
+          example: 1
+        product_number:
+          type: string
+          example: '0123456789123'
+        amount:
+          type: number
+          example: 500
+        transfer_date:
+          type: string
+          example: '03/11/2023 16:27:06'

@@ -35,8 +35,8 @@ public class OperationTypeModel {
    */
   public enum DescriptionEnum {
     
-    DEPOSIT("deposit"), WITHDRAWAL("withdrawal"), PAYMENT("payment"),
-    CONSUMPTION("consumption"), TRANSFER("transfer");
+    DEPOSIT("deposit"), WITHDRAWAL("withdrawal"),
+    PAYMENT("payment"), CONSUMPTION("consumption");
 
     private String value;
 
