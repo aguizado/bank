@@ -84,5 +84,20 @@ public class OperationController {
         .doOnError(throwable -> log.error(Constants.DO_ON_ERROR, throwable))
         .doOnSuccess(response -> log.info(Constants.DO_ON_SUCCESS, response));
   }
+  
+  /**
+   * . This method is to get commissions charged per product in the current month
+   *
+   * @param customerId This is the first parameter
+   * @return a HTTP Status
+   */
+  @GetMapping("/operation/get_commissions/{customerId}")
+  public Observable<ResponseEntity<OperationDto>> getReportCommissions(
+      @PathVariable("customerId") Integer customerId) {
+    return operationService.getCommissions(customerId)
+        .map(ResponseEntity::ok)
+        .doOnError(throwable -> log.error(Constants.DO_ON_ERROR, throwable))
+        .doOnNext(response -> log.info(Constants.DO_ON_SUCCESS, response));
+  }
 
 }

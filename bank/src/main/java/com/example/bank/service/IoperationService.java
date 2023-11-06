@@ -17,5 +17,7 @@ public interface IoperationService {
   public Observable<OperationDto> getMovements(Integer customerId);
   
   public Single<OperationDto> getReportLastMovements(Integer customerId);
+  
+  public Observable<OperationDto> getCommissions(Integer customerId);
 
 }

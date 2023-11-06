@@ -1173,6 +1173,32 @@ paths:
         400:
           description: Bad Request - Invalid Customer ID
           
+  /operation/get_commissions/{customerId}:
+    get:
+      tags:
+        - Operation
+      summary: Obtain report of the commissions charged per product in the current month
+      description: Obtain report of the commissions charged per product in the current month
+      parameters:
+        - in: path
+          name: customerId
+          required: true
+          schema:
+            type: integer
+          description: Customer ID
+      responses:
+        200:
+          description: report of the commissions charged per product in the current month
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation' 
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Operation'
+        400:
+          description: Bad Request - Invalid Customer ID
+          
   /transfer:
     post:
       tags:
