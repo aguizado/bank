@@ -1278,6 +1278,23 @@ components:
           example: Guizado
         type_customer:
           $ref: '#/components/schemas/Customer_Type'
+        type_document:
+          type: string
+          enum: [DNI, CEX, pasaporte]
+          default: DNI
+          example: DNI
+        document_numer:
+          type: string
+          example: "70385945"
+        phone:
+          type: string
+          example: "+51 965239765"
+        imei:
+          type: string
+          example: "010928/00/389023/3"
+        email:
+          type: string
+          example: "pier@gmail.com"
           
     Product_Type:
       type: object
